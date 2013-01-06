@@ -1,0 +1,78 @@
+{
+    "urls": {
+        "base": "https://www.saferpay.com",
+        "routes": {
+            "init": "/hosting/CreatePayInit.asp",
+            "confirm": "/hosting/VerifyPayConfirm.asp",
+            "complete": "/hosting/PayCompleteV2.asp"
+        }
+    },
+    "validators": {
+        "init": {
+            "ACCOUNTID": "ns[..15]",
+            "AMOUNT": "n[..8]",
+            "CURRENCY": "a[3]",
+            "DESCRIPTION": "ans[..50]",
+            "ORDERID": "ans[..80]",
+            "VTCONFIG": "an[..20]",
+            "SUCCESSLINK": "ans[..1024]",
+            "FAILLINK": "ans[..1024]",
+            "BACKLINK": "ans[..1024]",
+            "NOTIFYURL": "ans[..1024]",
+            "AUTOCLOSE": "n[..2]",
+            "CCNAME": "a[..3]",
+            "NOTIFYADDRESS": "ans[..50]",
+            "USERNOTIFY": "ans[..50]",
+            "LANGID": "a[2]",
+            "SHOWLANGUAGES": "a[..3]",
+            "PROVIDERSET": "ns[..40]",
+            "DURATION": "n[14]",
+            "CARDREFID": "ans[..40]",
+            "DELIVERY": "a[..3]",
+            "ADDRESS": "a[..8]",
+            "COMPANY": "ans[..50]",
+            "GENDER": "a[1]",
+            "FIRSTNAME": "ans[..50]",
+            "LASTNAME": "ans[..50]",
+            "STREET": "ans[..50]",
+            "ZIP": "an[..10]",
+            "CITY": "ans[..50]",
+            "COUNTRY": "a[2]",
+            "EMAIL": "ans[..50]",
+            "PHONE": "ans[..50]"
+        },
+        "confirm": {
+            "MSGTYPE": "a[..30]",
+            "VTVERIFY": "ans[..40]",
+            "KEYID": "ans[..40]",
+            "ID": "an[28]",
+            "TOKEN": "ans[..40]",
+            "ACCOUNTID": "ns[..15]",
+            "AMOUNT": "n[..8]",
+            "CURRENCY": "a[3]",
+            "CARDREFID": "ans[..40]",
+            "PROVIDERID": "n[..4]",
+            "PROVIDERNAME": "ans[..30]",
+            "ORDERID": "an[..39]",
+            "IP": "ns[..15]",
+            "IPCOUNTRY": "a[2]",
+            "CCCOUNTRY": "a[2]",
+            "MPI_LIABILITYSHIFT": "a[..3]",
+            "ECI": "n[1]",
+            "XID": "ans[28]",
+            "CAVV": "ans[28]"
+        },
+        "complete": {
+            "ID": "an[28]",
+            "TOKEN": "ans[..40]",
+            "AMOUNT": "n[..8]",
+            "ACCOUNTID": "ns[..15]",
+            "ACTION": "a[..10]"
+        }
+    },
+    "defaults": {
+        "ACCOUNTID": "99867-xxxxxxxx",
+        "CURRENCY": "CHF",
+        "LANGID": "CH"
+    }
+}
