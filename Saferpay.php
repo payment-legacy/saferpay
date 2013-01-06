@@ -2,9 +2,13 @@
 
 namespace Saferpay;
 
+use Saferpay\Config\SaferpayConfigInterface;
+
 class Saferpay
 {
-    /** @var SaferpayConfigInterface */
+    /**
+     * @var SaferpayConfigInterface
+     */
     protected $config;
 
     public function __construct(SaferpayConfigInterface $config = null)

@@ -1,23 +1,25 @@
 <?php
 
-require 'UrlConfigInterface.php';
-require 'UrlConfig.php';
-require 'ValidationConfigCollectionInterface.php';
-require 'ValidationConfigCollection.php';
-require 'ValidationConfigInterface.php';
-require 'ValidationConfig.php';
-require 'DefaultConfigInterface.php';
-require 'DefaultConfig.php';
-require 'SaferpayConfigInterface.php';
-require 'SaferpayConfig.php';
+require 'Config/DefaultConfigInterface.php';
+require 'Config/DefaultConfig.php';
+require 'Config/SaferpayConfigInterface.php';
+require 'Config/SaferpayConfig.php';
+require 'Config/UrlConfigInterface.php';
+require 'Config/UrlConfig.php';
+require 'Config/ValidationConfigInterface.php';
+require 'Config/ValidationConfig.php';
+require 'Config/ValidationConfigCollectionInterface.php';
+require 'Config/ValidationConfigCollection.php';
+
 require 'Saferpay.php';
 
-use Saferpay\UrlConfig;
-use Saferpay\ValidationConfigCollection;
-use Saferpay\ValidationConfig;
-use Saferpay\DefaultConfig;
-use Saferpay\SaferpayConfigInterface;
-use Saferpay\SaferpayConfig;
+use Saferpay\Config\DefaultConfig;
+use Saferpay\Config\SaferpayConfig;
+use Saferpay\Config\SaferpayConfigInterface;
+use Saferpay\Config\UrlConfig;
+use Saferpay\Config\ValidationConfigCollection;
+use Saferpay\Config\ValidationConfig;
+
 use Saferpay\Saferpay;
 
 // get all config data from json
