@@ -74,10 +74,32 @@ interface SaferpayConfigInterface
      * @param DefaultConfigInterface $defaultConfig
      * @return self
      */
-    public function setDefaultConfig(DefaultConfigInterface $defaultConfig);
+    public function setInitDefaultConfig(DefaultConfigInterface $defaultConfig);
 
     /**
-     * @return DefaultConfigInterface
+     * @return ValidationConfigInterface
      */
-    public function getDefaultConfig();
+    public function getInitDefaultConfig();
+
+    /**
+     * @param DefaultConfigInterface $defaultConfig
+     * @return self
+     */
+    public function setConfirmDefaultConfig(DefaultConfigInterface $defaultConfig);
+
+    /**
+     * @return ValidationConfigInterface
+     */
+    public function getConfirmDefaultConfig();
+
+    /**
+     * @param DefaultConfigInterface $defaultConfig
+     * @return self
+     */
+    public function setCompleteDefaultConfig(DefaultConfigInterface $defaultConfig);
+
+    /**
+     * @return ValidationConfigInterface
+     */
+    public function getCompleteDefaultConfig();
 }

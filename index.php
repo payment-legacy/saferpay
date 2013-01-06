@@ -26,13 +26,15 @@ $saferpayConfig->setInitUrl($arrConfig['urls']['init']);
 $saferpayConfig->setConfirmUrl($arrConfig['urls']['confirm']);
 $saferpayConfig->setCompleteUrl($arrConfig['urls']['complete']);
 
-// set validation config collection
+// set validation config
 $saferpayConfig->setInitValidationConfig(new ValidationConfig($arrConfig['validators']['init']));
 $saferpayConfig->setConfirmValidationConfig(new ValidationConfig($arrConfig['validators']['confirm']));
 $saferpayConfig->setCompleteValidationConfig(new ValidationConfig($arrConfig['validators']['complete']));
 
 // set default config
-$saferpayConfig->setDefaultConfig(new DefaultConfig($arrConfig['defaults']));
+$saferpayConfig->setInitDefaultConfig(new DefaultConfig($arrConfig['defaults']['init']));
+$saferpayConfig->setConfirmDefaultConfig(new DefaultConfig($arrConfig['defaults']['confirm']));
+$saferpayConfig->setCompleteDefaultConfig(new DefaultConfig($arrConfig['defaults']['complete']));
 
 $saferpay = new Saferpay();
 $saferpay->setConfig($saferpayConfig);

@@ -68,8 +68,12 @@
         }
     },
     "defaults": {
-        "ACCOUNTID": "99867-xxxxxxxx",
-        "CURRENCY": "CHF",
-        "LANGID": "CH"
+        "init": {
+            "ACCOUNTID": "99867-xxxxxxxx",
+            "CURRENCY": "CHF",
+            "LANGID": "CH"
+        },
+        "confirm": {},
+        "complete": {}
     }
 }

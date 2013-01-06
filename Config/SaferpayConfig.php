@@ -37,7 +37,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     /**
      * @var DefaultConfigInterface
      */
-    protected $defaultConfig;
+    protected $initDefaultConfig;
+
+    /**
+     * @var DefaultConfigInterface
+     */
+    protected $confirmDefaultConfig;
+
+    /**
+     * @var DefaultConfigInterface
+     */
+    protected $completeDefaultConfig;
 
     /**
      * @param string $url
@@ -151,17 +161,53 @@ class SaferpayConfig implements SaferpayConfigInterface
      * @param DefaultConfigInterface $defaultConfig
      * @return self
      */
-    public function setDefaultConfig(DefaultConfigInterface $defaultConfig)
+    public function setInitDefaultConfig(DefaultConfigInterface $defaultConfig)
     {
-        $this->defaultConfig = $defaultConfig;
+        $this->initDefaultConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return DefaultConfigInterface
+     * @return ValidationConfigInterface
      */
-    public function getDefaultConfig()
+    public function getInitDefaultConfig()
     {
-        return $this->defaultConfig;
+        return $this->initDefaultConfig;
+    }
+
+    /**
+     * @param DefaultConfigInterface $defaultConfig
+     * @return self
+     */
+    public function setConfirmDefaultConfig(DefaultConfigInterface $defaultConfig)
+    {
+        $this->confirmDefaultConfig = $defaultConfig;
+        return $this;
+    }
+
+    /**
+     * @return ValidationConfigInterface
+     */
+    public function getConfirmDefaultConfig()
+    {
+        return $this->confirmDefaultConfig;
+    }
+
+    /**
+     * @param DefaultConfigInterface $defaultConfig
+     * @return self
+     */
+    public function setCompleteDefaultConfig(DefaultConfigInterface $defaultConfig)
+    {
+        $this->completeDefaultConfig = $defaultConfig;
+        return $this;
+    }
+
+    /**
+     * @return ValidationConfigInterface
+     */
+    public function getCompleteDefaultConfig()
+    {
+        return $this->completeDefaultConfig;
     }
 }
