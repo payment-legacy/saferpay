@@ -3,6 +3,7 @@
 namespace Saferpay;
 
 use Saferpay\Config\SaferpayConfigInterface;
+use Saferpay\Data\SaferpayDataInterface;
 
 class Saferpay
 {
@@ -11,13 +12,24 @@ class Saferpay
      */
     protected $config;
 
-    public function __construct(SaferpayConfigInterface $config = null)
+    /**
+     * @var SaferpayDataInterface
+     */
+    protected $data;
+
+    public function __construct(SaferpayConfigInterface $config = null, SaferpayDataInterface $data = null)
     {
         $this->setConfig($config);
+        $this->setData($data);
     }
 
     public function setConfig(SaferpayConfigInterface $config = null)
     {
         $this->config = $config;
+    }
+
+    public function setData(SaferpayDataInterface $data)
+    {
+        $this->data = $data;
     }
 }
