@@ -4,31 +4,71 @@ namespace Saferpay\Config;
 
 interface SaferpayConfigInterface
 {
-    const Init = 'init';
-    const Confirm = 'confirm';
-    const Complete = 'complete';
-
     /**
-     * @param UrlConfigInterface $urlConfig
+     * @param string $url
      * @return self
      */
-    public function setUrlConfig(UrlConfigInterface $urlConfig);
+    public function setInitUrl($url);
 
     /**
-     * @return UrlConfigInterface
+     * @return string
      */
-    public function getUrlConfig();
+    public function getInitUrl();
 
     /**
-     * @param ValidationConfigCollectionInterface $validationConfigCollection
+     * @param string $url
      * @return self
      */
-    public function setValidationConfigCollection(ValidationConfigCollectionInterface $validationConfigCollection);
+    public function setConfirmUrl($url);
 
     /**
-     * @return ValidationConfigCollectionInterface
+     * @return string
      */
-    public function getValidationConfigCollection();
+    public function getConfirmUrl();
+
+    /**
+     * @param string $url
+     * @return self
+     */
+    public function setCompleteUrl($url);
+
+    /**
+     * @return string
+     */
+    public function getCompleteUrl();
+
+    /**
+     * @param ValidationConfigInterface $validationConfig
+     * @return self
+     */
+    public function setInitValidationConfig(ValidationConfigInterface $validationConfig);
+
+    /**
+     * @return ValidationConfigInterface
+     */
+    public function getInitValidationConfig();
+
+    /**
+     * @param ValidationConfigInterface $validationConfig
+     * @return self
+     */
+    public function setConfirmValidationConfig(ValidationConfigInterface $validationConfig);
+
+    /**
+     * @return ValidationConfigInterface
+     */
+    public function getConfirmValidationConfig();
+
+    /**
+     * @param ValidationConfigInterface $validationConfig
+     * @return self
+     */
+    public function setCompleteValidationConfig(ValidationConfigInterface $validationConfig);
+
+    /**
+     * @return ValidationConfigInterface
+     */
+    public function getCompleteValidationConfig();
 
     /**
      * @param DefaultConfigInterface $defaultConfig

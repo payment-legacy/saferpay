@@ -4,20 +4,13 @@ require 'Config/DefaultConfigInterface.php';
 require 'Config/DefaultConfig.php';
 require 'Config/SaferpayConfigInterface.php';
 require 'Config/SaferpayConfig.php';
-require 'Config/UrlConfigInterface.php';
-require 'Config/UrlConfig.php';
 require 'Config/ValidationConfigInterface.php';
 require 'Config/ValidationConfig.php';
-require 'Config/ValidationConfigCollectionInterface.php';
-require 'Config/ValidationConfigCollection.php';
 
 require 'Saferpay.php';
 
 use Saferpay\Config\DefaultConfig;
 use Saferpay\Config\SaferpayConfig;
-use Saferpay\Config\SaferpayConfigInterface;
-use Saferpay\Config\UrlConfig;
-use Saferpay\Config\ValidationConfigCollection;
 use Saferpay\Config\ValidationConfig;
 
 use Saferpay\Saferpay;
@@ -29,16 +22,14 @@ $arrConfig = json_decode(file_get_contents('config.json'), true);
 $saferpayConfig = new SaferpayConfig();
 
 // set url config
-$saferpayConfig->setUrlConfig(new UrlConfig($arrConfig['urls']['base'], $arrConfig['urls']['routes']));
-
-// create new validation config collection
-$validationConfigCollection = new ValidationConfigCollection();
-$validationConfigCollection->addValidatorConfig(SaferpayConfigInterface::Init, new ValidationConfig($arrConfig['validators'][SaferpayConfigInterface::Init]));
-$validationConfigCollection->addValidatorConfig(SaferpayConfigInterface::Confirm, new ValidationConfig($arrConfig['validators'][SaferpayConfigInterface::Confirm]));
-$validationConfigCollection->addValidatorConfig(SaferpayConfigInterface::Complete, new ValidationConfig($arrConfig['validators'][SaferpayConfigInterface::Complete]));
+$saferpayConfig->setInitUrl($arrConfig['urls']['init']);
+$saferpayConfig->setConfirmUrl($arrConfig['urls']['confirm']);
+$saferpayConfig->setCompleteUrl($arrConfig['urls']['complete']);
 
 // set validation config collection
-$saferpayConfig->setValidationConfigCollection($validationConfigCollection);
+$saferpayConfig->setInitValidationConfig(new ValidationConfig($arrConfig['validators']['init']));
+$saferpayConfig->setConfirmValidationConfig(new ValidationConfig($arrConfig['validators']['confirm']));
+$saferpayConfig->setCompleteValidationConfig(new ValidationConfig($arrConfig['validators']['complete']));
 
 // set default config
 $saferpayConfig->setDefaultConfig(new DefaultConfig($arrConfig['defaults']));

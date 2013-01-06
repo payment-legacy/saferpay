@@ -1,11 +1,8 @@
 {
     "urls": {
-        "base": "https://www.saferpay.com",
-        "routes": {
-            "init": "/hosting/CreatePayInit.asp",
-            "confirm": "/hosting/VerifyPayConfirm.asp",
-            "complete": "/hosting/PayCompleteV2.asp"
-        }
+        "init": "https://www.saferpay.com/hosting/CreatePayInit.asp",
+        "confirm": "https://www.saferpay.com/hosting/VerifyPayConfirm.asp",
+        "complete": "https://www.saferpay.com/hosting/PayCompleteV2.asp"
     },
     "validators": {
         "init": {
