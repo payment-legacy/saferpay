@@ -21,6 +21,8 @@ use Saferpay\Data\SaferpayData;
 use Saferpay\Data\Data;
 use Saferpay\Saferpay;
 
+session_start();
+
 // get all config data from json
 $arrConfig = json_decode(file_get_contents('config.json'), true);
 
@@ -42,14 +44,37 @@ $saferpayConfig->setInitDefaultConfig(new DefaultConfig($arrConfig['defaults']['
 $saferpayConfig->setConfirmDefaultConfig(new DefaultConfig($arrConfig['defaults']['confirm']));
 $saferpayConfig->setCompleteDefaultConfig(new DefaultConfig($arrConfig['defaults']['complete']));
 
-$saferpayData = new SaferpayData();
+if(!array_key_exists('saferpay', $_SESSION))
+{
+    // create empty data
+    $saferpayData = new SaferpayData();
 
-$saferpayData->setInitData(new Data());
-$saferpayData->setConfirmData(new Data());
-$saferpayData->setCompleteData(new Data());
+    // set the initial values
+    $saferpayData->setInitData(new Data());
+    $saferpayData->setConfirmData(new Data());
+    $saferpayData->setCompleteData(new Data());
+}
+else
+{
+    $saferpayData = $_SESSION['saferpay'];
+}
 
+// create a new saferpay instance (implement as service)
 $saferpay = new Saferpay($saferpayConfig, $saferpayData);
 
+$saferpay->createPayInit(array(
+    'AMOUNT' => 10250,
+    'DESCRIPTION' => sprintf('Bestellnummer %s', '000001'),
+    'ORDERID' => '000001',
+    'SUCCESSLINK' => 'http://github.local/saferpay/?status=success',
+    'FAILLINK' => 'http://github.local/saferpay/?status=fail',
+    'BACKLINK' => 'http://github.local/saferpay/',
+));
+
+// assign the data to the session
+$_SESSION['saferpay'] = $saferpayData;
+
+// show saferpay object
 printData($saferpay);
 
 

@@ -47,4 +47,12 @@ class DefaultConfig implements DefaultConfigInterface
     {
         return array_key_exists($key, $this->defaults);
     }
+
+    /**
+     * @return array
+     */
+    public function getDefaults()
+    {
+        return $this->defaults;
+    }
 }

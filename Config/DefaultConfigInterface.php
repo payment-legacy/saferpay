@@ -27,4 +27,9 @@ interface DefaultConfigInterface
      * @return boolean
      */
     public function hasDefault($key);
+
+    /**
+     * @return array
+     */
+    public function getDefaults();
 }
