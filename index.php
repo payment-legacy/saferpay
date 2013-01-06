@@ -36,8 +36,7 @@ $saferpayConfig->setInitDefaultConfig(new DefaultConfig($arrConfig['defaults']['
 $saferpayConfig->setConfirmDefaultConfig(new DefaultConfig($arrConfig['defaults']['confirm']));
 $saferpayConfig->setCompleteDefaultConfig(new DefaultConfig($arrConfig['defaults']['complete']));
 
-$saferpay = new Saferpay();
-$saferpay->setConfig($saferpayConfig);
+$saferpay = new Saferpay($saferpayConfig);
 
 printData($saferpay);
 
