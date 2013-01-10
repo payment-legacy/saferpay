@@ -1,6 +1,6 @@
 <?php
 
-namespace Saferpay\Config;
+namespace Payment\Saferpay\Config;
 
 class SaferpayConfig implements SaferpayConfigInterface
 {

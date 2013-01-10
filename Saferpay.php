@@ -1,12 +1,12 @@
 <?php
 
-namespace Saferpay;
+namespace Payment\Saferpay;
 
-use Saferpay\Config\DefaultConfigInterface;
-use Saferpay\Config\SaferpayConfigInterface;
-use Saferpay\Config\ValidationConfigInterface;
-use Saferpay\Data\DataInterface;
-use Saferpay\Data\SaferpayDataInterface;
+use Payment\Saferpay\Config\DefaultConfigInterface;
+use Payment\Saferpay\Config\SaferpayConfigInterface;
+use Payment\Saferpay\Config\ValidationConfigInterface;
+use Payment\Saferpay\Data\DataInterface;
+use Payment\Saferpay\Data\SaferpayDataInterface;
 
 class Saferpay
 {

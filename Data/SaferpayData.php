@@ -1,6 +1,6 @@
 <?php
 
-namespace Saferpay\Data;
+namespace Payment\Saferpay\Data;
 
 class SaferpayData implements SaferpayDataInterface
 {

@@ -1,25 +1,15 @@
 <?php
 
-require 'Config/DefaultConfigInterface.php';
-require 'Config/DefaultConfig.php';
-require 'Config/SaferpayConfigInterface.php';
-require 'Config/SaferpayConfig.php';
-require 'Config/ValidationConfigInterface.php';
-require 'Config/ValidationConfig.php';
+namespace Payment\Saferpay;
 
-require 'Data/DataInterface.php';
-require 'Data/Data.php';
-require 'Data/SaferpayDataInterface.php';
-require 'Data/SaferpayData.php';
+require "../../../../autoload.php";
 
-require 'Saferpay.php';
-
-use Saferpay\Config\DefaultConfig;
-use Saferpay\Config\SaferpayConfig;
-use Saferpay\Config\ValidationConfig;
-use Saferpay\Data\SaferpayData;
-use Saferpay\Data\Data;
-use Saferpay\Saferpay;
+use Payment\Saferpay\Config\DefaultConfig;
+use Payment\Saferpay\Config\SaferpayConfig;
+use Payment\Saferpay\Config\ValidationConfig;
+use Payment\Saferpay\Data\SaferpayData;
+use Payment\Saferpay\Data\Data;
+use Payment\Saferpay\Saferpay;
 
 session_start();
 
