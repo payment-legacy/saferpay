@@ -1,6 +1,8 @@
 <?php
 
-namespace Payment\Saferpay\Config;
+namespace Payment\Saferpay;
+
+use Ardent\Map as MapInterface;
 
 class SaferpayConfig implements SaferpayConfigInterface
 {
@@ -20,32 +22,32 @@ class SaferpayConfig implements SaferpayConfigInterface
     protected $completeUrl;
 
     /**
-     * @var ValidationConfigInterface
+     * @var MapInterface
      */
     protected $initValidationConfig;
 
     /**
-     * @var ValidationConfigInterface
+     * @var MapInterface
      */
     protected $confirmValidationConfig;
 
     /**
-     * @var ValidationConfigInterface
+     * @var MapInterface
      */
     protected $completeValidationConfig;
 
     /**
-     * @var DefaultConfigInterface
+     * @var MapInterface
      */
     protected $initDefaultConfig;
 
     /**
-     * @var DefaultConfigInterface
+     * @var MapInterface
      */
     protected $confirmDefaultConfig;
 
     /**
-     * @var DefaultConfigInterface
+     * @var MapInterface
      */
     protected $completeDefaultConfig;
 
@@ -104,17 +106,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param ValidationConfigInterface $validationConfig
+     * @param MapInterface $validationConfig
      * @return self
      */
-    public function setInitValidationConfig(ValidationConfigInterface $validationConfig)
+    public function setInitValidationConfig(MapInterface $validationConfig)
     {
         $this->initValidationConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return ValidationConfigInterface
+     * @return MapInterface
      */
     public function getInitValidationConfig()
     {
@@ -122,17 +124,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param ValidationConfigInterface $validationConfig
+     * @param MapInterface $validationConfig
      * @return self
      */
-    public function setConfirmValidationConfig(ValidationConfigInterface $validationConfig)
+    public function setConfirmValidationConfig(MapInterface $validationConfig)
     {
         $this->confirmValidationConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return ValidationConfigInterface
+     * @return MapInterface
      */
     public function getConfirmValidationConfig()
     {
@@ -140,17 +142,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param ValidationConfigInterface $validationConfig
+     * @param MapInterface $validationConfig
      * @return self
      */
-    public function setCompleteValidationConfig(ValidationConfigInterface $validationConfig)
+    public function setCompleteValidationConfig(MapInterface $validationConfig)
     {
         $this->completeValidationConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return ValidationConfigInterface
+     * @return MapInterface
      */
     public function getCompleteValidationConfig()
     {
@@ -158,17 +160,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param DefaultConfigInterface $defaultConfig
+     * @param MapInterface $defaultConfig
      * @return self
      */
-    public function setInitDefaultConfig(DefaultConfigInterface $defaultConfig)
+    public function setInitDefaultConfig(MapInterface $defaultConfig)
     {
         $this->initDefaultConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return ValidationConfigInterface
+     * @return MapInterface
      */
     public function getInitDefaultConfig()
     {
@@ -176,17 +178,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param DefaultConfigInterface $defaultConfig
+     * @param MapInterface $defaultConfig
      * @return self
      */
-    public function setConfirmDefaultConfig(DefaultConfigInterface $defaultConfig)
+    public function setConfirmDefaultConfig(MapInterface $defaultConfig)
     {
         $this->confirmDefaultConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return ValidationConfigInterface
+     * @return MapInterface
      */
     public function getConfirmDefaultConfig()
     {
@@ -194,17 +196,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param DefaultConfigInterface $defaultConfig
+     * @param MapInterface $defaultConfig
      * @return self
      */
-    public function setCompleteDefaultConfig(DefaultConfigInterface $defaultConfig)
+    public function setCompleteDefaultConfig(MapInterface $defaultConfig)
     {
         $this->completeDefaultConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return ValidationConfigInterface
+     * @return MapInterface
      */
     public function getCompleteDefaultConfig()
     {

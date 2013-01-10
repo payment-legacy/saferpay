@@ -4,14 +4,14 @@ namespace Payment\Saferpay;
 
 require "../../../../autoload.php";
 
-use Payment\Saferpay\Config\DefaultConfig;
-use Payment\Saferpay\Config\SaferpayConfig;
-use Payment\Saferpay\Config\ValidationConfig;
-use Payment\Saferpay\Data\SaferpayData;
-use Payment\Saferpay\Data\Data;
+use Ardent\HashMap;
+use Payment\Saferpay\SaferpayConfig;
+use Payment\Saferpay\SaferpayData;
+use Payment\Saferpay\SaferpayHelper;
 use Payment\Saferpay\Saferpay;
 
 session_start();
+session_destroy();
 
 // get all config data from json
 $arrConfig = json_decode(file_get_contents('config.json'), true);
@@ -25,14 +25,14 @@ $saferpayConfig->setConfirmUrl($arrConfig['urls']['confirm']);
 $saferpayConfig->setCompleteUrl($arrConfig['urls']['complete']);
 
 // set validation config
-$saferpayConfig->setInitValidationConfig(new ValidationConfig($arrConfig['validators']['init']));
-$saferpayConfig->setConfirmValidationConfig(new ValidationConfig($arrConfig['validators']['confirm']));
-$saferpayConfig->setCompleteValidationConfig(new ValidationConfig($arrConfig['validators']['complete']));
+$saferpayConfig->setInitValidationConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['validators']['init']));
+$saferpayConfig->setConfirmValidationConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['validators']['confirm']));
+$saferpayConfig->setCompleteValidationConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['validators']['complete']));
 
 // set default config
-$saferpayConfig->setInitDefaultConfig(new DefaultConfig($arrConfig['defaults']['init']));
-$saferpayConfig->setConfirmDefaultConfig(new DefaultConfig($arrConfig['defaults']['confirm']));
-$saferpayConfig->setCompleteDefaultConfig(new DefaultConfig($arrConfig['defaults']['complete']));
+$saferpayConfig->setInitDefaultConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['defaults']['init']));
+$saferpayConfig->setConfirmDefaultConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['defaults']['confirm']));
+$saferpayConfig->setCompleteDefaultConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['defaults']['complete']));
 
 if(!array_key_exists('saferpay', $_SESSION))
 {
@@ -40,9 +40,9 @@ if(!array_key_exists('saferpay', $_SESSION))
     $saferpayData = new SaferpayData();
 
     // set the initial values
-    $saferpayData->setInitData(new Data());
-    $saferpayData->setConfirmData(new Data());
-    $saferpayData->setCompleteData(new Data());
+    $saferpayData->setInitData(new HashMap());
+    $saferpayData->setConfirmData(new HashMap());
+    $saferpayData->setCompleteData(new HashMap());
 }
 else
 {

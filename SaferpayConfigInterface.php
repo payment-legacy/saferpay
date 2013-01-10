@@ -1,6 +1,8 @@
 <?php
 
-namespace Payment\Saferpay\Config;
+namespace Payment\Saferpay;
+
+use Ardent\Map as MapInterface;
 
 interface SaferpayConfigInterface
 {
@@ -38,68 +40,68 @@ interface SaferpayConfigInterface
     public function getCompleteUrl();
 
     /**
-     * @param ValidationConfigInterface $validationConfig
+     * @param MapInterface $validationConfig
      * @return self
      */
-    public function setInitValidationConfig(ValidationConfigInterface $validationConfig);
+    public function setInitValidationConfig(MapInterface $validationConfig);
 
     /**
-     * @return ValidationConfigInterface
+     * @return MapInterface
      */
     public function getInitValidationConfig();
 
     /**
-     * @param ValidationConfigInterface $validationConfig
+     * @param MapInterface $validationConfig
      * @return self
      */
-    public function setConfirmValidationConfig(ValidationConfigInterface $validationConfig);
+    public function setConfirmValidationConfig(MapInterface $validationConfig);
 
     /**
-     * @return ValidationConfigInterface
+     * @return MapInterface
      */
     public function getConfirmValidationConfig();
 
     /**
-     * @param ValidationConfigInterface $validationConfig
+     * @param MapInterface $validationConfig
      * @return self
      */
-    public function setCompleteValidationConfig(ValidationConfigInterface $validationConfig);
+    public function setCompleteValidationConfig(MapInterface $validationConfig);
 
     /**
-     * @return ValidationConfigInterface
+     * @return MapInterface
      */
     public function getCompleteValidationConfig();
 
     /**
-     * @param DefaultConfigInterface $defaultConfig
+     * @param MapInterface $defaultConfig
      * @return self
      */
-    public function setInitDefaultConfig(DefaultConfigInterface $defaultConfig);
+    public function setInitDefaultConfig(MapInterface $defaultConfig);
 
     /**
-     * @return DefaultConfigInterface
+     * @return MapInterface
      */
     public function getInitDefaultConfig();
 
     /**
-     * @param DefaultConfigInterface $defaultConfig
+     * @param MapInterface $defaultConfig
      * @return self
      */
-    public function setConfirmDefaultConfig(DefaultConfigInterface $defaultConfig);
+    public function setConfirmDefaultConfig(MapInterface $defaultConfig);
 
     /**
-     * @return DefaultConfigInterface
+     * @return MapInterface
      */
     public function getConfirmDefaultConfig();
 
     /**
-     * @param DefaultConfigInterface $defaultConfig
+     * @param MapInterface $defaultConfig
      * @return self
      */
-    public function setCompleteDefaultConfig(DefaultConfigInterface $defaultConfig);
+    public function setCompleteDefaultConfig(MapInterface $defaultConfig);
 
     /**
-     * @return DefaultConfigInterface
+     * @return MapInterface
      */
     public function getCompleteDefaultConfig();
 }

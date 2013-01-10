@@ -2,11 +2,9 @@
 
 namespace Payment\Saferpay;
 
-use Payment\Saferpay\Config\DefaultConfigInterface;
-use Payment\Saferpay\Config\SaferpayConfigInterface;
-use Payment\Saferpay\Config\ValidationConfigInterface;
-use Payment\Saferpay\Data\DataInterface;
-use Payment\Saferpay\Data\SaferpayDataInterface;
+use Ardent\Map as MapInterface;
+use Payment\Saferpay\SaferpayConfigInterface;
+use Payment\Saferpay\SaferpayDataInterface;
 
 class Saferpay
 {
@@ -47,16 +45,16 @@ class Saferpay
     }
 
     /**
-     * @param Config\ValidationConfigInterface $validator
-     * @param Config\DefaultConfigInterface $default
-     * @param Data\DataInterface $data
+     * @param MapInterface $validator
+     * @param MapInterface $default
+     * @param MapInterface $data
      * @param array $newData
      */
-    protected static function updateData(ValidationConfigInterface $validator, DefaultConfigInterface $default, DataInterface $data, array $newData)
+    protected static function updateData(MapInterface $validator, MapInterface $default, MapInterface $data, array $newData)
     {
-        foreach($default->getDefaults() as $key => $value)
+        foreach($default as $key => $value)
         {
-            if(!$data->hasData($key))
+            if(!$data->offsetExists($key))
             {
                 self::setValue($validator, $data, $key, $value);
             }
@@ -69,34 +67,34 @@ class Saferpay
     }
 
     /**
-     * @param Config\ValidationConfigInterface $validator
-     * @param Data\DataInterface $data
+     * @param MapInterface $validator
+     * @param MapInterface $data
      * @param string $key
      * @param mixed $value
      */
-    protected static function setValue(ValidationConfigInterface $validator, DataInterface $data, $key, $value)
+    protected static function setValue(MapInterface $validator, MapInterface $data, $key, $value)
     {
         if(self::isValidValue($validator, $key, $value))
         {
-            $data->addData($key, $value);
+            $data->insert($key, $value);
         }
         else
         {
-            $data->addInvalidData($key, $value);
+            // todo: add to log
         }
     }
 
     /**
-     * @param Config\ValidationConfigInterface $validator
+     * @param MapInterface $validator
      * @param string $key
      * @param mixed $value
      * @return boolean
      */
-    public static function isValidValue(ValidationConfigInterface $validator, $key, $value)
+    public static function isValidValue(MapInterface $validator, $key, $value)
     {
-        if($validator->hasValidator($key) &&
+        if($validator->offsetExists($key) &&
             is_scalar($value) &&
-            preg_match(self::conditionToRegex($validator->getValidator($key)), $value) == 1)
+            preg_match(self::conditionToRegex($validator->get($key)), $value) == 1)
         {
             return true;
         }
