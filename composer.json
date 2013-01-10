@@ -1,0 +1,22 @@
+{
+    "name": "payment/saferpay",
+    "type": "library",
+    "description": "Saferpay payment service library",
+    "keywords": ["saferpay", "payment", "e-commerce"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dominik Zogg",
+            "email": "dominik.zogg@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "psr/log": "master"
+    },
+    "autoload": {
+        "psr-0": { "Payment\\Saferpay\\": "" }
+    },
+    "target-dir": "Payment/Saferpay",
+    "minimum-stability": "dev"
+}
