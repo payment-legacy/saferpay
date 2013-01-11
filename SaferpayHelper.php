@@ -15,7 +15,7 @@ class SaferpayHelper
     {
         foreach($data as $key => $value)
         {
-            $map->insert($key, $value);
+            $map->offsetSet($key, $value);
         }
 
         return $map;

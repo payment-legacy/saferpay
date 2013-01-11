@@ -76,7 +76,7 @@ class Saferpay
     {
         if(self::isValidValue($validator, $key, $value))
         {
-            $data->insert($key, $value);
+            $data->offsetSet($key, $value);
         }
         else
         {
@@ -94,7 +94,7 @@ class Saferpay
     {
         if($validator->offsetExists($key) &&
             is_scalar($value) &&
-            preg_match(self::conditionToRegex($validator->get($key)), $value) == 1)
+            preg_match(self::conditionToRegex($validator->offsetGet($key)), $value) == 1)
         {
             return true;
         }
