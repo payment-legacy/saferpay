@@ -75,6 +75,7 @@ class SaferpayAttribute implements SaferpayAttributeInterface
     /**
      * @param string $offset
      * @param scalar $value
+     * @return self
      * @throws \InvalidArgumentException
      */
     public function offsetSet($offset, $value)
@@ -88,10 +89,12 @@ class SaferpayAttribute implements SaferpayAttributeInterface
             throw new \InvalidArgumentException("Only scalar (integer, float, string or boolean) are allowed as value!");
         }
         $this->properties->{$offset} = $value;
+        return $this;
     }
 
     /**
      * @param string $offset
+     * @return self
      * @throws \InvalidArgumentException
      */
     public function offsetUnset($offset)
@@ -105,6 +108,7 @@ class SaferpayAttribute implements SaferpayAttributeInterface
             throw new \InvalidArgumentException("Unknown offset given!");
         }
         unset($this->properties->{$offset});
+        return $this;
     }
 
     /**

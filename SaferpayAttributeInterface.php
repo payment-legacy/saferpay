@@ -39,12 +39,14 @@ interface SaferpayAttributeInterface extends \IteratorAggregate
     /**
      * @param string $offset
      * @param scalar $value
+     * @return self
      * @throws \InvalidArgumentException
      */
     public function offsetSet($offset, $value);
 
     /**
      * @param string $offset
+     * @return self
      * @throws \InvalidArgumentException
      */
     public function offsetUnset($offset);
