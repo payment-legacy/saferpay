@@ -2,37 +2,36 @@
 
 namespace Payment\Saferpay;
 
-use Ardent\Map as MapInterface;
 
 class SaferpayData implements SaferpayDataInterface
 {
     /**
-     * @var MapInterface
+     * @var \ArrayAccess
      */
     protected $initData;
 
     /**
-     * @var MapInterface
+     * @var \ArrayAccess
      */
     protected $confirmData;
 
     /**
-     * @var MapInterface
+     * @var \ArrayAccess
      */
     protected $completeData;
 
     /**
-     * @param MapInterface $data
+     * @param \ArrayAccess $data
      * @return self
      */
-    public function setInitData(MapInterface $data)
+    public function setInitData(\ArrayAccess $data)
     {
         $this->initData = $data;
         return $this;
     }
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getInitData()
     {
@@ -40,17 +39,17 @@ class SaferpayData implements SaferpayDataInterface
     }
 
     /**
-     * @param MapInterface $data
+     * @param \ArrayAccess $data
      * @return self
      */
-    public function setConfirmData(MapInterface $data)
+    public function setConfirmData(\ArrayAccess $data)
     {
         $this->confirmData = $data;
         return $this;
     }
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getConfirmData()
     {
@@ -58,17 +57,17 @@ class SaferpayData implements SaferpayDataInterface
     }
 
     /**
-     * @param MapInterface $data
+     * @param \ArrayAccess $data
      * @return self
      */
-    public function setCompleteData(MapInterface $data)
+    public function setCompleteData(\ArrayAccess $data)
     {
         $this->completeData = $data;
         return $this;
     }
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getCompleteData()
     {

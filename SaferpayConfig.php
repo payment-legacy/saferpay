@@ -2,7 +2,6 @@
 
 namespace Payment\Saferpay;
 
-use Ardent\Map as MapInterface;
 
 class SaferpayConfig implements SaferpayConfigInterface
 {
@@ -22,32 +21,32 @@ class SaferpayConfig implements SaferpayConfigInterface
     protected $completeUrl;
 
     /**
-     * @var MapInterface
+     * @var \ArrayAccess
      */
     protected $initValidationConfig;
 
     /**
-     * @var MapInterface
+     * @var \ArrayAccess
      */
     protected $confirmValidationConfig;
 
     /**
-     * @var MapInterface
+     * @var \ArrayAccess
      */
     protected $completeValidationConfig;
 
     /**
-     * @var MapInterface
+     * @var \ArrayAccess
      */
     protected $initDefaultConfig;
 
     /**
-     * @var MapInterface
+     * @var \ArrayAccess
      */
     protected $confirmDefaultConfig;
 
     /**
-     * @var MapInterface
+     * @var \ArrayAccess
      */
     protected $completeDefaultConfig;
 
@@ -106,17 +105,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param MapInterface $validationConfig
+     * @param \ArrayAccess $validationConfig
      * @return self
      */
-    public function setInitValidationConfig(MapInterface $validationConfig)
+    public function setInitValidationConfig(\ArrayAccess $validationConfig)
     {
         $this->initValidationConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getInitValidationConfig()
     {
@@ -124,17 +123,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param MapInterface $validationConfig
+     * @param \ArrayAccess $validationConfig
      * @return self
      */
-    public function setConfirmValidationConfig(MapInterface $validationConfig)
+    public function setConfirmValidationConfig(\ArrayAccess $validationConfig)
     {
         $this->confirmValidationConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getConfirmValidationConfig()
     {
@@ -142,17 +141,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param MapInterface $validationConfig
+     * @param \ArrayAccess $validationConfig
      * @return self
      */
-    public function setCompleteValidationConfig(MapInterface $validationConfig)
+    public function setCompleteValidationConfig(\ArrayAccess $validationConfig)
     {
         $this->completeValidationConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getCompleteValidationConfig()
     {
@@ -160,17 +159,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param MapInterface $defaultConfig
+     * @param \ArrayAccess $defaultConfig
      * @return self
      */
-    public function setInitDefaultConfig(MapInterface $defaultConfig)
+    public function setInitDefaultConfig(\ArrayAccess $defaultConfig)
     {
         $this->initDefaultConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getInitDefaultConfig()
     {
@@ -178,17 +177,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param MapInterface $defaultConfig
+     * @param \ArrayAccess $defaultConfig
      * @return self
      */
-    public function setConfirmDefaultConfig(MapInterface $defaultConfig)
+    public function setConfirmDefaultConfig(\ArrayAccess $defaultConfig)
     {
         $this->confirmDefaultConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getConfirmDefaultConfig()
     {
@@ -196,17 +195,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param MapInterface $defaultConfig
+     * @param \ArrayAccess $defaultConfig
      * @return self
      */
-    public function setCompleteDefaultConfig(MapInterface $defaultConfig)
+    public function setCompleteDefaultConfig(\ArrayAccess $defaultConfig)
     {
         $this->completeDefaultConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getCompleteDefaultConfig()
     {

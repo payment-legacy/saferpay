@@ -2,7 +2,6 @@
 
 namespace Payment\Saferpay;
 
-use Ardent\Map as MapInterface;
 use Payment\Saferpay\SaferpayConfigInterface;
 use Payment\Saferpay\SaferpayDataInterface;
 
@@ -45,12 +44,12 @@ class Saferpay
     }
 
     /**
-     * @param MapInterface $validator
-     * @param MapInterface $default
-     * @param MapInterface $data
+     * @param \ArrayAccess $validator
+     * @param \ArrayAccess $default
+     * @param \ArrayAccess $data
      * @param array $newData
      */
-    protected static function updateData(MapInterface $validator, MapInterface $default, MapInterface $data, array $newData)
+    protected static function updateData(\ArrayAccess $validator, \ArrayAccess $default, \ArrayAccess $data, array $newData)
     {
         foreach($default as $key => $value)
         {
@@ -67,12 +66,12 @@ class Saferpay
     }
 
     /**
-     * @param MapInterface $validator
-     * @param MapInterface $data
+     * @param \ArrayAccess $validator
+     * @param \ArrayAccess $data
      * @param string $key
      * @param mixed $value
      */
-    protected static function setValue(MapInterface $validator, MapInterface $data, $key, $value)
+    protected static function setValue(\ArrayAccess $validator, \ArrayAccess $data, $key, $value)
     {
         if(self::isValidValue($validator, $key, $value))
         {
@@ -85,12 +84,12 @@ class Saferpay
     }
 
     /**
-     * @param MapInterface $validator
+     * @param \ArrayAccess $validator
      * @param string $key
      * @param mixed $value
      * @return boolean
      */
-    public static function isValidValue(MapInterface $validator, $key, $value)
+    public static function isValidValue(\ArrayAccess $validator, $key, $value)
     {
         if($validator->offsetExists($key) &&
             is_scalar($value) &&

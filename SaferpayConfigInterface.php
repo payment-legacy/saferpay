@@ -2,7 +2,6 @@
 
 namespace Payment\Saferpay;
 
-use Ardent\Map as MapInterface;
 
 interface SaferpayConfigInterface
 {
@@ -40,68 +39,68 @@ interface SaferpayConfigInterface
     public function getCompleteUrl();
 
     /**
-     * @param MapInterface $validationConfig
+     * @param \ArrayAccess $validationConfig
      * @return self
      */
-    public function setInitValidationConfig(MapInterface $validationConfig);
+    public function setInitValidationConfig(\ArrayAccess $validationConfig);
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getInitValidationConfig();
 
     /**
-     * @param MapInterface $validationConfig
+     * @param \ArrayAccess $validationConfig
      * @return self
      */
-    public function setConfirmValidationConfig(MapInterface $validationConfig);
+    public function setConfirmValidationConfig(\ArrayAccess $validationConfig);
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getConfirmValidationConfig();
 
     /**
-     * @param MapInterface $validationConfig
+     * @param \ArrayAccess $validationConfig
      * @return self
      */
-    public function setCompleteValidationConfig(MapInterface $validationConfig);
+    public function setCompleteValidationConfig(\ArrayAccess $validationConfig);
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getCompleteValidationConfig();
 
     /**
-     * @param MapInterface $defaultConfig
+     * @param \ArrayAccess $defaultConfig
      * @return self
      */
-    public function setInitDefaultConfig(MapInterface $defaultConfig);
+    public function setInitDefaultConfig(\ArrayAccess $defaultConfig);
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getInitDefaultConfig();
 
     /**
-     * @param MapInterface $defaultConfig
+     * @param \ArrayAccess $defaultConfig
      * @return self
      */
-    public function setConfirmDefaultConfig(MapInterface $defaultConfig);
+    public function setConfirmDefaultConfig(\ArrayAccess $defaultConfig);
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getConfirmDefaultConfig();
 
     /**
-     * @param MapInterface $defaultConfig
+     * @param \ArrayAccess $defaultConfig
      * @return self
      */
-    public function setCompleteDefaultConfig(MapInterface $defaultConfig);
+    public function setCompleteDefaultConfig(\ArrayAccess $defaultConfig);
 
     /**
-     * @return MapInterface
+     * @return \ArrayAccess
      */
     public function getCompleteDefaultConfig();
 }

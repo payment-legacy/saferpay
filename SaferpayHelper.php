@@ -2,16 +2,15 @@
 
 namespace Payment\Saferpay;
 
-use Ardent\Map as MapInterface;
 
 class SaferpayHelper
 {
     /**
-     * @param MapInterface $map
+     * @param \ArrayAccess $map
      * @param array $data
-     * @return MapInterface
+     * @return \ArrayAccess
      */
-    static public function fillMap(MapInterface $map, array $data)
+    static public function fillMap(\ArrayAccess $map, array $data)
     {
         foreach($data as $key => $value)
         {
