@@ -4,51 +4,36 @@ namespace Payment\Saferpay;
 
 require "../../../../autoload.php";
 
-use Payment\Saferpay\SaferpayConfig;
-use Payment\Saferpay\SaferpayData;
 use Payment\Saferpay\Saferpay;
 
 session_start();
 session_destroy();
 
+// get session data if exists
+$saferpayData = isset($_SESSION) && is_array($_SESSION) && array_key_exists('saferpay.data', $_SESSION) ? $_SESSION['saferpay.data'] : null;
+
+// create a new saferpay instance (implement as service)
+$saferpay = new Saferpay();
+
 // get all config data from json
 $arrConfig = json_decode(file_get_contents('config.json'), true);
 
-// create saferpay config
-$saferpayConfig = new SaferpayConfig();
-
-// set url config
-$saferpayConfig->setInitUrl($arrConfig['urls']['init']);
-$saferpayConfig->setConfirmUrl($arrConfig['urls']['confirm']);
-$saferpayConfig->setCompleteUrl($arrConfig['urls']['complete']);
+// update config
+$saferpay->getConfig()->setInitUrl($arrConfig['urls']['init']);
+$saferpay->getConfig()->setConfirmUrl($arrConfig['urls']['confirm']);
+$saferpay->getConfig()->setCompleteUrl($arrConfig['urls']['complete']);
 
 // set validation config
-$saferpayConfig->setInitValidationConfig(new SaferpayAttribute($arrConfig['validators']['init']));
-$saferpayConfig->setConfirmValidationConfig(new SaferpayAttribute($arrConfig['validators']['confirm']));
-$saferpayConfig->setCompleteValidationConfig(new SaferpayAttribute($arrConfig['validators']['complete']));
+$saferpay->getConfig()->setInitValidationConfig(new SaferpayAttribute($arrConfig['validators']['init']));
+$saferpay->getConfig()->setConfirmValidationConfig(new SaferpayAttribute($arrConfig['validators']['confirm']));
+$saferpay->getConfig()->setCompleteValidationConfig(new SaferpayAttribute($arrConfig['validators']['complete']));
 
 // set default config
-$saferpayConfig->setInitDefaultConfig(new SaferpayAttribute($arrConfig['defaults']['init']));
-$saferpayConfig->setConfirmDefaultConfig(new SaferpayAttribute($arrConfig['defaults']['confirm']));
-$saferpayConfig->setCompleteDefaultConfig(new SaferpayAttribute($arrConfig['defaults']['complete']));
+$saferpay->getConfig()->setInitDefaultConfig(new SaferpayAttribute($arrConfig['defaults']['init']));
+$saferpay->getConfig()->setConfirmDefaultConfig(new SaferpayAttribute($arrConfig['defaults']['confirm']));
+$saferpay->getConfig()->setCompleteDefaultConfig(new SaferpayAttribute($arrConfig['defaults']['complete']));
 
-if(!array_key_exists('saferpay', $_SESSION))
-{
-    // create empty data
-    $saferpayData = new SaferpayData();
-
-    // set the initial values
-    $saferpayData->setInitData(new SaferpayAttribute());
-    $saferpayData->setConfirmData(new SaferpayAttribute());
-    $saferpayData->setCompleteData(new SaferpayAttribute());
-}
-else
-{
-    $saferpayData = $_SESSION['saferpay'];
-}
-
-// create a new saferpay instance (implement as service)
-$saferpay = new Saferpay($saferpayConfig, $saferpayData);
+$saferpay->setData($saferpayData);
 
 $saferpay->createPayInit(new SaferpayAttribute(array(
     'AMOUNT' => 10250,
@@ -60,7 +45,7 @@ $saferpay->createPayInit(new SaferpayAttribute(array(
 )));
 
 // assign the data to the session
-$_SESSION['saferpay'] = $saferpayData;
+$_SESSION['saferpay.data'] = $saferpay->getData();
 
 // show saferpay object
 printData($saferpay);
