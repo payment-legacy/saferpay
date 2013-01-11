@@ -85,7 +85,7 @@ class SaferpayAttribute implements SaferpayAttributeInterface
         }
         if(!is_scalar($value))
         {
-            throw new \InvalidArgumentException("Only scalar are allowed as value!");
+            throw new \InvalidArgumentException("Only scalar (integer, float, string or boolean) are allowed as value!");
         }
         $this->properties->{$offset} = $value;
     }
