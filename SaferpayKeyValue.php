@@ -2,19 +2,19 @@
 
 namespace Payment\Saferpay;
 
-class SaferpayAttribute implements SaferpayAttributeInterface
+class SaferpayKeyValue implements SaferpayKeyValueInterface
 {
     /**
      * @var \stdClass
      */
-    protected $properties;
+    protected $keyvalues;
 
     /**
      * @param array $array
      */
     public function __construct(array $array = array())
     {
-        $this->properties = new \stdClass();
+        $this->keyvalues = new \stdClass();
         foreach($array as $key => $value)
         {
             $this->offsetSet($key, $value);
@@ -51,7 +51,7 @@ class SaferpayAttribute implements SaferpayAttributeInterface
         {
             throw new \InvalidArgumentException("Only strings are allowed as offset!");
         }
-        return property_exists($this->properties, $offset) ? true : false;
+        return property_exists($this->keyvalues, $offset) ? true : false;
     }
 
     /**
@@ -65,11 +65,11 @@ class SaferpayAttribute implements SaferpayAttributeInterface
         {
             throw new \InvalidArgumentException("Only strings are allowed as offset!");
         }
-        if(!property_exists($this->properties, $offset))
+        if(!property_exists($this->keyvalues, $offset))
         {
             throw new \InvalidArgumentException("Unknown offset given!");
         }
-        return $this->properties->{$offset};
+        return $this->keyvalues->{$offset};
     }
 
     /**
@@ -88,7 +88,7 @@ class SaferpayAttribute implements SaferpayAttributeInterface
         {
             throw new \InvalidArgumentException("Only scalar (integer, float, string or boolean) are allowed as value!");
         }
-        $this->properties->{$offset} = $value;
+        $this->keyvalues->{$offset} = $value;
         return $this;
     }
 
@@ -103,11 +103,11 @@ class SaferpayAttribute implements SaferpayAttributeInterface
         {
             throw new \InvalidArgumentException("Only strings are allowed as offset!");
         }
-        if(!property_exists($this->properties, $offset))
+        if(!property_exists($this->keyvalues, $offset))
         {
             throw new \InvalidArgumentException("Unknown offset given!");
         }
-        unset($this->properties->{$offset});
+        unset($this->keyvalues->{$offset});
         return $this;
     }
 
@@ -116,6 +116,6 @@ class SaferpayAttribute implements SaferpayAttributeInterface
      */
     public function getIterator()
     {
-        return new \ArrayIterator($this->properties);
+        return new \ArrayIterator($this->keyvalues);
     }
 }

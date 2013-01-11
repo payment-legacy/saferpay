@@ -35,9 +35,9 @@ class Saferpay
             $saferpayConfig = new SaferpayConfig();
 
             // set the initial values
-            $saferpayConfig->setInitValidationConfig(new SaferpayAttribute());
-            $saferpayConfig->setConfirmValidationConfig(new SaferpayAttribute());
-            $saferpayConfig->setCompleteValidationConfig(new SaferpayAttribute());
+            $saferpayConfig->setInitValidationConfig(new SaferpayKeyValue());
+            $saferpayConfig->setConfirmValidationConfig(new SaferpayKeyValue());
+            $saferpayConfig->setCompleteValidationConfig(new SaferpayKeyValue());
 
             $this->setConfig($saferpayConfig);
         }
@@ -66,9 +66,9 @@ class Saferpay
             $saferpayData = new SaferpayData();
 
             // set the initial values
-            $saferpayData->setInitData(new SaferpayAttribute());
-            $saferpayData->setConfirmData(new SaferpayAttribute());
-            $saferpayData->setCompleteData(new SaferpayAttribute());
+            $saferpayData->setInitData(new SaferpayKeyValue());
+            $saferpayData->setConfirmData(new SaferpayKeyValue());
+            $saferpayData->setCompleteData(new SaferpayKeyValue());
 
             // set data
             $this->setData($saferpayData);
@@ -77,7 +77,7 @@ class Saferpay
         return $this->data;
     }
 
-    public function createPayInit(SaferpayAttribute $newData)
+    public function createPayInit(SaferpayKeyValue $newData)
     {
         $this->updateData(
             $this->getConfig()->getInitValidationConfig(),
@@ -88,12 +88,12 @@ class Saferpay
     }
 
     /**
-     * @param SaferpayAttribute $validator
-     * @param SaferpayAttribute $default
-     * @param SaferpayAttribute $data
-     * @param SaferpayAttribute $newData
+     * @param SaferpayKeyValue $validator
+     * @param SaferpayKeyValue $default
+     * @param SaferpayKeyValue $data
+     * @param SaferpayKeyValue $newData
      */
-    protected static function updateData(SaferpayAttribute $validator, SaferpayAttribute $default, SaferpayAttribute $data, SaferpayAttribute $newData)
+    protected static function updateData(SaferpayKeyValue $validator, SaferpayKeyValue $default, SaferpayKeyValue $data, SaferpayKeyValue $newData)
     {
         foreach($default as $key => $value)
         {
@@ -110,12 +110,12 @@ class Saferpay
     }
 
     /**
-     * @param SaferpayAttribute $validator
-     * @param SaferpayAttribute $data
+     * @param SaferpayKeyValue $validator
+     * @param SaferpayKeyValue $data
      * @param string $key
      * @param mixed $value
      */
-    protected static function setValue(SaferpayAttribute $validator, SaferpayAttribute $data, $key, $value)
+    protected static function setValue(SaferpayKeyValue $validator, SaferpayKeyValue $data, $key, $value)
     {
         if(self::isValidValue($validator, $key, $value))
         {
@@ -128,12 +128,12 @@ class Saferpay
     }
 
     /**
-     * @param SaferpayAttribute $validator
+     * @param SaferpayKeyValue $validator
      * @param string $key
      * @param mixed $value
      * @return boolean
      */
-    public static function isValidValue(SaferpayAttribute $validator, $key, $value)
+    public static function isValidValue(SaferpayKeyValue $validator, $key, $value)
     {
         if($validator->offsetExists($key) &&
             is_scalar($value) &&

@@ -24,18 +24,18 @@ $saferpay->getConfig()->setConfirmUrl($arrConfig['urls']['confirm']);
 $saferpay->getConfig()->setCompleteUrl($arrConfig['urls']['complete']);
 
 // set validation config
-$saferpay->getConfig()->setInitValidationConfig(new SaferpayAttribute($arrConfig['validators']['init']));
-$saferpay->getConfig()->setConfirmValidationConfig(new SaferpayAttribute($arrConfig['validators']['confirm']));
-$saferpay->getConfig()->setCompleteValidationConfig(new SaferpayAttribute($arrConfig['validators']['complete']));
+$saferpay->getConfig()->setInitValidationConfig(new SaferpayKeyValue($arrConfig['validators']['init']));
+$saferpay->getConfig()->setConfirmValidationConfig(new SaferpayKeyValue($arrConfig['validators']['confirm']));
+$saferpay->getConfig()->setCompleteValidationConfig(new SaferpayKeyValue($arrConfig['validators']['complete']));
 
 // set default config
-$saferpay->getConfig()->setInitDefaultConfig(new SaferpayAttribute($arrConfig['defaults']['init']));
-$saferpay->getConfig()->setConfirmDefaultConfig(new SaferpayAttribute($arrConfig['defaults']['confirm']));
-$saferpay->getConfig()->setCompleteDefaultConfig(new SaferpayAttribute($arrConfig['defaults']['complete']));
+$saferpay->getConfig()->setInitDefaultConfig(new SaferpayKeyValue($arrConfig['defaults']['init']));
+$saferpay->getConfig()->setConfirmDefaultConfig(new SaferpayKeyValue($arrConfig['defaults']['confirm']));
+$saferpay->getConfig()->setCompleteDefaultConfig(new SaferpayKeyValue($arrConfig['defaults']['complete']));
 
 $saferpay->setData($saferpayData);
 
-$saferpay->createPayInit(new SaferpayAttribute(array(
+$saferpay->createPayInit(new SaferpayKeyValue(array(
     'AMOUNT' => 10250,
     'DESCRIPTION' => sprintf('Bestellnummer %s', '000001'),
     'ORDERID' => '000001',

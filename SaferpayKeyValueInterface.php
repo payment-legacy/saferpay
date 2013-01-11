@@ -2,7 +2,7 @@
 
 namespace Payment\Saferpay;
 
-interface SaferpayAttributeInterface extends \IteratorAggregate
+interface SaferpayKeyValueInterface extends \IteratorAggregate
 {
     /**
      * @param array $array
