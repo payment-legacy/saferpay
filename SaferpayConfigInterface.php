@@ -39,68 +39,68 @@ interface SaferpayConfigInterface
     public function getCompleteUrl();
 
     /**
-     * @param \ArrayObject $validationConfig
+     * @param SaferpayAttribute $validationConfig
      * @return self
      */
-    public function setInitValidationConfig(\ArrayObject $validationConfig);
+    public function setInitValidationConfig(SaferpayAttribute $validationConfig);
 
     /**
-     * @return \ArrayObject
+     * @return SaferpayAttribute
      */
     public function getInitValidationConfig();
 
     /**
-     * @param \ArrayObject $validationConfig
+     * @param SaferpayAttribute $validationConfig
      * @return self
      */
-    public function setConfirmValidationConfig(\ArrayObject $validationConfig);
+    public function setConfirmValidationConfig(SaferpayAttribute $validationConfig);
 
     /**
-     * @return \ArrayObject
+     * @return SaferpayAttribute
      */
     public function getConfirmValidationConfig();
 
     /**
-     * @param \ArrayObject $validationConfig
+     * @param SaferpayAttribute $validationConfig
      * @return self
      */
-    public function setCompleteValidationConfig(\ArrayObject $validationConfig);
+    public function setCompleteValidationConfig(SaferpayAttribute $validationConfig);
 
     /**
-     * @return \ArrayObject
+     * @return SaferpayAttribute
      */
     public function getCompleteValidationConfig();
 
     /**
-     * @param \ArrayObject $defaultConfig
+     * @param SaferpayAttribute $defaultConfig
      * @return self
      */
-    public function setInitDefaultConfig(\ArrayObject $defaultConfig);
+    public function setInitDefaultConfig(SaferpayAttribute $defaultConfig);
 
     /**
-     * @return \ArrayObject
+     * @return SaferpayAttribute
      */
     public function getInitDefaultConfig();
 
     /**
-     * @param \ArrayObject $defaultConfig
+     * @param SaferpayAttribute $defaultConfig
      * @return self
      */
-    public function setConfirmDefaultConfig(\ArrayObject $defaultConfig);
+    public function setConfirmDefaultConfig(SaferpayAttribute $defaultConfig);
 
     /**
-     * @return \ArrayObject
+     * @return SaferpayAttribute
      */
     public function getConfirmDefaultConfig();
 
     /**
-     * @param \ArrayObject $defaultConfig
+     * @param SaferpayAttribute $defaultConfig
      * @return self
      */
-    public function setCompleteDefaultConfig(\ArrayObject $defaultConfig);
+    public function setCompleteDefaultConfig(SaferpayAttribute $defaultConfig);
 
     /**
-     * @return \ArrayObject
+     * @return SaferpayAttribute
      */
     public function getCompleteDefaultConfig();
 }

@@ -6,32 +6,32 @@ namespace Payment\Saferpay;
 class SaferpayData implements SaferpayDataInterface
 {
     /**
-     * @var \ArrayObject
+     * @var SaferpayAttribute
      */
     protected $initData;
 
     /**
-     * @var \ArrayObject
+     * @var SaferpayAttribute
      */
     protected $confirmData;
 
     /**
-     * @var \ArrayObject
+     * @var SaferpayAttribute
      */
     protected $completeData;
 
     /**
-     * @param \ArrayObject $data
+     * @param SaferpayAttribute $data
      * @return self
      */
-    public function setInitData(\ArrayObject $data)
+    public function setInitData(SaferpayAttribute $data)
     {
         $this->initData = $data;
         return $this;
     }
 
     /**
-     * @return \ArrayObject
+     * @return SaferpayAttribute
      */
     public function getInitData()
     {
@@ -39,17 +39,17 @@ class SaferpayData implements SaferpayDataInterface
     }
 
     /**
-     * @param \ArrayObject $data
+     * @param SaferpayAttribute $data
      * @return self
      */
-    public function setConfirmData(\ArrayObject $data)
+    public function setConfirmData(SaferpayAttribute $data)
     {
         $this->confirmData = $data;
         return $this;
     }
 
     /**
-     * @return \ArrayObject
+     * @return SaferpayAttribute
      */
     public function getConfirmData()
     {
@@ -57,17 +57,17 @@ class SaferpayData implements SaferpayDataInterface
     }
 
     /**
-     * @param \ArrayObject $data
+     * @param SaferpayAttribute $data
      * @return self
      */
-    public function setCompleteData(\ArrayObject $data)
+    public function setCompleteData(SaferpayAttribute $data)
     {
         $this->completeData = $data;
         return $this;
     }
 
     /**
-     * @return \ArrayObject
+     * @return SaferpayAttribute
      */
     public function getCompleteData()
     {
