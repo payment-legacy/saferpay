@@ -6,35 +6,35 @@ namespace Payment\Saferpay;
 interface SaferpayDataInterface
 {
     /**
-     * @param \ArrayAccess $data
+     * @param \ArrayObject $data
      * @return self
      */
-    public function setInitData(\ArrayAccess $data);
+    public function setInitData(\ArrayObject $data);
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getInitData();
 
     /**
-     * @param \ArrayAccess $data
+     * @param \ArrayObject $data
      * @return self
      */
-    public function setConfirmData(\ArrayAccess $data);
+    public function setConfirmData(\ArrayObject $data);
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getConfirmData();
 
     /**
-     * @param \ArrayAccess $data
+     * @param \ArrayObject $data
      * @return self
      */
-    public function setCompleteData(\ArrayAccess $data);
+    public function setCompleteData(\ArrayObject $data);
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getCompleteData();
 }

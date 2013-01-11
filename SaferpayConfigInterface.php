@@ -39,68 +39,68 @@ interface SaferpayConfigInterface
     public function getCompleteUrl();
 
     /**
-     * @param \ArrayAccess $validationConfig
+     * @param \ArrayObject $validationConfig
      * @return self
      */
-    public function setInitValidationConfig(\ArrayAccess $validationConfig);
+    public function setInitValidationConfig(\ArrayObject $validationConfig);
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getInitValidationConfig();
 
     /**
-     * @param \ArrayAccess $validationConfig
+     * @param \ArrayObject $validationConfig
      * @return self
      */
-    public function setConfirmValidationConfig(\ArrayAccess $validationConfig);
+    public function setConfirmValidationConfig(\ArrayObject $validationConfig);
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getConfirmValidationConfig();
 
     /**
-     * @param \ArrayAccess $validationConfig
+     * @param \ArrayObject $validationConfig
      * @return self
      */
-    public function setCompleteValidationConfig(\ArrayAccess $validationConfig);
+    public function setCompleteValidationConfig(\ArrayObject $validationConfig);
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getCompleteValidationConfig();
 
     /**
-     * @param \ArrayAccess $defaultConfig
+     * @param \ArrayObject $defaultConfig
      * @return self
      */
-    public function setInitDefaultConfig(\ArrayAccess $defaultConfig);
+    public function setInitDefaultConfig(\ArrayObject $defaultConfig);
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getInitDefaultConfig();
 
     /**
-     * @param \ArrayAccess $defaultConfig
+     * @param \ArrayObject $defaultConfig
      * @return self
      */
-    public function setConfirmDefaultConfig(\ArrayAccess $defaultConfig);
+    public function setConfirmDefaultConfig(\ArrayObject $defaultConfig);
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getConfirmDefaultConfig();
 
     /**
-     * @param \ArrayAccess $defaultConfig
+     * @param \ArrayObject $defaultConfig
      * @return self
      */
-    public function setCompleteDefaultConfig(\ArrayAccess $defaultConfig);
+    public function setCompleteDefaultConfig(\ArrayObject $defaultConfig);
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getCompleteDefaultConfig();
 }

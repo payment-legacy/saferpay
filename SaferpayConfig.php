@@ -21,32 +21,32 @@ class SaferpayConfig implements SaferpayConfigInterface
     protected $completeUrl;
 
     /**
-     * @var \ArrayAccess
+     * @var \ArrayObject
      */
     protected $initValidationConfig;
 
     /**
-     * @var \ArrayAccess
+     * @var \ArrayObject
      */
     protected $confirmValidationConfig;
 
     /**
-     * @var \ArrayAccess
+     * @var \ArrayObject
      */
     protected $completeValidationConfig;
 
     /**
-     * @var \ArrayAccess
+     * @var \ArrayObject
      */
     protected $initDefaultConfig;
 
     /**
-     * @var \ArrayAccess
+     * @var \ArrayObject
      */
     protected $confirmDefaultConfig;
 
     /**
-     * @var \ArrayAccess
+     * @var \ArrayObject
      */
     protected $completeDefaultConfig;
 
@@ -105,17 +105,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param \ArrayAccess $validationConfig
+     * @param \ArrayObject $validationConfig
      * @return self
      */
-    public function setInitValidationConfig(\ArrayAccess $validationConfig)
+    public function setInitValidationConfig(\ArrayObject $validationConfig)
     {
         $this->initValidationConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getInitValidationConfig()
     {
@@ -123,17 +123,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param \ArrayAccess $validationConfig
+     * @param \ArrayObject $validationConfig
      * @return self
      */
-    public function setConfirmValidationConfig(\ArrayAccess $validationConfig)
+    public function setConfirmValidationConfig(\ArrayObject $validationConfig)
     {
         $this->confirmValidationConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getConfirmValidationConfig()
     {
@@ -141,17 +141,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param \ArrayAccess $validationConfig
+     * @param \ArrayObject $validationConfig
      * @return self
      */
-    public function setCompleteValidationConfig(\ArrayAccess $validationConfig)
+    public function setCompleteValidationConfig(\ArrayObject $validationConfig)
     {
         $this->completeValidationConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getCompleteValidationConfig()
     {
@@ -159,17 +159,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param \ArrayAccess $defaultConfig
+     * @param \ArrayObject $defaultConfig
      * @return self
      */
-    public function setInitDefaultConfig(\ArrayAccess $defaultConfig)
+    public function setInitDefaultConfig(\ArrayObject $defaultConfig)
     {
         $this->initDefaultConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getInitDefaultConfig()
     {
@@ -177,17 +177,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param \ArrayAccess $defaultConfig
+     * @param \ArrayObject $defaultConfig
      * @return self
      */
-    public function setConfirmDefaultConfig(\ArrayAccess $defaultConfig)
+    public function setConfirmDefaultConfig(\ArrayObject $defaultConfig)
     {
         $this->confirmDefaultConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getConfirmDefaultConfig()
     {
@@ -195,17 +195,17 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param \ArrayAccess $defaultConfig
+     * @param \ArrayObject $defaultConfig
      * @return self
      */
-    public function setCompleteDefaultConfig(\ArrayAccess $defaultConfig)
+    public function setCompleteDefaultConfig(\ArrayObject $defaultConfig)
     {
         $this->completeDefaultConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
     public function getCompleteDefaultConfig()
     {

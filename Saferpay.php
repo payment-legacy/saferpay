@@ -44,12 +44,12 @@ class Saferpay
     }
 
     /**
-     * @param \ArrayAccess $validator
-     * @param \ArrayAccess $default
-     * @param \ArrayAccess $data
+     * @param \ArrayObject $validator
+     * @param \ArrayObject $default
+     * @param \ArrayObject $data
      * @param array $newData
      */
-    protected static function updateData(\ArrayAccess $validator, \ArrayAccess $default, \ArrayAccess $data, array $newData)
+    protected static function updateData(\ArrayObject $validator, \ArrayObject $default, \ArrayObject $data, array $newData)
     {
         foreach($default as $key => $value)
         {
@@ -66,12 +66,12 @@ class Saferpay
     }
 
     /**
-     * @param \ArrayAccess $validator
-     * @param \ArrayAccess $data
+     * @param \ArrayObject $validator
+     * @param \ArrayObject $data
      * @param string $key
      * @param mixed $value
      */
-    protected static function setValue(\ArrayAccess $validator, \ArrayAccess $data, $key, $value)
+    protected static function setValue(\ArrayObject $validator, \ArrayObject $data, $key, $value)
     {
         if(self::isValidValue($validator, $key, $value))
         {
@@ -84,12 +84,12 @@ class Saferpay
     }
 
     /**
-     * @param \ArrayAccess $validator
+     * @param \ArrayObject $validator
      * @param string $key
      * @param mixed $value
      * @return boolean
      */
-    public static function isValidValue(\ArrayAccess $validator, $key, $value)
+    public static function isValidValue(\ArrayObject $validator, $key, $value)
     {
         if($validator->offsetExists($key) &&
             is_scalar($value) &&

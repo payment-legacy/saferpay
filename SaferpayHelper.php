@@ -6,11 +6,11 @@ namespace Payment\Saferpay;
 class SaferpayHelper
 {
     /**
-     * @param \ArrayAccess $map
+     * @param \ArrayObject $map
      * @param array $data
-     * @return \ArrayAccess
+     * @return \ArrayObject
      */
-    static public function fillMap(\ArrayAccess $map, array $data)
+    static public function fillMap(\ArrayObject $map, array $data)
     {
         foreach($data as $key => $value)
         {

@@ -25,14 +25,14 @@ $saferpayConfig->setConfirmUrl($arrConfig['urls']['confirm']);
 $saferpayConfig->setCompleteUrl($arrConfig['urls']['complete']);
 
 // set validation config
-$saferpayConfig->setInitValidationConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['validators']['init']));
-$saferpayConfig->setConfirmValidationConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['validators']['confirm']));
-$saferpayConfig->setCompleteValidationConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['validators']['complete']));
+$saferpayConfig->setInitValidationConfig(new \ArrayObject($arrConfig['validators']['init']));
+$saferpayConfig->setConfirmValidationConfig(new \ArrayObject($arrConfig['validators']['confirm']));
+$saferpayConfig->setCompleteValidationConfig(new \ArrayObject($arrConfig['validators']['complete']));
 
 // set default config
-$saferpayConfig->setInitDefaultConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['defaults']['init']));
-$saferpayConfig->setConfirmDefaultConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['defaults']['confirm']));
-$saferpayConfig->setCompleteDefaultConfig(SaferpayHelper::fillMap(new HashMap(), $arrConfig['defaults']['complete']));
+$saferpayConfig->setInitDefaultConfig(new \ArrayObject($arrConfig['defaults']['init']));
+$saferpayConfig->setConfirmDefaultConfig(new \ArrayObject($arrConfig['defaults']['confirm']));
+$saferpayConfig->setCompleteDefaultConfig(new \ArrayObject($arrConfig['defaults']['complete']));
 
 if(!array_key_exists('saferpay', $_SESSION))
 {
@@ -40,9 +40,9 @@ if(!array_key_exists('saferpay', $_SESSION))
     $saferpayData = new SaferpayData();
 
     // set the initial values
-    $saferpayData->setInitData(new HashMap());
-    $saferpayData->setConfirmData(new HashMap());
-    $saferpayData->setCompleteData(new HashMap());
+    $saferpayData->setInitData(new \ArrayObject());
+    $saferpayData->setConfirmData(new \ArrayObject());
+    $saferpayData->setCompleteData(new \ArrayObject());
 }
 else
 {
