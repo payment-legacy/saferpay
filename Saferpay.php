@@ -2,9 +2,6 @@
 
 namespace Payment\Saferpay;
 
-use Payment\Saferpay\SaferpayConfigInterface;
-use Payment\Saferpay\SaferpayDataInterface;
-
 class Saferpay
 {
     /**
@@ -17,28 +14,75 @@ class Saferpay
      */
     protected $data;
 
-    public function __construct(SaferpayConfigInterface $config = null, SaferpayDataInterface $data = null)
-    {
-        $this->setConfig($config);
-        $this->setData($data);
-    }
-
+    /**
+     * @param SaferpayConfigInterface $config
+     * @return Saferpay
+     */
     public function setConfig(SaferpayConfigInterface $config = null)
     {
         $this->config = $config;
+        return $this;
     }
 
-    public function setData(SaferpayDataInterface $data)
+    /**
+     * @return SaferpayConfigInterface
+     */
+    public function getConfig()
+    {
+        if(is_null($this->config))
+        {
+            // create saferpay config
+            $saferpayConfig = new SaferpayConfig();
+
+            // set the initial values
+            $saferpayConfig->setInitValidationConfig(new SaferpayAttribute());
+            $saferpayConfig->setConfirmValidationConfig(new SaferpayAttribute());
+            $saferpayConfig->setCompleteValidationConfig(new SaferpayAttribute());
+
+            $this->setConfig($saferpayConfig);
+        }
+
+        return $this->config;
+    }
+
+    /**
+     * @param SaferpayDataInterface $data
+     * @return Saferpay
+     */
+    public function setData(SaferpayDataInterface $data = null)
     {
         $this->data = $data;
+        return $this;
+    }
+
+    /**
+     * @return SaferpayDataInterface
+     */
+    public function getData()
+    {
+        if(is_null($this->data))
+        {
+            // create empty data
+            $saferpayData = new SaferpayData();
+
+            // set the initial values
+            $saferpayData->setInitData(new SaferpayAttribute());
+            $saferpayData->setConfirmData(new SaferpayAttribute());
+            $saferpayData->setCompleteData(new SaferpayAttribute());
+
+            // set data
+            $this->setData($saferpayData);
+        }
+
+        return $this->data;
     }
 
     public function createPayInit(SaferpayAttribute $newData)
     {
         $this->updateData(
-            $this->config->getInitValidationConfig(),
-            $this->config->getInitDefaultConfig(),
-            $this->data->getInitData(),
+            $this->getConfig()->getInitValidationConfig(),
+            $this->getConfig()->getInitDefaultConfig(),
+            $this->getData()->getInitData(),
             $newData
         );
     }
