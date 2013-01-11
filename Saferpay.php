@@ -33,7 +33,7 @@ class Saferpay
         $this->data = $data;
     }
 
-    public function createPayInit(array $newData = array())
+    public function createPayInit(SaferpayAttribute $newData)
     {
         $this->updateData(
             $this->config->getInitValidationConfig(),
@@ -47,9 +47,9 @@ class Saferpay
      * @param SaferpayAttribute $validator
      * @param SaferpayAttribute $default
      * @param SaferpayAttribute $data
-     * @param array $newData
+     * @param SaferpayAttribute $newData
      */
-    protected static function updateData(SaferpayAttribute $validator, SaferpayAttribute $default, SaferpayAttribute $data, array $newData)
+    protected static function updateData(SaferpayAttribute $validator, SaferpayAttribute $default, SaferpayAttribute $data, SaferpayAttribute $newData)
     {
         foreach($default as $key => $value)
         {

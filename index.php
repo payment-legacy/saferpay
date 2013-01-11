@@ -50,14 +50,14 @@ else
 // create a new saferpay instance (implement as service)
 $saferpay = new Saferpay($saferpayConfig, $saferpayData);
 
-$saferpay->createPayInit(array(
+$saferpay->createPayInit(new SaferpayAttribute(array(
     'AMOUNT' => 10250,
     'DESCRIPTION' => sprintf('Bestellnummer %s', '000001'),
     'ORDERID' => '000001',
     'SUCCESSLINK' => 'http://github.local/saferpay/?status=success',
     'FAILLINK' => 'http://github.local/saferpay/?status=fail',
     'BACKLINK' => 'http://github.local/saferpay/',
-));
+)));
 
 // assign the data to the session
 $_SESSION['saferpay'] = $saferpayData;
