@@ -2,6 +2,9 @@
 
 namespace Payment\Saferpay;
 
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
+
 class Saferpay
 {
     /**
@@ -13,6 +16,11 @@ class Saferpay
      * @var SaferpayDataInterface
      */
     protected $data;
+
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
 
     /**
      * @param SaferpayConfigInterface $config
@@ -77,6 +85,30 @@ class Saferpay
         return $this->data;
     }
 
+    /**
+     * @param LoggerInterface $logger
+     * @return Saferpay
+     */
+    public function setLogger(LoggerInterface $logger)
+    {
+        $this->logger;
+        return $this;
+    }
+
+    /**
+     * @return LoggerInterface
+     */
+    public function getLogger()
+    {
+        if(is_null($this->logger))
+        {
+            // create null logger
+            $this->logger = new NullLogger();
+        }
+
+        return $this->logger;
+    }
+
     public function createPayInit(SaferpayKeyValue $newData)
     {
         $this->updateData(
@@ -93,19 +125,20 @@ class Saferpay
      * @param SaferpayKeyValue $data
      * @param SaferpayKeyValue $newData
      */
-    protected static function updateData(SaferpayKeyValue $validator, SaferpayKeyValue $default, SaferpayKeyValue $data, SaferpayKeyValue $newData)
+    protected function updateData(SaferpayKeyValue $validator, SaferpayKeyValue $default, SaferpayKeyValue $data, SaferpayKeyValue $newData)
     {
         foreach($default as $key => $value)
         {
+            // do no overwrite data with defaults
             if(!$data->offsetExists($key))
             {
-                self::setValue($validator, $data, $key, $value);
+                $this->setValue($validator, $data, $key, $value);
             }
         }
 
         foreach($newData as $key => $value)
         {
-            self::setValue($validator, $data, $key, $value);
+            $this->setValue($validator, $data, $key, $value);
         }
     }
 
@@ -113,31 +146,39 @@ class Saferpay
      * @param SaferpayKeyValue $validator
      * @param SaferpayKeyValue $data
      * @param string $key
-     * @param mixed $value
+     * @param scalar $value
      */
-    protected static function setValue(SaferpayKeyValue $validator, SaferpayKeyValue $data, $key, $value)
+    protected function setValue(SaferpayKeyValue $validator, SaferpayKeyValue $data, $key, $value)
     {
-        if(self::isValidValue($validator, $key, $value))
+        if(!$validator->offsetExists($key))
         {
-            $data->offsetSet($key, $value);
+            $this->getLogger()->warning("saferpay: Can't find validator for key {key}", array('key' => $key));
+            return;
         }
-        else
+
+        if(!self::isValidValue($validator->offsetGet($key), $value))
         {
-            // todo: add to log
+            $this->getLogger()->warning("saferpay: Can't validate value {value} for key {key} against validator {validator}", array(
+                'validator' => $validator->offsetGet($key),
+                'key' => $key,
+                'value' => $value,
+            ));
+            return;
         }
+
+        $data->offsetSet($key, $value);
     }
 
     /**
-     * @param SaferpayKeyValue $validator
-     * @param string $key
-     * @param mixed $value
+     * @param string $condition
+     * @param scalar $value
      * @return boolean
      */
-    public static function isValidValue(SaferpayKeyValue $validator, $key, $value)
+    public static function isValidValue($condition, $value)
     {
-        if($validator->offsetExists($key) &&
-            is_scalar($value) &&
-            preg_match(self::conditionToRegex($validator->offsetGet($key)), $value) == 1)
+        if(is_string($condition) &&
+           is_scalar($value) &&
+           preg_match(self::conditionToRegex($condition), $value) == 1)
         {
             return true;
         }
