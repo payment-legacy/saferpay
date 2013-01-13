@@ -2,7 +2,7 @@
 
 namespace Payment\Saferpay;
 
-use Payment\Saferpay\Http\Client\GuzzleClientWrapper;
+use Payment\Saferpay\Http\Client\GuzzleClient;
 use Payment\Saferpay\Http\Client\ResponseInterface;
 use Payment\Saferpay\Http\Client\HttpClientInterface;
 
@@ -166,7 +166,7 @@ class Saferpay
     {
         if(is_null($this->httpClient))
         {
-            $this->httpClient = new GuzzleClientWrapper();
+            $this->httpClient = new GuzzleClient();
         }
 
         return $this->httpClient;

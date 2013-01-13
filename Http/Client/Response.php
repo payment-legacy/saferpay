@@ -2,7 +2,7 @@
 
 namespace Payment\Saferpay\Http\Client;
 
-class GuzzleResponseWrapper implements ResponseInterface
+class Response implements ResponseInterface
 {
     /**
      * @var integer
