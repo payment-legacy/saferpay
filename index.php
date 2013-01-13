@@ -8,9 +8,6 @@ use Payment\Saferpay\Saferpay;
 
 session_start();
 
-// get session data if exists
-$saferpayData = isset($_SESSION) && is_array($_SESSION) && array_key_exists('saferpay.data', $_SESSION) ? $_SESSION['saferpay.data'] : null;
-
 // create a new saferpay instance (implement as service)
 $saferpay = new Saferpay();
 
@@ -31,6 +28,9 @@ $saferpay->getConfig()->setCompleteValidationConfig(new SaferpayKeyValue($arrCon
 $saferpay->getConfig()->setInitDefaultConfig(new SaferpayKeyValue($arrConfig['defaults']['init']));
 $saferpay->getConfig()->setConfirmDefaultConfig(new SaferpayKeyValue($arrConfig['defaults']['confirm']));
 $saferpay->getConfig()->setCompleteDefaultConfig(new SaferpayKeyValue($arrConfig['defaults']['complete']));
+
+// get session data if exists
+$saferpayData = isset($_SESSION) && is_array($_SESSION) && array_key_exists('saferpay.data', $_SESSION) ? $_SESSION['saferpay.data'] : null;
 
 $saferpay->setData($saferpayData);
 
