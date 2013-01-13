@@ -52,7 +52,13 @@ class Saferpay
      */
     public function getKeyValuePrototype(array $array = array())
     {
-        $class = !is_null($this->keyValuePrototype) && class_exists($this->keyValuePrototype) ? get_class($this->keyValuePrototype) : 'Payment\Saferpay\SaferpayKeyValue';
+        if(is_null($this->keyValuePrototype))
+        {
+            $this->keyValuePrototype = new SaferpayKeyValue();
+        }
+
+        $class = get_class($this->keyValuePrototype);
+
         return new $class($array);
     }
 
