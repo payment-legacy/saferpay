@@ -7,7 +7,6 @@ require "../../../../autoload.php";
 use Payment\Saferpay\Saferpay;
 
 session_start();
-session_destroy();
 
 // get session data if exists
 $saferpayData = isset($_SESSION) && is_array($_SESSION) && array_key_exists('saferpay.data', $_SESSION) ? $_SESSION['saferpay.data'] : null;
@@ -35,21 +34,52 @@ $saferpay->getConfig()->setCompleteDefaultConfig(new SaferpayKeyValue($arrConfig
 
 $saferpay->setData($saferpayData);
 
-$saferpay->createPayInit(new SaferpayKeyValue(array(
-    'AMOUNT' => 10250,
-    'DESCRIPTION' => sprintf('Bestellnummer %s', '000001'),
-    'ORDERID' => '000001',
-    'SUCCESSLINK' => 'http://github.local/saferpay/?status=success',
-    'FAILLINK' => 'http://github.local/saferpay/?status=fail',
-    'BACKLINK' => 'http://github.local/saferpay/',
-)));
+if(getParam('status') == 'success')
+{
+    if($saferpay->confirmPayment(getParam('DATA'), getParam('SIGNATURE')) != '')
+    {
+        $lastresponse = $saferpay->completePayment();
 
-// assign the data to the session
-$_SESSION['saferpay.data'] = $saferpay->getData();
+        if($lastresponse != '')
+        {
+            unset($_SESSION['saferpay.data']);
+        }
+    }
+}
+else
+{
+    $url = $saferpay->initPayment(new SaferpayKeyValue(array(
+        'AMOUNT' => 10250,
+        'DESCRIPTION' => sprintf('Bestellnummer: %s', '000001'),
+        'ORDERID' => '000001',
+        'SUCCESSLINK' => requestUrl() . '?status=success',
+        'FAILLINK' => requestUrl() . '?status=fail',
+        'BACKLINK' => requestUrl(),
+    )));
+
+    // assign the data to the session
+    $_SESSION['saferpay.data'] = $saferpay->getData();
+
+    if($url != '')
+    {
+        // redirect to saferpay
+        header("Location: {$url}", 302);
+    }
+}
 
 // show saferpay object
 printData($saferpay);
 
+function requestUrl()
+{
+    $protocol = strtolower(substr($_SERVER['SERVER_PROTOCOL'], 0, strpos($_SERVER['SERVER_PROTOCOL'], '/')));
+    return $protocol . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+}
+
+function getParam($key, $default = null)
+{
+    return array_key_exists($key, $_GET) ? $_GET[$key] : $default;
+}
 
 function printData($mixData, $boolDie = false)
 {
