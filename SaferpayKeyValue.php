@@ -49,7 +49,7 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
     {
         if(!is_string($offset))
         {
-            throw new \InvalidArgumentException("Only strings are allowed as offset!");
+            throw new \InvalidArgumentException("Only strings are allowed as offset, " . gettype($offset) . " given!");
         }
         return property_exists($this->keyvalues, $offset) ? true : false;
     }
@@ -63,7 +63,7 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
     {
         if(!is_string($offset))
         {
-            throw new \InvalidArgumentException("Only strings are allowed as offset!");
+            throw new \InvalidArgumentException("Only strings are allowed as offset, " . gettype($offset) . " given!");
         }
         if(!property_exists($this->keyvalues, $offset))
         {
@@ -82,11 +82,11 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
     {
         if(!is_string($offset))
         {
-            throw new \InvalidArgumentException("Only strings are allowed as offset!");
+            throw new \InvalidArgumentException("Only strings are allowed as offset, " . gettype($offset) . " given!");
         }
         if(!is_scalar($value))
         {
-            throw new \InvalidArgumentException("Only scalar (integer, float, string or boolean) are allowed as value!");
+            throw new \InvalidArgumentException("Only scalar (integer, float, string or boolean) are allowed as value for offset {$offset}, " . gettype($value) . " given!");
         }
         $this->keyvalues->{$offset} = $value;
         return $this;
@@ -101,7 +101,7 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
     {
         if(!is_string($offset))
         {
-            throw new \InvalidArgumentException("Only strings are allowed as offset!");
+            throw new \InvalidArgumentException("Only strings are allowed as offset, " . gettype($offset) . " given!");
         }
         if(!property_exists($this->keyvalues, $offset))
         {
