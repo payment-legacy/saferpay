@@ -14,6 +14,9 @@
         "php": ">=5.3.3",
         "psr/log": "1.0.*"
     },
+    "require-dev": {
+        "payment/saferpay-guzzle": "master"
+    },
     "suggest": {
         "payment/saferpay-guzzle": "master"
     },
