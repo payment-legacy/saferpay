@@ -6,6 +6,39 @@ namespace Payment\Saferpay;
 interface SaferpayDataInterface
 {
     /**
+     * @param string $signature
+     * @return self
+     */
+    public function setInitSignature($signature);
+
+    /**
+     * @return string
+     */
+    public function getInitSignature();
+
+    /**
+     * @param string $signature
+     * @return self
+     */
+    public function setConfirmSignature($signature);
+
+    /**
+     * @return string
+     */
+    public function getConfirmSignature();
+
+    /**
+     * @param string $signature
+     * @return self
+     */
+    public function setCompleteSignature($signature);
+
+    /**
+     * @return string
+     */
+    public function getCompleteSignature();
+
+    /**
      * @param SaferpayKeyValue $data
      * @return self
      */
