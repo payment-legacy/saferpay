@@ -2,6 +2,6 @@
 
 namespace Payment\Saferpay\Http\Client;
 
-class HttpException extends \RuntimeException
+class HttpException extends \Exception
 {
 }
