@@ -18,6 +18,7 @@
         "payment/saferpay-guzzle": "master"
     },
     "suggest": {
+        "payment/saferpay-buzz": "master",
         "payment/saferpay-guzzle": "master"
     },
     "autoload": {
