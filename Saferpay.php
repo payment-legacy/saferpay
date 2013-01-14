@@ -244,6 +244,25 @@ class Saferpay
             'ACTION' => $action,
         ));
 
+        // clone data, cause we don't want the password value in data set
+        $requestData = clone $data;
+
+        // add password for test accounts
+        if(substr($this->getData()->getInitData()->offsetGet('ACCOUNTID'), 0, 6) == "99867-")
+        {
+            $requestData->offsetSet('spPassword', 'XAjc3Kna');
+        }
+
+        $response = $this->request(
+            $this->getConfig()->getCompleteUrl(),
+            $requestData
+        );
+
+        if(substr($response, 0, 2) == 'OK')
+        {
+            $this->prepareFragment(substr($response, 3), $data);
+        }
+
         $this->updateData(
             $this->getConfig()->getCompleteValidationConfig(),
             $this->getConfig()->getCompleteDefaultConfig(),
@@ -251,16 +270,7 @@ class Saferpay
             $data
         );
 
-        // add password for test accounts
-        if(substr($this->getData()->getInitData()->offsetGet('ACCOUNTID'), 0, 6) == "99867-")
-        {
-            $data->offsetSet('spPassword', 'XAjc3Kna');
-        }
-
-        return $this->request(
-            $this->getConfig()->getCompleteUrl(),
-            $data
-        );
+        return $response;
     }
 
     /**
