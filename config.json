@@ -23,10 +23,11 @@
             "USERNOTIFY": "ans[..50]",
             "LANGID": "a[2]",
             "SHOWLANGUAGES": "a[..3]",
-            "PROVIDERSET": "ns[..40]",
+            "PAYMENTMETHODS": "ns[..40]",
             "DURATION": "n[14]",
             "CARDREFID": "ans[..40]",
             "DELIVERY": "a[..3]",
+            "APPEARANCE": "an[..7]",
             "ADDRESS": "a[..8]",
             "COMPANY": "ans[..50]",
             "GENDER": "a[1]",
@@ -49,6 +50,7 @@
             "AMOUNT": "n[..8]",
             "CURRENCY": "a[3]",
             "CARDREFID": "ans[..40]",
+            "SCDRESULT": "n[..4]",
             "PROVIDERID": "n[..4]",
             "PROVIDERNAME": "ans[..30]",
             "ORDERID": "an[..39]",
@@ -62,10 +64,13 @@
         },
         "complete": {
             "ID": "an[28]",
-            "TOKEN": "ans[..40]",
             "AMOUNT": "n[..8]",
             "ACCOUNTID": "ns[..15]",
-            "ACTION": "a[..10]"
+            "ACTION": "a[..10]",
+            "MSGTYPE": "a[..30]",
+            "RESULT": "n[..4]",
+            "MESSAGE": "ans[30]",
+            "AUTHMESSAGE": "ans[30]"
         }
     },
     "defaults": {
