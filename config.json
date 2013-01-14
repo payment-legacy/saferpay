@@ -1,4 +1,5 @@
 {
+    "version": 4.2,
     "urls": {
         "init": "https://www.saferpay.com/hosting/CreatePayInit.asp",
         "confirm": "https://www.saferpay.com/hosting/VerifyPayConfirm.asp",
