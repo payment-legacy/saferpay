@@ -60,6 +60,14 @@ else
         'SUCCESSLINK' => requestUrl() . '?status=success',
         'FAILLINK' => requestUrl() . '?status=fail',
         'BACKLINK' => requestUrl(),
+        'GENDER' => 'm',
+        'FIRSTNAME' => 'Hans',
+        'LASTNAME' => 'Muster',
+        'STREET' => 'Musterstrasse 300',
+        'ZIP' => '0000',
+        'CITY' => 'Musterort',
+        'COUNTRY' => 'CH',
+        'EMAIL' => 'test@test.ch'
     )));
 
     // assign the data to the session
