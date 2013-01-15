@@ -108,7 +108,7 @@ class SaferpayConfig implements SaferpayConfigInterface
      * @param SaferpayKeyValue $validationConfig
      * @return self
      */
-    public function setInitValidationConfig(SaferpayKeyValue $validationConfig)
+    public function setInitValidationsConfig(SaferpayKeyValue $validationConfig)
     {
         $this->initValidationConfig = $validationConfig;
         return $this;
@@ -117,7 +117,7 @@ class SaferpayConfig implements SaferpayConfigInterface
     /**
      * @return SaferpayKeyValue
      */
-    public function getInitValidationConfig()
+    public function getInitValidationsConfig()
     {
         return $this->initValidationConfig;
     }
@@ -126,7 +126,7 @@ class SaferpayConfig implements SaferpayConfigInterface
      * @param SaferpayKeyValue $validationConfig
      * @return self
      */
-    public function setConfirmValidationConfig(SaferpayKeyValue $validationConfig)
+    public function setConfirmValidationsConfig(SaferpayKeyValue $validationConfig)
     {
         $this->confirmValidationConfig = $validationConfig;
         return $this;
@@ -135,7 +135,7 @@ class SaferpayConfig implements SaferpayConfigInterface
     /**
      * @return SaferpayKeyValue
      */
-    public function getConfirmValidationConfig()
+    public function getConfirmValidationsConfig()
     {
         return $this->confirmValidationConfig;
     }
@@ -144,7 +144,7 @@ class SaferpayConfig implements SaferpayConfigInterface
      * @param SaferpayKeyValue $validationConfig
      * @return self
      */
-    public function setCompleteValidationConfig(SaferpayKeyValue $validationConfig)
+    public function setCompleteValidationsConfig(SaferpayKeyValue $validationConfig)
     {
         $this->completeValidationConfig = $validationConfig;
         return $this;
@@ -153,7 +153,7 @@ class SaferpayConfig implements SaferpayConfigInterface
     /**
      * @return SaferpayKeyValue
      */
-    public function getCompleteValidationConfig()
+    public function getCompleteValidationsConfig()
     {
         return $this->completeValidationConfig;
     }
@@ -162,7 +162,7 @@ class SaferpayConfig implements SaferpayConfigInterface
      * @param SaferpayKeyValue $defaultConfig
      * @return self
      */
-    public function setInitDefaultConfig(SaferpayKeyValue $defaultConfig)
+    public function setInitDefaultsConfig(SaferpayKeyValue $defaultConfig)
     {
         $this->initDefaultConfig = $defaultConfig;
         return $this;
@@ -171,7 +171,7 @@ class SaferpayConfig implements SaferpayConfigInterface
     /**
      * @return SaferpayKeyValue
      */
-    public function getInitDefaultConfig()
+    public function getInitDefaultsConfig()
     {
         return $this->initDefaultConfig;
     }
@@ -180,7 +180,7 @@ class SaferpayConfig implements SaferpayConfigInterface
      * @param SaferpayKeyValue $defaultConfig
      * @return self
      */
-    public function setConfirmDefaultConfig(SaferpayKeyValue $defaultConfig)
+    public function setConfirmDefaultsConfig(SaferpayKeyValue $defaultConfig)
     {
         $this->confirmDefaultConfig = $defaultConfig;
         return $this;
@@ -189,7 +189,7 @@ class SaferpayConfig implements SaferpayConfigInterface
     /**
      * @return SaferpayKeyValue
      */
-    public function getConfirmDefaultConfig()
+    public function getConfirmDefaultsConfig()
     {
         return $this->confirmDefaultConfig;
     }
@@ -198,7 +198,7 @@ class SaferpayConfig implements SaferpayConfigInterface
      * @param SaferpayKeyValue $defaultConfig
      * @return self
      */
-    public function setCompleteDefaultConfig(SaferpayKeyValue $defaultConfig)
+    public function setCompleteDefaultsConfig(SaferpayKeyValue $defaultConfig)
     {
         $this->completeDefaultConfig = $defaultConfig;
         return $this;
@@ -207,7 +207,7 @@ class SaferpayConfig implements SaferpayConfigInterface
     /**
      * @return SaferpayKeyValue
      */
-    public function getCompleteDefaultConfig()
+    public function getCompleteDefaultsConfig()
     {
         return $this->completeDefaultConfig;
     }

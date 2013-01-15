@@ -83,9 +83,9 @@ class Saferpay
             $saferpayConfig = new SaferpayConfig();
 
             // set the initial values
-            $saferpayConfig->setInitValidationConfig($this->getKeyValuePrototype());
-            $saferpayConfig->setConfirmValidationConfig($this->getKeyValuePrototype());
-            $saferpayConfig->setCompleteValidationConfig($this->getKeyValuePrototype());
+            $saferpayConfig->setInitValidationsConfig($this->getKeyValuePrototype());
+            $saferpayConfig->setConfirmValidationsConfig($this->getKeyValuePrototype());
+            $saferpayConfig->setCompleteValidationsConfig($this->getKeyValuePrototype());
 
             $this->setConfig($saferpayConfig);
         }
@@ -179,8 +179,8 @@ class Saferpay
     public function initPayment(SaferpayKeyValueInterface $data)
     {
         $this->updateData(
-            $this->getConfig()->getInitValidationConfig(),
-            $this->getConfig()->getInitDefaultConfig(),
+            $this->getConfig()->getInitValidationsConfig(),
+            $this->getConfig()->getInitDefaultsConfig(),
             $this->getData()->getInitData(),
             $data
         );
@@ -207,8 +207,8 @@ class Saferpay
         $this->prepareFragment($xml, $data);
 
         $this->updateData(
-            $this->getConfig()->getConfirmValidationConfig(),
-            $this->getConfig()->getConfirmDefaultConfig(),
+            $this->getConfig()->getConfirmValidationsConfig(),
+            $this->getConfig()->getConfirmDefaultsConfig(),
             $this->getData()->getConfirmData(),
             $data
         );
@@ -264,8 +264,8 @@ class Saferpay
         }
 
         $this->updateData(
-            $this->getConfig()->getCompleteValidationConfig(),
-            $this->getConfig()->getCompleteDefaultConfig(),
+            $this->getConfig()->getCompleteValidationsConfig(),
+            $this->getConfig()->getCompleteDefaultsConfig(),
             $this->getData()->getCompleteData(),
             $data
         );

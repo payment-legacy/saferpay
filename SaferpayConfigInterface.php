@@ -42,65 +42,65 @@ interface SaferpayConfigInterface
      * @param SaferpayKeyValue $validationConfig
      * @return self
      */
-    public function setInitValidationConfig(SaferpayKeyValue $validationConfig);
+    public function setInitValidationsConfig(SaferpayKeyValue $validationConfig);
 
     /**
      * @return SaferpayKeyValue
      */
-    public function getInitValidationConfig();
+    public function getInitValidationsConfig();
 
     /**
      * @param SaferpayKeyValue $validationConfig
      * @return self
      */
-    public function setConfirmValidationConfig(SaferpayKeyValue $validationConfig);
+    public function setConfirmValidationsConfig(SaferpayKeyValue $validationConfig);
 
     /**
      * @return SaferpayKeyValue
      */
-    public function getConfirmValidationConfig();
+    public function getConfirmValidationsConfig();
 
     /**
      * @param SaferpayKeyValue $validationConfig
      * @return self
      */
-    public function setCompleteValidationConfig(SaferpayKeyValue $validationConfig);
+    public function setCompleteValidationsConfig(SaferpayKeyValue $validationConfig);
 
     /**
      * @return SaferpayKeyValue
      */
-    public function getCompleteValidationConfig();
+    public function getCompleteValidationsConfig();
 
     /**
      * @param SaferpayKeyValue $defaultConfig
      * @return self
      */
-    public function setInitDefaultConfig(SaferpayKeyValue $defaultConfig);
+    public function setInitDefaultsConfig(SaferpayKeyValue $defaultConfig);
 
     /**
      * @return SaferpayKeyValue
      */
-    public function getInitDefaultConfig();
+    public function getInitDefaultsConfig();
 
     /**
      * @param SaferpayKeyValue $defaultConfig
      * @return self
      */
-    public function setConfirmDefaultConfig(SaferpayKeyValue $defaultConfig);
+    public function setConfirmDefaultsConfig(SaferpayKeyValue $defaultConfig);
 
     /**
      * @return SaferpayKeyValue
      */
-    public function getConfirmDefaultConfig();
+    public function getConfirmDefaultsConfig();
 
     /**
      * @param SaferpayKeyValue $defaultConfig
      * @return self
      */
-    public function setCompleteDefaultConfig(SaferpayKeyValue $defaultConfig);
+    public function setCompleteDefaultsConfig(SaferpayKeyValue $defaultConfig);
 
     /**
      * @return SaferpayKeyValue
      */
-    public function getCompleteDefaultConfig();
+    public function getCompleteDefaultsConfig();
 }
