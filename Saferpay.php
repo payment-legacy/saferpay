@@ -131,7 +131,7 @@ class Saferpay
      */
     public function setLogger(LoggerInterface $logger)
     {
-        $this->logger;
+        $this->logger = $logger;
         return $this;
     }
 
