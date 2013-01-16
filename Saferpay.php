@@ -244,18 +244,15 @@ class Saferpay
             'ACTION' => $action,
         ));
 
-        // clone data, cause we don't want the password value in data set
-        $requestData = clone $data;
-
         // add password for test accounts
         if(substr($this->getData()->getInitData()->offsetGet('ACCOUNTID'), 0, 6) == "99867-")
         {
-            $requestData->offsetSet('spPassword', 'XAjc3Kna');
+            $data->offsetSet('spPassword', 'XAjc3Kna');
         }
 
         $response = $this->request(
             $this->getConfig()->getCompleteUrl(),
-            $requestData
+            $data
         );
 
         if(substr($response, 0, 2) == 'OK')
