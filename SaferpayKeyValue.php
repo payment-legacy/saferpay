@@ -9,6 +9,11 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
      */
     protected $keyvalues;
 
+    public function __construct()
+    {
+        $this->resetAll();
+    }
+
     /**
      * @param string $offset
      * @param scalar $value
@@ -107,7 +112,20 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
         return new \ArrayIterator($this->keyvalues);
     }
 
-    public function resetKeyValue()
+    /**
+     * @param array $array
+     * @return self
+     */
+    public function setAll(array $array)
+    {
+        foreach($array as $offset => $value)
+        {
+            $this->offsetSet($offset, $value);
+        }
+        return $this;
+    }
+
+    public function resetAll()
     {
         $this->keyvalues = new \stdClass();
     }

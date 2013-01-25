@@ -34,7 +34,13 @@ interface SaferpayKeyValueInterface extends \IteratorAggregate
     public function offsetUnset($offset);
 
     /**
+     * @param array $array
      * @return self
      */
-    public function resetKeyValue();
+    public function setAll(array $array);
+
+    /**
+     * @return self
+     */
+    public function resetAll();
 }
