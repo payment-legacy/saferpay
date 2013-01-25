@@ -9,16 +9,19 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
      */
     protected $keyvalues;
 
-    /**
-     * @param array $array
-     */
-    public function __construct(array $array = array())
+    public function __construct()
+    {
+        $this->resetKeyValues();
+    }
+
+    public function __clone()
+    {
+        $this->resetKeyValues();
+    }
+
+    protected function resetKeyValues()
     {
         $this->keyvalues = new \stdClass();
-        foreach($array as $key => $value)
-        {
-            $this->offsetSet($key, $value);
-        }
     }
 
     /**
