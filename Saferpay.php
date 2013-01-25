@@ -59,6 +59,11 @@ class Saferpay
 
         $clone = clone $this->keyValuePrototype;
 
+        foreach($array as $offset => $value)
+        {
+            $clone->offsetSet($offset, $value);
+        }
+
         return $clone;
     }
 
