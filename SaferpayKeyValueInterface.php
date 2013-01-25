@@ -32,4 +32,9 @@ interface SaferpayKeyValueInterface extends \IteratorAggregate
      * @throws \InvalidArgumentException
      */
     public function offsetUnset($offset);
+
+    /**
+     * @return self
+     */
+    public function resetKeyValue();
 }

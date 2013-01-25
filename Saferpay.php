@@ -57,14 +57,15 @@ class Saferpay
             $this->setKeyValuePrototype(new SaferpayKeyValue());
         }
 
-        $clone = clone $this->keyValuePrototype;
+        $keyValuePrototype = clone $this->keyValuePrototype;
+        $keyValuePrototype->resetKeyValue();
 
         foreach($array as $offset => $value)
         {
-            $clone->offsetSet($offset, $value);
+            $keyValuePrototype->offsetSet($offset, $value);
         }
 
-        return $clone;
+        return $keyValuePrototype;
     }
 
     /**
