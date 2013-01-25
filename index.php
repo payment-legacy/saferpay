@@ -25,8 +25,6 @@ $saferpay->getConfig()->setInitValidationsConfig($saferpay->getKeyValuePrototype
 $saferpay->getConfig()->setConfirmValidationsConfig($saferpay->getKeyValuePrototype($arrConfig['validators']['confirm']));
 $saferpay->getConfig()->setCompleteValidationsConfig($saferpay->getKeyValuePrototype($arrConfig['validators']['complete']));
 
-var_dump($saferpay->getKeyValuePrototype()); die();
-
 // set default config
 $saferpay->getConfig()->setInitDefaultsConfig($saferpay->getKeyValuePrototype($arrConfig['defaults']['init']));
 $saferpay->getConfig()->setConfirmDefaultsConfig($saferpay->getKeyValuePrototype($arrConfig['defaults']['confirm']));
