@@ -21,14 +21,16 @@ $saferpay->getConfig()->setConfirmUrl($arrConfig['urls']['confirm']);
 $saferpay->getConfig()->setCompleteUrl($arrConfig['urls']['complete']);
 
 // set validation config
-$saferpay->getConfig()->setInitValidationsConfig(new SaferpayKeyValue($arrConfig['validators']['init']));
-$saferpay->getConfig()->setConfirmValidationsConfig(new SaferpayKeyValue($arrConfig['validators']['confirm']));
-$saferpay->getConfig()->setCompleteValidationsConfig(new SaferpayKeyValue($arrConfig['validators']['complete']));
+$saferpay->getConfig()->setInitValidationsConfig($saferpay->getKeyValuePrototype($arrConfig['validators']['init']));
+$saferpay->getConfig()->setConfirmValidationsConfig($saferpay->getKeyValuePrototype($arrConfig['validators']['confirm']));
+$saferpay->getConfig()->setCompleteValidationsConfig($saferpay->getKeyValuePrototype($arrConfig['validators']['complete']));
+
+var_dump($saferpay->getKeyValuePrototype()); die();
 
 // set default config
-$saferpay->getConfig()->setInitDefaultsConfig(new SaferpayKeyValue($arrConfig['defaults']['init']));
-$saferpay->getConfig()->setConfirmDefaultsConfig(new SaferpayKeyValue($arrConfig['defaults']['confirm']));
-$saferpay->getConfig()->setCompleteDefaultsConfig(new SaferpayKeyValue($arrConfig['defaults']['complete']));
+$saferpay->getConfig()->setInitDefaultsConfig($saferpay->getKeyValuePrototype($arrConfig['defaults']['init']));
+$saferpay->getConfig()->setConfirmDefaultsConfig($saferpay->getKeyValuePrototype($arrConfig['defaults']['confirm']));
+$saferpay->getConfig()->setCompleteDefaultsConfig($saferpay->getKeyValuePrototype($arrConfig['defaults']['complete']));
 
 // get session data if exists
 $saferpayData = isset($_SESSION) && is_array($_SESSION) && array_key_exists('saferpay.data', $_SESSION) ? $_SESSION['saferpay.data'] : null;
@@ -53,7 +55,7 @@ if(getParam('status') == 'success')
 }
 else
 {
-    $url = $saferpay->initPayment(new SaferpayKeyValue(array(
+    $url = $saferpay->initPayment($saferpay->getKeyValuePrototype(array(
         'AMOUNT' => 10250,
         'DESCRIPTION' => sprintf('Bestellnummer: %s', '000001'),
         'ORDERID' => '000001',
