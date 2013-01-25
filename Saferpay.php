@@ -54,7 +54,7 @@ class Saferpay
     {
         if(is_null($this->keyValuePrototype))
         {
-            $this->keyValuePrototype = new SaferpayKeyValue();
+            $this->setKeyValuePrototype(new SaferpayKeyValue());
         }
 
         $class = get_class($this->keyValuePrototype);
