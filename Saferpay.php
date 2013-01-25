@@ -57,9 +57,9 @@ class Saferpay
             $this->setKeyValuePrototype(new SaferpayKeyValue());
         }
 
-        $class = get_class($this->keyValuePrototype);
+        $clone = clone $this->keyValuePrototype;
 
-        return new $class($array);
+        return $clone;
     }
 
     /**
