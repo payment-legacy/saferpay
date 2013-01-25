@@ -280,6 +280,11 @@ class Saferpay
      */
     protected function updateData(SaferpayKeyValueInterface $validator, SaferpayKeyValueInterface $default, SaferpayKeyValueInterface $data, SaferpayKeyValueInterface $newData)
     {
+        foreach($newData as $key => $value)
+        {
+            $this->setValue($validator, $data, $key, $value);
+        }
+
         foreach($default as $key => $value)
         {
             // do no overwrite data with defaults
@@ -287,11 +292,6 @@ class Saferpay
             {
                 $this->setValue($validator, $data, $key, $value);
             }
-        }
-
-        foreach($newData as $key => $value)
-        {
-            $this->setValue($validator, $data, $key, $value);
         }
     }
 
