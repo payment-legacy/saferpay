@@ -21,14 +21,14 @@ $saferpay->getConfig()->setConfirmUrl($arrConfig['urls']['confirm']);
 $saferpay->getConfig()->setCompleteUrl($arrConfig['urls']['complete']);
 
 // set validation config
-$saferpay->getConfig()->setInitValidationsConfig($saferpay->getKeyValuePrototype($arrConfig['validators']['init']));
-$saferpay->getConfig()->setConfirmValidationsConfig($saferpay->getKeyValuePrototype($arrConfig['validators']['confirm']));
-$saferpay->getConfig()->setCompleteValidationsConfig($saferpay->getKeyValuePrototype($arrConfig['validators']['complete']));
+$saferpay->getConfig()->getInitValidationsConfig()->setAll($arrConfig['validators']['init']);
+$saferpay->getConfig()->getConfirmValidationsConfig()->setAll($arrConfig['validators']['confirm']);
+$saferpay->getConfig()->getCompleteValidationsConfig()->setAll($arrConfig['validators']['complete']);
 
 // set default config
-$saferpay->getConfig()->setInitDefaultsConfig($saferpay->getKeyValuePrototype($arrConfig['defaults']['init']));
-$saferpay->getConfig()->setConfirmDefaultsConfig($saferpay->getKeyValuePrototype($arrConfig['defaults']['confirm']));
-$saferpay->getConfig()->setCompleteDefaultsConfig($saferpay->getKeyValuePrototype($arrConfig['defaults']['complete']));
+$saferpay->getConfig()->getInitDefaultsConfig()->setAll($arrConfig['defaults']['init']);
+$saferpay->getConfig()->getConfirmDefaultsConfig()->setAll($arrConfig['defaults']['confirm']);
+$saferpay->getConfig()->getCompleteDefaultsConfig()->setAll($arrConfig['defaults']['complete']);
 
 // get session data if exists
 $saferpayData = isset($_SESSION) && is_array($_SESSION) && array_key_exists('saferpay.data', $_SESSION) ? $_SESSION['saferpay.data'] : null;
