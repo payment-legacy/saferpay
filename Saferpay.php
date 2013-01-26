@@ -89,6 +89,10 @@ class Saferpay
             $saferpayConfig->setConfirmValidationsConfig($this->getKeyValuePrototype());
             $saferpayConfig->setCompleteValidationsConfig($this->getKeyValuePrototype());
 
+            $saferpayConfig->setInitDefaultsConfig($this->getKeyValuePrototype());
+            $saferpayConfig->setConfirmDefaultsConfig($this->getKeyValuePrototype());
+            $saferpayConfig->setCompleteDefaultsConfig($this->getKeyValuePrototype());
+
             $this->setConfig($saferpayConfig);
         }
 
