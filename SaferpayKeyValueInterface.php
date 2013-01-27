@@ -5,33 +5,26 @@ namespace Payment\Saferpay;
 interface SaferpayKeyValueInterface extends \IteratorAggregate
 {
     /**
-     * @param string $offset
+     * @param string $key
      * @return bool
      * @throws \InvalidArgumentException
      */
-    public function offsetExists($offset);
+    public function has($key);
 
     /**
-     * @param string $offset
+     * @param string $key
      * @return scalar
      * @throws \InvalidArgumentException
      */
-    public function offsetGet($offset);
+    public function get($key);
 
     /**
-     * @param string $offset
+     * @param string $key
      * @param scalar $value
      * @return self
      * @throws \InvalidArgumentException
      */
-    public function offsetSet($offset, $value);
-
-    /**
-     * @param string $offset
-     * @return self
-     * @throws \InvalidArgumentException
-     */
-    public function offsetUnset($offset);
+    public function set($key, $value);
 
     /**
      * @param array $array

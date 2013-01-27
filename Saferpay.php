@@ -222,24 +222,24 @@ class Saferpay
      */
     public function completePayment($action = 'Settlement')
     {
-        if(!$this->getData()->getConfirmData()->offsetExists('ID'))
+        if(!$this->getData()->getConfirmData()->has('ID'))
         {
             $this->getLogger()->critical('Call confirm payment first!');
             return '';
         }
 
         $data = $this->getKeyValuePrototype()->setAll(array(
-            'ID' => $this->getData()->getConfirmData()->offsetGet('ID'),
-            'TOKEN' => $this->getData()->getConfirmData()->offsetGet('TOKEN'),
-            'AMOUNT' => $this->getData()->getInitData()->offsetGet('AMOUNT'),
-            'ACCOUNTID' => $this->getData()->getInitData()->offsetGet('ACCOUNTID'),
+            'ID' => $this->getData()->getConfirmData()->get('ID'),
+            'TOKEN' => $this->getData()->getConfirmData()->get('TOKEN'),
+            'AMOUNT' => $this->getData()->getInitData()->get('AMOUNT'),
+            'ACCOUNTID' => $this->getData()->getInitData()->get('ACCOUNTID'),
             'ACTION' => $action,
         ));
 
         // add password for test accounts
-        if(substr($this->getData()->getInitData()->offsetGet('ACCOUNTID'), 0, 6) == "99867-")
+        if(substr($this->getData()->getInitData()->get('ACCOUNTID'), 0, 6) == "99867-")
         {
-            $data->offsetSet('spPassword', 'XAjc3Kna');
+            $data->set('spPassword', 'XAjc3Kna');
         }
 
         $response = $this->request(
@@ -278,7 +278,7 @@ class Saferpay
         foreach($default as $key => $value)
         {
             // do no overwrite data with defaults
-            if(!$data->offsetExists($key))
+            if(!$data->has($key))
             {
                 $this->setValue($validator, $data, $key, $value);
             }
@@ -293,23 +293,23 @@ class Saferpay
      */
     protected function setValue(SaferpayKeyValueInterface $validator, SaferpayKeyValueInterface $data, $key, $value)
     {
-        if(!$validator->offsetExists($key))
+        if(!$validator->has($key))
         {
             $this->getLogger()->warning("saferpay: Can't find validator for key {key}", array('key' => $key));
             return;
         }
 
-        if(!self::isValidValue($validator->offsetGet($key), $value))
+        if(!self::isValidValue($validator->get($key), $value))
         {
             $this->getLogger()->warning("saferpay: Can't validate value {value} for key {key} against validator {validator}", array(
-                'validator' => $validator->offsetGet($key),
+                'validator' => $validator->get($key),
                 'key' => $key,
                 'value' => $value,
             ));
             return;
         }
 
-        $data->offsetSet($key, $value);
+        $data->set($key, $value);
     }
 
     /**
@@ -411,7 +411,7 @@ class Saferpay
         foreach($fragment->firstChild->attributes as $attribute)
         {
             /** @var \DOMAttr $attribute */
-            $data->offsetSet($attribute->nodeName, $attribute->nodeValue);
+            $data->set($attribute->nodeName, $attribute->nodeValue);
         }
     }
 

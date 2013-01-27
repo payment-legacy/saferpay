@@ -15,92 +15,73 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
     }
 
     /**
-     * @param string $offset
+     * @param string $key
      * @param scalar $value
      * @throws \ErrorException
      */
-    public function __set($offset, $value)
+    public function __set($key, $value)
     {
         throw new \ErrorException("You can't access directly!");
     }
 
     /**
-     * @param string $offset
+     * @param string $key
      * @throws \ErrorException
      */
-    public function __get($offset)
+    public function __get($key)
     {
         throw new \ErrorException("You can't access directly!");
     }
 
     /**
-     * @param string $offset
+     * @param string $key
      * @return bool
      * @throws \InvalidArgumentException
      */
-    public function offsetExists($offset)
+    public function has($key)
     {
-        if(!is_string($offset))
+        if(!is_string($key))
         {
-            throw new \InvalidArgumentException("Only strings are allowed as offset, " . gettype($offset) . " given!");
+            throw new \InvalidArgumentException("Only strings are allowed as key, " . gettype($key) . " given!");
         }
-        return property_exists($this->keyvalues, $offset) ? true : false;
+        return property_exists($this->keyvalues, $key) ? true : false;
     }
 
     /**
-     * @param string $offset
+     * @param string $key
      * @return scalar
      * @throws \InvalidArgumentException
      */
-    public function offsetGet($offset)
+    public function get($key)
     {
-        if(!is_string($offset))
+        if(!is_string($key))
         {
-            throw new \InvalidArgumentException("Only strings are allowed as offset, " . gettype($offset) . " given!");
+            throw new \InvalidArgumentException("Only strings are allowed as key, " . gettype($key) . " given!");
         }
-        if(!property_exists($this->keyvalues, $offset))
+        if(!property_exists($this->keyvalues, $key))
         {
-            throw new \InvalidArgumentException("Unknown offset given!");
+            throw new \InvalidArgumentException("Unknown key given!");
         }
-        return $this->keyvalues->{$offset};
+        return $this->keyvalues->{$key};
     }
 
     /**
-     * @param string $offset
+     * @param string $key
      * @param scalar $value
      * @return self
      * @throws \InvalidArgumentException
      */
-    public function offsetSet($offset, $value)
+    public function set($key, $value)
     {
-        if(!is_string($offset))
+        if(!is_string($key))
         {
-            throw new \InvalidArgumentException("Only strings are allowed as offset, " . gettype($offset) . " given!");
+            throw new \InvalidArgumentException("Only strings are allowed as key, " . gettype($key) . " given!");
         }
         if(!is_scalar($value))
         {
-            throw new \InvalidArgumentException("Only scalar (integer, float, string or boolean) are allowed as value for offset {$offset}, " . gettype($value) . " given!");
+            throw new \InvalidArgumentException("Only scalar (integer, float, string or boolean) are allowed as value for key {$key}, " . gettype($value) . " given!");
         }
-        $this->keyvalues->{$offset} = $value;
-        return $this;
-    }
-
-    /**
-     * @param string $offset
-     * @return self
-     * @throws \InvalidArgumentException
-     */
-    public function offsetUnset($offset)
-    {
-        if(!is_string($offset))
-        {
-            throw new \InvalidArgumentException("Only strings are allowed as offset, " . gettype($offset) . " given!");
-        }
-        if(!property_exists($this->keyvalues, $offset))
-        {
-            throw new \InvalidArgumentException("Unknown offset given!");
-        }
-        unset($this->keyvalues->{$offset});
+        $this->keyvalues->{$key} = $value;
         return $this;
     }
 
@@ -120,9 +101,9 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
     {
         $this->resetAll();
 
-        foreach($array as $offset => $value)
+        foreach($array as $key => $value)
         {
-            $this->offsetSet($offset, $value);
+            $this->set($key, $value);
         }
         return $this;
     }
