@@ -21,34 +21,39 @@ class SaferpayConfig implements SaferpayConfigInterface
     protected $completeUrl;
 
     /**
-     * @var SaferpayKeyValue
+     * @var SaferpayKeyValueInterface
      */
-    protected $initValidationConfig;
+    protected $initValidationsConfig;
 
     /**
-     * @var SaferpayKeyValue
+     * @var SaferpayKeyValueInterface
      */
-    protected $confirmValidationConfig;
+    protected $confirmValidationsConfig;
 
     /**
-     * @var SaferpayKeyValue
+     * @var SaferpayKeyValueInterface
      */
-    protected $completeValidationConfig;
+    protected $completeValidationsConfig;
 
     /**
-     * @var SaferpayKeyValue
+     * @var SaferpayKeyValueInterface
      */
-    protected $initDefaultConfig;
+    protected $initDefaultsConfig;
 
     /**
-     * @var SaferpayKeyValue
+     * @var SaferpayKeyValueInterface
      */
-    protected $confirmDefaultConfig;
+    protected $confirmDefaultsConfig;
 
     /**
-     * @var SaferpayKeyValue
+     * @var SaferpayKeyValueInterface
      */
-    protected $completeDefaultConfig;
+    protected $completeDefaultsConfig;
+
+    /**
+     * @var SaferpayKeyValueInterface
+     */
+    protected $keyValuePrototype;
 
     /**
      * @param string $url
@@ -105,110 +110,160 @@ class SaferpayConfig implements SaferpayConfigInterface
     }
 
     /**
-     * @param SaferpayKeyValue $validationConfig
+     * @param SaferpayKeyValueInterface $validationConfig
      * @return self
      */
-    public function setInitValidationsConfig(SaferpayKeyValue $validationConfig)
+    public function setInitValidationsConfig(SaferpayKeyValueInterface $validationConfig)
     {
-        $this->initValidationConfig = $validationConfig;
+        $this->initValidationsConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getInitValidationsConfig()
     {
-        return $this->initValidationConfig;
+        if(is_null($this->initValidationsConfig))
+        {
+            $this->initValidationsConfig = $this->getKeyValuePrototype();
+        }
+        return $this->initValidationsConfig;
     }
 
     /**
-     * @param SaferpayKeyValue $validationConfig
+     * @param SaferpayKeyValueInterface $validationConfig
      * @return self
      */
-    public function setConfirmValidationsConfig(SaferpayKeyValue $validationConfig)
+    public function setConfirmValidationsConfig(SaferpayKeyValueInterface $validationConfig)
     {
-        $this->confirmValidationConfig = $validationConfig;
+        $this->confirmValidationsConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getConfirmValidationsConfig()
     {
-        return $this->confirmValidationConfig;
+        if(is_null($this->confirmValidationsConfig))
+        {
+            $this->confirmValidationsConfig = $this->getKeyValuePrototype();
+        }
+        return $this->confirmValidationsConfig;
     }
 
     /**
-     * @param SaferpayKeyValue $validationConfig
+     * @param SaferpayKeyValueInterface $validationConfig
      * @return self
      */
-    public function setCompleteValidationsConfig(SaferpayKeyValue $validationConfig)
+    public function setCompleteValidationsConfig(SaferpayKeyValueInterface $validationConfig)
     {
-        $this->completeValidationConfig = $validationConfig;
+        $this->completeValidationsConfig = $validationConfig;
         return $this;
     }
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getCompleteValidationsConfig()
     {
-        return $this->completeValidationConfig;
+        if(is_null($this->completeValidationsConfig))
+        {
+            $this->completeValidationsConfig = $this->getKeyValuePrototype();
+        }
+        return $this->completeValidationsConfig;
     }
 
     /**
-     * @param SaferpayKeyValue $defaultConfig
+     * @param SaferpayKeyValueInterface $defaultConfig
      * @return self
      */
-    public function setInitDefaultsConfig(SaferpayKeyValue $defaultConfig)
+    public function setInitDefaultsConfig(SaferpayKeyValueInterface $defaultConfig)
     {
-        $this->initDefaultConfig = $defaultConfig;
+        $this->initDefaultsConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getInitDefaultsConfig()
     {
-        return $this->initDefaultConfig;
+        if(is_null($this->initDefaultsConfig))
+        {
+            $this->initDefaultsConfig = $this->getKeyValuePrototype();
+        }
+        return $this->initDefaultsConfig;
     }
 
     /**
-     * @param SaferpayKeyValue $defaultConfig
+     * @param SaferpayKeyValueInterface $defaultConfig
      * @return self
      */
-    public function setConfirmDefaultsConfig(SaferpayKeyValue $defaultConfig)
+    public function setConfirmDefaultsConfig(SaferpayKeyValueInterface $defaultConfig)
     {
-        $this->confirmDefaultConfig = $defaultConfig;
+        $this->confirmDefaultsConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getConfirmDefaultsConfig()
     {
-        return $this->confirmDefaultConfig;
+        if(is_null($this->confirmDefaultsConfig))
+        {
+            $this->confirmDefaultsConfig = $this->getKeyValuePrototype();
+        }
+        return $this->confirmDefaultsConfig;
     }
 
     /**
-     * @param SaferpayKeyValue $defaultConfig
+     * @param SaferpayKeyValueInterface $defaultConfig
      * @return self
      */
-    public function setCompleteDefaultsConfig(SaferpayKeyValue $defaultConfig)
+    public function setCompleteDefaultsConfig(SaferpayKeyValueInterface $defaultConfig)
     {
-        $this->completeDefaultConfig = $defaultConfig;
+        $this->completeDefaultsConfig = $defaultConfig;
         return $this;
     }
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getCompleteDefaultsConfig()
     {
-        return $this->completeDefaultConfig;
+        if(is_null($this->completeDefaultsConfig))
+        {
+            $this->completeDefaultsConfig = $this->getKeyValuePrototype();
+        }
+        return $this->completeDefaultsConfig;
+    }
+
+    /**
+     * @param SaferpayKeyValueInterface $keyValuePrototype
+     * @return Saferpay
+     */
+    public function setKeyValuePrototype(SaferpayKeyValueInterface $keyValuePrototype)
+    {
+        $this->keyValuePrototype = $keyValuePrototype;
+        return $this;
+    }
+
+    /**
+     * @return SaferpayKeyValueInterface
+     */
+    public function getKeyValuePrototype()
+    {
+        if(is_null($this->keyValuePrototype))
+        {
+            $this->setKeyValuePrototype(new SaferpayKeyValue());
+        }
+
+        $keyValuePrototype = clone $this->keyValuePrototype;
+        $keyValuePrototype->resetAll();
+
+        return $keyValuePrototype;
     }
 }

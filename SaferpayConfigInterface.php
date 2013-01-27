@@ -2,7 +2,6 @@
 
 namespace Payment\Saferpay;
 
-
 interface SaferpayConfigInterface
 {
     /**
@@ -39,68 +38,79 @@ interface SaferpayConfigInterface
     public function getCompleteUrl();
 
     /**
-     * @param SaferpayKeyValue $validationConfig
+     * @param SaferpayKeyValueInterface $validationConfig
      * @return self
      */
-    public function setInitValidationsConfig(SaferpayKeyValue $validationConfig);
+    public function setInitValidationsConfig(SaferpayKeyValueInterface $validationConfig);
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getInitValidationsConfig();
 
     /**
-     * @param SaferpayKeyValue $validationConfig
+     * @param SaferpayKeyValueInterface $validationConfig
      * @return self
      */
-    public function setConfirmValidationsConfig(SaferpayKeyValue $validationConfig);
+    public function setConfirmValidationsConfig(SaferpayKeyValueInterface $validationConfig);
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getConfirmValidationsConfig();
 
     /**
-     * @param SaferpayKeyValue $validationConfig
+     * @param SaferpayKeyValueInterface $validationConfig
      * @return self
      */
-    public function setCompleteValidationsConfig(SaferpayKeyValue $validationConfig);
+    public function setCompleteValidationsConfig(SaferpayKeyValueInterface $validationConfig);
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getCompleteValidationsConfig();
 
     /**
-     * @param SaferpayKeyValue $defaultConfig
+     * @param SaferpayKeyValueInterface $defaultConfig
      * @return self
      */
-    public function setInitDefaultsConfig(SaferpayKeyValue $defaultConfig);
+    public function setInitDefaultsConfig(SaferpayKeyValueInterface $defaultConfig);
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getInitDefaultsConfig();
 
     /**
-     * @param SaferpayKeyValue $defaultConfig
+     * @param SaferpayKeyValueInterface $defaultConfig
      * @return self
      */
-    public function setConfirmDefaultsConfig(SaferpayKeyValue $defaultConfig);
+    public function setConfirmDefaultsConfig(SaferpayKeyValueInterface $defaultConfig);
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getConfirmDefaultsConfig();
 
     /**
-     * @param SaferpayKeyValue $defaultConfig
+     * @param SaferpayKeyValueInterface $defaultConfig
      * @return self
      */
-    public function setCompleteDefaultsConfig(SaferpayKeyValue $defaultConfig);
+    public function setCompleteDefaultsConfig(SaferpayKeyValueInterface $defaultConfig);
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getCompleteDefaultsConfig();
+
+    /**
+     * @param SaferpayKeyValueInterface $keyValuePrototype
+     * @return Saferpay
+     */
+    public function setKeyValuePrototype(SaferpayKeyValueInterface $keyValuePrototype);
+
+    /**
+     * @return SaferpayKeyValueInterface
+     */
+    public function getKeyValuePrototype();
 }
