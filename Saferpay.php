@@ -12,11 +12,6 @@ use Psr\Log\NullLogger;
 class Saferpay
 {
     /**
-     * @var SaferpayKeyValueInterface
-     */
-    protected $keyValuePrototype;
-
-    /**
      * @var SaferpayConfigInterface
      */
     protected $config;
@@ -27,6 +22,11 @@ class Saferpay
     protected $data;
 
     /**
+     * @var SaferpayKeyValueInterface
+     */
+    protected $keyValuePrototype;
+
+    /**
      * @var LoggerInterface
      */
     protected $logger;
@@ -35,32 +35,6 @@ class Saferpay
      * @var HttpClientInterface
      */
     protected $httpClient;
-
-    /**
-     * @param SaferpayKeyValueInterface $keyValuePrototype
-     * @return Saferpay
-     */
-    public function setKeyValuePrototype(SaferpayKeyValueInterface $keyValuePrototype)
-    {
-        $this->keyValuePrototype = $keyValuePrototype;
-        return $this;
-    }
-
-    /**
-     * @return SaferpayKeyValueInterface
-     */
-    public function getKeyValuePrototype()
-    {
-        if(is_null($this->keyValuePrototype))
-        {
-            $this->setKeyValuePrototype(new SaferpayKeyValue());
-        }
-
-        $keyValuePrototype = clone $this->keyValuePrototype;
-        $keyValuePrototype->resetAll();
-
-        return $keyValuePrototype;
-    }
 
     /**
      * @param SaferpayConfigInterface $config
@@ -115,6 +89,32 @@ class Saferpay
         }
 
         return $this->data;
+    }
+
+    /**
+     * @param SaferpayKeyValueInterface $keyValuePrototype
+     * @return Saferpay
+     */
+    public function setKeyValuePrototype(SaferpayKeyValueInterface $keyValuePrototype)
+    {
+        $this->keyValuePrototype = $keyValuePrototype;
+        return $this;
+    }
+
+    /**
+     * @return SaferpayKeyValueInterface
+     */
+    public function getKeyValuePrototype()
+    {
+        if(is_null($this->keyValuePrototype))
+        {
+            $this->setKeyValuePrototype(new SaferpayKeyValue());
+        }
+
+        $keyValuePrototype = clone $this->keyValuePrototype;
+        $keyValuePrototype->resetAll();
+
+        return $keyValuePrototype;
     }
 
     /**
