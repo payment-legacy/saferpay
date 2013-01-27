@@ -112,7 +112,7 @@ class Saferpay
         }
 
         $keyValuePrototype = clone $this->keyValuePrototype;
-        $keyValuePrototype->resetAll();
+        $keyValuePrototype->reset();
 
         return $keyValuePrototype;
     }
@@ -209,7 +209,7 @@ class Saferpay
 
         return $this->request(
             $this->getConfig()->getConfirmUrl(),
-            $this->getKeyValuePrototype()->setAll(array(
+            $this->getKeyValuePrototype()->all(array(
                 'DATA' => $xml,
                 'SIGNATURE' => $this->getData()->getConfirmSignature()
             )
@@ -228,7 +228,7 @@ class Saferpay
             return '';
         }
 
-        $data = $this->getKeyValuePrototype()->setAll(array(
+        $data = $this->getKeyValuePrototype()->all(array(
             'ID' => $this->getData()->getConfirmData()->get('ID'),
             'TOKEN' => $this->getData()->getConfirmData()->get('TOKEN'),
             'AMOUNT' => $this->getData()->getInitData()->get('AMOUNT'),

@@ -181,7 +181,7 @@ class SaferpayData implements SaferpayDataInterface
         }
 
         $keyValuePrototype = clone $this->keyValuePrototype;
-        $keyValuePrototype->resetAll();
+        $keyValuePrototype->reset();
 
         return $keyValuePrototype;
     }

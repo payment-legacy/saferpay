@@ -21,14 +21,14 @@ $saferpay->getConfig()->setConfirmUrl($arrConfig['urls']['confirm']);
 $saferpay->getConfig()->setCompleteUrl($arrConfig['urls']['complete']);
 
 // set validation config
-$saferpay->getConfig()->getInitValidationsConfig()->setAll($arrConfig['validators']['init']);
-$saferpay->getConfig()->getConfirmValidationsConfig()->setAll($arrConfig['validators']['confirm']);
-$saferpay->getConfig()->getCompleteValidationsConfig()->setAll($arrConfig['validators']['complete']);
+$saferpay->getConfig()->getInitValidationsConfig()->all($arrConfig['validators']['init']);
+$saferpay->getConfig()->getConfirmValidationsConfig()->all($arrConfig['validators']['confirm']);
+$saferpay->getConfig()->getCompleteValidationsConfig()->all($arrConfig['validators']['complete']);
 
 // set default config
-$saferpay->getConfig()->getInitDefaultsConfig()->setAll($arrConfig['defaults']['init']);
-$saferpay->getConfig()->getConfirmDefaultsConfig()->setAll($arrConfig['defaults']['confirm']);
-$saferpay->getConfig()->getCompleteDefaultsConfig()->setAll($arrConfig['defaults']['complete']);
+$saferpay->getConfig()->getInitDefaultsConfig()->all($arrConfig['defaults']['init']);
+$saferpay->getConfig()->getConfirmDefaultsConfig()->all($arrConfig['defaults']['confirm']);
+$saferpay->getConfig()->getCompleteDefaultsConfig()->all($arrConfig['defaults']['complete']);
 
 // set data
 $saferpay->setData(isset($_SESSION) && is_array($_SESSION) && array_key_exists('saferpay.data', $_SESSION) ? $_SESSION['saferpay.data'] : null);
@@ -50,7 +50,7 @@ if(getParam('status') == 'success')
 }
 else
 {
-    $url = $saferpay->initPayment($saferpay->getKeyValuePrototype()->setAll(array(
+    $url = $saferpay->initPayment($saferpay->getKeyValuePrototype()->all(array(
         'AMOUNT' => 10250,
         'DESCRIPTION' => sprintf('Bestellnummer: %s', '000001'),
         'ORDERID' => '000001',

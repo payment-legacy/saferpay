@@ -2,8 +2,21 @@
 
 namespace Payment\Saferpay;
 
-interface SaferpayKeyValueInterface extends \IteratorAggregate
+interface SaferpayKeyValueInterface extends \Iterator
 {
+    /**
+     * @return self
+     */
+    public function reset();
+
+    /**
+     * @param string $key
+     * @param scalar $value
+     * @return self
+     * @throws \InvalidArgumentException
+     */
+    public function set($key, $value);
+
     /**
      * @param string $key
      * @return bool
@@ -19,21 +32,8 @@ interface SaferpayKeyValueInterface extends \IteratorAggregate
     public function get($key);
 
     /**
-     * @param string $key
-     * @param scalar $value
-     * @return self
-     * @throws \InvalidArgumentException
-     */
-    public function set($key, $value);
-
-    /**
      * @param array $array
      * @return self
      */
-    public function setAll(array $array);
-
-    /**
-     * @return self
-     */
-    public function resetAll();
+    public function all(array $array);
 }

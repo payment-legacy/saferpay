@@ -262,7 +262,7 @@ class SaferpayConfig implements SaferpayConfigInterface
         }
 
         $keyValuePrototype = clone $this->keyValuePrototype;
-        $keyValuePrototype->resetAll();
+        $keyValuePrototype->reset();
 
         return $keyValuePrototype;
     }
