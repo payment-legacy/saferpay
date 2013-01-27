@@ -50,7 +50,7 @@ if(getParam('status') == 'success')
 }
 else
 {
-    $url = $saferpay->initPayment($saferpay->getKeyValuePrototype(array(
+    $url = $saferpay->initPayment($saferpay->getKeyValuePrototype()->setAll(array(
         'AMOUNT' => 10250,
         'DESCRIPTION' => sprintf('Bestellnummer: %s', '000001'),
         'ORDERID' => '000001',
