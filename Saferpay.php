@@ -81,15 +81,7 @@ class Saferpay
         {
             // create saferpay config
             $saferpayConfig = new SaferpayConfig();
-
-            // set the initial values
-            $saferpayConfig->setInitValidationsConfig($this->getKeyValuePrototype());
-            $saferpayConfig->setConfirmValidationsConfig($this->getKeyValuePrototype());
-            $saferpayConfig->setCompleteValidationsConfig($this->getKeyValuePrototype());
-
-            $saferpayConfig->setInitDefaultsConfig($this->getKeyValuePrototype());
-            $saferpayConfig->setConfirmDefaultsConfig($this->getKeyValuePrototype());
-            $saferpayConfig->setCompleteDefaultsConfig($this->getKeyValuePrototype());
+            $saferpayConfig->setKeyValuePrototype($this->getKeyValuePrototype());
 
             $this->setConfig($saferpayConfig);
         }
