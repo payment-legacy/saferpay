@@ -10,16 +10,6 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
     protected $iterator;
 
     /**
-     * @var int
-     */
-    protected $length;
-
-    /**
-     * @var array
-     */
-    protected $keys;
-
-    /**
      * @var array
      */
     protected $keyvalues;
@@ -35,8 +25,6 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
     public function reset()
     {
         $this->iterator = 0;
-        $this->length = 0;
-        $this->keys = array();
         $this->keyvalues = array();
         return $this;
     }
@@ -51,8 +39,6 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
     {
         $this->checkKeyType($key);
         $this->checkValueType($value);
-        $this->length++;
-        $this->keys[] = $key;
         $this->keyvalues[$key] = $value;
         return $this;
     }
@@ -77,6 +63,13 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
     {
         $this->checkKeyExists($key);
         return $this->keyvalues[$key];
+    }
+
+    public function remove($key)
+    {
+        $this->checkKeyExists($key);
+        unset($this->keyvalues[$key]);
+        return $this;
     }
 
     protected function checkKeyType($key)
@@ -129,12 +122,13 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
      */
     public function key()
     {
-        return array_key_exists($this->iterator, $this->keys) ? $this->keys[$this->iterator] : null;
+        $keys = array_keys($this->keyvalues);
+        return array_key_exists($this->iterator, $keys) ? $keys[$this->iterator] : null;
     }
 
     public function next()
     {
-        if($this->iterator == $this->length)
+        if($this->iterator == sizeof($this->keyvalues))
         {
             $this->rewind();
         }
