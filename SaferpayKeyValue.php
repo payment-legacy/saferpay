@@ -118,6 +118,8 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
      */
     public function setAll(array $array)
     {
+        $this->resetAll();
+
         foreach($array as $offset => $value)
         {
             $this->offsetSet($offset, $value);
