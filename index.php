@@ -30,11 +30,8 @@ $saferpay->getConfig()->getInitDefaultsConfig()->setAll($arrConfig['defaults']['
 $saferpay->getConfig()->getConfirmDefaultsConfig()->setAll($arrConfig['defaults']['confirm']);
 $saferpay->getConfig()->getCompleteDefaultsConfig()->setAll($arrConfig['defaults']['complete']);
 
-// get session data if exists
-$saferpayData = isset($_SESSION) && is_array($_SESSION) && array_key_exists('saferpay.data', $_SESSION) ? $_SESSION['saferpay.data'] : null;
-
 // set data
-$saferpay->setData($saferpayData);
+$saferpay->setData(isset($_SESSION) && is_array($_SESSION) && array_key_exists('saferpay.data', $_SESSION) ? $_SESSION['saferpay.data'] : null);
 
 // set guzzle as http client
 $saferpay->setHttpClient(new GuzzleClient());
