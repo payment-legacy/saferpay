@@ -39,35 +39,46 @@ interface SaferpayDataInterface
     public function getCompleteSignature();
 
     /**
-     * @param SaferpayKeyValue $data
+     * @param SaferpayKeyValueInterface $data
      * @return self
      */
-    public function setInitData(SaferpayKeyValue $data);
+    public function setInitData(SaferpayKeyValueInterface $data);
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getInitData();
 
     /**
-     * @param SaferpayKeyValue $data
+     * @param SaferpayKeyValueInterface $data
      * @return self
      */
-    public function setConfirmData(SaferpayKeyValue $data);
+    public function setConfirmData(SaferpayKeyValueInterface $data);
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getConfirmData();
 
     /**
-     * @param SaferpayKeyValue $data
+     * @param SaferpayKeyValueInterface $data
      * @return self
      */
-    public function setCompleteData(SaferpayKeyValue $data);
+    public function setCompleteData(SaferpayKeyValueInterface $data);
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getCompleteData();
+
+    /**
+     * @param SaferpayKeyValueInterface $keyValuePrototype
+     * @return Saferpay
+     */
+    public function setKeyValuePrototype(SaferpayKeyValueInterface $keyValuePrototype);
+
+    /**
+     * @return SaferpayKeyValueInterface
+     */
+    public function getKeyValuePrototype();
 }

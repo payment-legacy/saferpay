@@ -21,19 +21,24 @@ class SaferpayData implements SaferpayDataInterface
     protected $completeSignature;
 
     /**
-     * @var SaferpayKeyValue
+     * @var SaferpayKeyValueInterface
      */
     protected $initData;
 
     /**
-     * @var SaferpayKeyValue
+     * @var SaferpayKeyValueInterface
      */
     protected $confirmData;
 
     /**
-     * @var SaferpayKeyValue
+     * @var SaferpayKeyValueInterface
      */
     protected $completeData;
+
+    /**
+     * @var SaferpayKeyValueInterface
+     */
+    protected $keyValuePrototype;
 
     /**
      * @param string $signature
@@ -90,56 +95,94 @@ class SaferpayData implements SaferpayDataInterface
     }
 
     /**
-     * @param SaferpayKeyValue $data
+     * @param SaferpayKeyValueInterface $data
      * @return self
      */
-    public function setInitData(SaferpayKeyValue $data)
+    public function setInitData(SaferpayKeyValueInterface $data)
     {
         $this->initData = $data;
         return $this;
     }
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getInitData()
     {
+        if(is_null($this->initData))
+        {
+            $this->initData = $this->getKeyValuePrototype();
+        }
         return $this->initData;
     }
 
     /**
-     * @param SaferpayKeyValue $data
+     * @param SaferpayKeyValueInterface $data
      * @return self
      */
-    public function setConfirmData(SaferpayKeyValue $data)
+    public function setConfirmData(SaferpayKeyValueInterface $data)
     {
         $this->confirmData = $data;
         return $this;
     }
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getConfirmData()
     {
+        if(is_null($this->confirmData))
+        {
+            $this->confirmData = $this->getKeyValuePrototype();
+        }
         return $this->confirmData;
     }
 
     /**
-     * @param SaferpayKeyValue $data
+     * @param SaferpayKeyValueInterface $data
      * @return self
      */
-    public function setCompleteData(SaferpayKeyValue $data)
+    public function setCompleteData(SaferpayKeyValueInterface $data)
     {
         $this->completeData = $data;
         return $this;
     }
 
     /**
-     * @return SaferpayKeyValue
+     * @return SaferpayKeyValueInterface
      */
     public function getCompleteData()
     {
+        if(is_null($this->completeData))
+        {
+            $this->completeData = $this->getKeyValuePrototype();
+        }
         return $this->completeData;
+    }
+
+    /**
+     * @param SaferpayKeyValueInterface $keyValuePrototype
+     * @return Saferpay
+     */
+    public function setKeyValuePrototype(SaferpayKeyValueInterface $keyValuePrototype)
+    {
+        $this->keyValuePrototype = $keyValuePrototype;
+        return $this;
+    }
+
+    /**
+     * @return SaferpayKeyValueInterface
+     */
+    public function getKeyValuePrototype()
+    {
+        if(is_null($this->keyValuePrototype))
+        {
+            $this->setKeyValuePrototype(new SaferpayKeyValue());
+        }
+
+        $keyValuePrototype = clone $this->keyValuePrototype;
+        $keyValuePrototype->resetAll();
+
+        return $keyValuePrototype;
     }
 }
