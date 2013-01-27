@@ -47,10 +47,9 @@ class Saferpay
     }
 
     /**
-     * @param array $array
      * @return SaferpayKeyValueInterface
      */
-    public function getKeyValuePrototype(array $array = array())
+    public function getKeyValuePrototype()
     {
         if(is_null($this->keyValuePrototype))
         {
@@ -59,7 +58,6 @@ class Saferpay
 
         $keyValuePrototype = clone $this->keyValuePrototype;
         $keyValuePrototype->resetAll();
-        $keyValuePrototype->setAll($array);
 
         return $keyValuePrototype;
     }
