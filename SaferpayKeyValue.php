@@ -65,6 +65,11 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
         return $this->keyvalues[$key];
     }
 
+    /**
+     * @param string $key
+     * @return self
+     * @throws \InvalidArgumentException
+     */
     public function remove($key)
     {
         $this->checkKeyExists($key);

@@ -32,6 +32,13 @@ interface SaferpayKeyValueInterface extends \Iterator
     public function get($key);
 
     /**
+     * @param string $key
+     * @return self
+     * @throws \InvalidArgumentException
+     */
+    public function remove($key);
+
+    /**
      * @param array $array
      * @return self
      */
