@@ -109,11 +109,6 @@ class Saferpay
             // create empty data
             $saferpayData = new SaferpayData();
 
-            // set the initial values
-            $saferpayData->setInitData($this->getKeyValuePrototype());
-            $saferpayData->setConfirmData($this->getKeyValuePrototype());
-            $saferpayData->setCompleteData($this->getKeyValuePrototype());
-
             // set data
             $this->setData($saferpayData);
         }
