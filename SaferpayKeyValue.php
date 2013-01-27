@@ -125,8 +125,12 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
         return $this;
     }
 
+    /**
+     * @return self
+     */
     public function resetAll()
     {
         $this->keyvalues = new \stdClass();
+        return $this;
     }
 }
