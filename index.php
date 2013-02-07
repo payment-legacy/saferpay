@@ -5,7 +5,6 @@ namespace Payment\Saferpay;
 require "../../../../autoload.php";
 
 use Payment\Saferpay\Saferpay;
-use Payment\Saferpay\Http\Client\GuzzleClient;
 
 session_start();
 
@@ -32,9 +31,6 @@ $saferpay->getConfig()->getCompleteDefaultsConfig()->all($arrConfig['defaults'][
 
 // set data
 $saferpay->setData(isset($_SESSION) && is_array($_SESSION) && array_key_exists('saferpay.data', $_SESSION) ? $_SESSION['saferpay.data'] : null);
-
-// set guzzle as http client
-$saferpay->setHttpClient(new GuzzleClient());
 
 if(getParam('status') == 'success')
 {

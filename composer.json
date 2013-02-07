@@ -13,7 +13,8 @@
     "require": {
         "php": ">=5.3.3",
         "psr/log": "1.0.*",
-        "payment/http-client": "dev-master"
+        "payment/httpclient": "dev-master",
+        "payment/httpclient-implementation": "dev-master"
     },
     "require-dev": {
         "payment/saferpay-guzzle": "master"
