@@ -12,13 +12,10 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "psr/log": "1.0.*"
+        "psr/log": "1.0.*",
+        "payment/http-client": "dev-master"
     },
     "require-dev": {
-        "payment/saferpay-guzzle": "master"
-    },
-    "suggest": {
-        "payment/saferpay-buzz": "master",
         "payment/saferpay-guzzle": "master"
     },
     "autoload": {
