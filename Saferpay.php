@@ -10,8 +10,6 @@ use Psr\Log\NullLogger;
 
 class Saferpay
 {
-
-
     /**
      * @var SaferpayConfigInterface
      */
