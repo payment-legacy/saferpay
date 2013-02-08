@@ -97,7 +97,7 @@ class SaferpayKeyValue implements SaferpayKeyValueInterface
     {
         if(!$this->has($key))
         {
-            throw new \InvalidArgumentException("Unknown key given: {$key}!");
+            throw new \InvalidArgumentException(sprintf('Unknown key given: "%s"!'), $key);
         }
     }
 
