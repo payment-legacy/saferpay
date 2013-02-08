@@ -10,6 +10,8 @@ use Psr\Log\NullLogger;
 
 class Saferpay
 {
+
+
     /**
      * @var SaferpayConfigInterface
      */
@@ -43,6 +45,14 @@ class Saferpay
     {
         $this->config = $config;
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getSaferpayConfig()
+    {
+        return json_decode(file_get_contents(__DIR__.'/config.json'), true);
     }
 
     /**
