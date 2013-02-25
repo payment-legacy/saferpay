@@ -4,6 +4,7 @@ namespace Payment\Saferpay;
 
 require "../../../../autoload.php";
 
+use Payment\HttpClient\BuzzClient;
 use Payment\Saferpay\Saferpay;
 
 session_start();
@@ -12,25 +13,28 @@ session_start();
 $saferpay = new Saferpay();
 
 // get all config data from json
-$arrConfig = json_decode(file_get_contents('config.json'), true);
+$config = $saferpay->getSaferpayConfig();
 
 // update config
-$saferpay->getConfig()->setInitUrl($arrConfig['urls']['init']);
-$saferpay->getConfig()->setConfirmUrl($arrConfig['urls']['confirm']);
-$saferpay->getConfig()->setCompleteUrl($arrConfig['urls']['complete']);
+$saferpay->getConfig()->setInitUrl($config['urls']['init']);
+$saferpay->getConfig()->setConfirmUrl($config['urls']['confirm']);
+$saferpay->getConfig()->setCompleteUrl($config['urls']['complete']);
 
 // set validation config
-$saferpay->getConfig()->getInitValidationsConfig()->all($arrConfig['validators']['init']);
-$saferpay->getConfig()->getConfirmValidationsConfig()->all($arrConfig['validators']['confirm']);
-$saferpay->getConfig()->getCompleteValidationsConfig()->all($arrConfig['validators']['complete']);
+$saferpay->getConfig()->getInitValidationsConfig()->all($config['validators']['init']);
+$saferpay->getConfig()->getConfirmValidationsConfig()->all($config['validators']['confirm']);
+$saferpay->getConfig()->getCompleteValidationsConfig()->all($config['validators']['complete']);
 
 // set default config
-$saferpay->getConfig()->getInitDefaultsConfig()->all($arrConfig['defaults']['init']);
-$saferpay->getConfig()->getConfirmDefaultsConfig()->all($arrConfig['defaults']['confirm']);
-$saferpay->getConfig()->getCompleteDefaultsConfig()->all($arrConfig['defaults']['complete']);
+$saferpay->getConfig()->getInitDefaultsConfig()->all($config['defaults']['init']);
+$saferpay->getConfig()->getConfirmDefaultsConfig()->all($config['defaults']['confirm']);
+$saferpay->getConfig()->getCompleteDefaultsConfig()->all($config['defaults']['complete']);
+
+// set http client
+$saferpay->setHttpClient(new BuzzClient());
 
 // set data
-$saferpay->setData(isset($_SESSION) && is_array($_SESSION) && array_key_exists('saferpay.data', $_SESSION) ? $_SESSION['saferpay.data'] : null);
+$saferpay->setData(getSession('saferpay.data', null));
 
 if(getParam('status') == 'success')
 {
@@ -40,7 +44,7 @@ if(getParam('status') == 'success')
 
         if($lastresponse != '')
         {
-            unset($_SESSION['saferpay.data']);
+            setSession('saferpay.data', null);
         }
     }
 }
@@ -64,7 +68,7 @@ else
     )));
 
     // assign the data to the session
-    $_SESSION['saferpay.data'] = $saferpay->getData();
+    setSession('saferpay.data', $saferpay->getData());
 
     if($url != '')
     {
@@ -85,6 +89,16 @@ function requestUrl()
 function getParam($key, $default = null)
 {
     return array_key_exists($key, $_GET) ? $_GET[$key] : $default;
+}
+
+function setSession($key, $value)
+{
+    $_SESSION[$key] = $value;
+}
+
+function getSession($key, $default = null)
+{
+    return array_key_exists($key, $_SESSION) ? $_SESSION[$key] : $default;
 }
 
 function printData($mixData, $boolDie = false)
