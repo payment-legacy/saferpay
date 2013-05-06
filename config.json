@@ -1,5 +1,5 @@
 {
-    "version": 4.2,
+    "version": 4.3,
     "urls": {
         "init": "https://www.saferpay.com/hosting/CreatePayInit.asp",
         "confirm": "https://www.saferpay.com/hosting/VerifyPayConfirm.asp",
@@ -38,7 +38,7 @@
             "CITY": "ans[..50]",
             "COUNTRY": "a[2]",
             "EMAIL": "ans[..50]",
-            "PHONE": "ans[..50]"
+            "PHONE": "ns[..20]"
         },
         "confirm": {
             "MSGTYPE": "a[..30]",
