@@ -326,7 +326,7 @@ class Saferpay
      */
     protected function request($url, SaferpayKeyValueInterface $data)
     {
-        $response = $this->getHttpClient()->request('POST', $url, self::keyValueToString($data));
+        $response = $this->getHttpClient()->request('POST', $url, self::keyValueToString($data), array('Content-Type' => 'application/x-www-form-urlencoded'));
 
         if($response->getStatusCode() != 200)
         {
