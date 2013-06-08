@@ -3,27 +3,20 @@
 namespace Payment\Saferpay;
 
 use Payment\HttpClient\HttpClientInterface;
-use Payment\HttpClient\NullClient;
-
+use Payment\Saferpay\Data\AbstractData;
+use Payment\Saferpay\Data\PayCompleteParameter;
+use Payment\Saferpay\Data\PayCompleteResponse;
+use Payment\Saferpay\Data\PayConfirmParameter;
+use Payment\Saferpay\Data\PayInitParameter;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
 class Saferpay
 {
     /**
-     * @var SaferpayConfigInterface
+     * @var HttpClientInterface
      */
-    protected $config;
-
-    /**
-     * @var SaferpayDataInterface
-     */
-    protected $data;
-
-    /**
-     * @var SaferpayKeyValueInterface
-     */
-    protected $keyValuePrototype;
+    protected $httpClient;
 
     /**
      * @var LoggerInterface
@@ -31,102 +24,30 @@ class Saferpay
     protected $logger;
 
     /**
-     * @var HttpClientInterface
+     * @param HttpClientInterface $httpClient
+     * @return $this
      */
-    protected $httpClient;
-
-    /**
-     * @param SaferpayConfigInterface $config
-     * @return Saferpay
-     */
-    public function setConfig(SaferpayConfigInterface $config = null)
+    public function setHttpClient(HttpClientInterface $httpClient)
     {
-        $this->config = $config;
+        $this->httpClient = $httpClient;
         return $this;
     }
 
     /**
-     * @return array
+     * @return HttpClientInterface
+     * @throws \Exception
      */
-    public static function getSaferpayConfig()
+    public function getHttpClient()
     {
-        return json_decode(file_get_contents(__DIR__.'/config.json'), true);
-    }
-
-    /**
-     * @return SaferpayConfigInterface
-     */
-    public function getConfig()
-    {
-        if(is_null($this->config))
-        {
-            // create saferpay config
-            $saferpayConfig = new SaferpayConfig();
-            $saferpayConfig->setKeyValuePrototype($this->getKeyValuePrototype());
-
-            $this->setConfig($saferpayConfig);
+        if(is_null($this->httpClient)) {
+            throw new \Exception("Please define a http client based on the HttpClientInterface!");
         }
-
-        return $this->config;
-    }
-
-    /**
-     * @param SaferpayDataInterface $data
-     * @return Saferpay
-     */
-    public function setData(SaferpayDataInterface $data = null)
-    {
-        $this->data = $data;
-        return $this;
-    }
-
-    /**
-     * @return SaferpayDataInterface
-     */
-    public function getData()
-    {
-        if(is_null($this->data))
-        {
-            // create empty data
-            $saferpayData = new SaferpayData();
-            $saferpayData->setKeyValuePrototype($this->getKeyValuePrototype());
-
-            // set data
-            $this->setData($saferpayData);
-        }
-
-        return $this->data;
-    }
-
-    /**
-     * @param SaferpayKeyValueInterface $keyValuePrototype
-     * @return Saferpay
-     */
-    public function setKeyValuePrototype(SaferpayKeyValueInterface $keyValuePrototype)
-    {
-        $this->keyValuePrototype = $keyValuePrototype;
-        return $this;
-    }
-
-    /**
-     * @return SaferpayKeyValueInterface
-     */
-    public function getKeyValuePrototype()
-    {
-        if(is_null($this->keyValuePrototype))
-        {
-            $this->setKeyValuePrototype(new SaferpayKeyValue());
-        }
-
-        $keyValuePrototype = clone $this->keyValuePrototype;
-        $keyValuePrototype->reset();
-
-        return $keyValuePrototype;
+        return $this->httpClient;
     }
 
     /**
      * @param LoggerInterface $logger
-     * @return Saferpay
+     * @return $this
      */
     public function setLogger(LoggerInterface $logger)
     {
@@ -139,313 +60,119 @@ class Saferpay
      */
     public function getLogger()
     {
-        if(is_null($this->logger))
-        {
-            // create null logger
+        if(is_null($this->logger)) {
             $this->logger = new NullLogger();
         }
-
         return $this->logger;
     }
 
     /**
-     * @param HttpClientInterface $httpClient
-     * @return Saferpay
-     */
-    public function setHttpClient(HttpClientInterface $httpClient)
-    {
-        $this->httpClient = $httpClient;
-        return $this;
-    }
-
-    /**
-     * @return HttpClientInterface
-     */
-    public function getHttpClient()
-    {
-        if(is_null($this->httpClient))
-        {
-            $this->httpClient = new NullClient();
-        }
-
-        return $this->httpClient;
-    }
-
-    /**
-     * @param SaferpayKeyValueInterface $data
+     * @param PayInitParameter $payInitParameter
      * @return string
      */
-    public function initPayment(SaferpayKeyValueInterface $data)
+    public function createPayInit(PayInitParameter $payInitParameter)
     {
-        $this->updateData(
-            $this->getConfig()->getInitValidationsConfig(),
-            $this->getConfig()->getInitDefaultsConfig(),
-            $this->getData()->getInitData(),
-            $data
-        );
-
-        $response = $this->request(
-            $this->getConfig()->getInitUrl(),
-            $this->getData()->getInitData()
-        );
-
-        $this->getData()->setInitSignature(self::parameterFromUrl($response, 'SIGNATURE'));
-
-        return $response;
+        return $this->request($payInitParameter->getRequestUrl(), $payInitParameter->getData());
     }
 
     /**
-     * @param string $xml
-     * @param string $signature
+     * @param PayConfirmParameter $payConfirmParameter
+     * @param $xml
+     * @param $signature
      * @return string
      */
-    public function confirmPayment($xml, $signature)
+    public function verifyPayConfirm(PayConfirmParameter $payConfirmParameter, $xml, $signature)
     {
-        $data = $this->getKeyValuePrototype();
-
-        $this->prepareFragment($xml, $data);
-
-        $this->updateData(
-            $this->getConfig()->getConfirmValidationsConfig(),
-            $this->getConfig()->getConfirmDefaultsConfig(),
-            $this->getData()->getConfirmData(),
-            $data
-        );
-
-        $this->getData()->setConfirmSignature($signature);
-
-        return $this->request(
-            $this->getConfig()->getConfirmUrl(),
-            $this->getKeyValuePrototype()->all(array(
-                'DATA' => $xml,
-                'SIGNATURE' => $this->getData()->getConfirmSignature()
-            )
+        $this->fillDataFromXML($payConfirmParameter, $xml);
+        return $this->request($payConfirmParameter->getRequestUrl(), array(
+            'DATA' => $xml,
+            'SIGNATURE' => $signature
         ));
     }
 
     /**
+     * @param PayConfirmParameter $payConfirmParameter
+     * @param PayCompleteParameter $payCompleteParameter
+     * @param PayCompleteResponse $payCompleteResponse
      * @param string $action
      * @return string
+     * @throws \Exception
      */
-    public function completePayment($action = 'Settlement')
+    public function payCompleteV2(
+        PayConfirmParameter $payConfirmParameter,
+        PayCompleteParameter $payCompleteParameter,
+        PayCompleteResponse $payCompleteResponse,
+        $action = 'Settlement'
+    )
     {
-        if(!$this->getData()->getConfirmData()->has('ID'))
-        {
-            $this->getLogger()->critical('Call confirm payment first!');
-            return '';
+        if(is_null($payConfirmParameter->get('ID'))) {
+            $this->getLogger()->critical("Saferpay: call confirm before complete!");
+            throw new \Exception("Saferpay: call confirm before complete!");
         }
 
-        $data = $this->getKeyValuePrototype()->all(array(
-            'ID' => $this->getData()->getConfirmData()->get('ID'),
-            'TOKEN' => $this->getData()->getConfirmData()->get('TOKEN'),
-            'AMOUNT' => $this->getData()->getInitData()->get('AMOUNT'),
-            'ACCOUNTID' => $this->getData()->getInitData()->get('ACCOUNTID'),
-            'ACTION' => $action,
-        ));
+        $payCompleteParameter->setID($payConfirmParameter->getID());
+        $payCompleteParameter->setAMOUNT($payConfirmParameter->getAMOUNT());
+        $payCompleteParameter->setACCOUNTID($payConfirmParameter->getACCOUNTID());
+        $payCompleteParameter->setACTION($action);
 
-        // add password for test accounts
-        if(substr($this->getData()->getInitData()->get('ACCOUNTID'), 0, 6) == "99867-")
-        {
-            $data->set('spPassword', 'XAjc3Kna');
+        if(substr($payCompleteParameter->getACCOUNTID(), 0, 6) == "99867-") {
+            $response = $this->request($payCompleteParameter->getRequestUrl(), array_merge($payCompleteParameter->getData(), array('spPassword' => 'XAjc3Kna')));
+        } else {
+            $response = $this->request($payCompleteParameter->getRequestUrl(), $payCompleteParameter->getData());
         }
 
-        $response = $this->request(
-            $this->getConfig()->getCompleteUrl(),
-            $data
-        );
-
-        if(substr($response, 0, 2) == 'OK')
-        {
-            $this->prepareFragment(substr($response, 3), $data);
-        }
-
-        $this->updateData(
-            $this->getConfig()->getCompleteValidationsConfig(),
-            $this->getConfig()->getCompleteDefaultsConfig(),
-            $this->getData()->getCompleteData(),
-            $data
-        );
+        $this->fillDataFromXML($payCompleteResponse, substr($response, 3));
 
         return $response;
     }
 
     /**
-     * @param SaferpayKeyValueInterface $validator
-     * @param SaferpayKeyValueInterface $default
-     * @param SaferpayKeyValueInterface $data
-     * @param SaferpayKeyValueInterface $newData
+     * @param $url
+     * @param array $data
+     * @return mixed
+     * @throws \Exception
      */
-    protected function updateData(SaferpayKeyValueInterface $validator, SaferpayKeyValueInterface $default, SaferpayKeyValueInterface $data, SaferpayKeyValueInterface $newData)
+    protected function request($url, array $data)
     {
-        foreach($newData as $key => $value)
-        {
-            $this->setValue($validator, $data, $key, $value);
+        $response = $this->getHttpClient()->request(
+            'POST',
+            $url,
+            http_build_query($data),
+            array('Content-Type' => 'application/x-www-form-urlencoded')
+        );
+
+        if($response->getStatusCode() != 200) {
+            $this->getLogger()->critical("Saferpay: request failed with statuscode: {statuscode}!", array('statuscode' => $response->getStatusCode()));
+            throw new \Exception("Saferpay: request failed with statuscode: {$response->getStatusCode()}!");
         }
 
-        foreach($default as $key => $value)
-        {
-            // do no overwrite data with defaults
-            if(!$data->has($key))
-            {
-                $this->setValue($validator, $data, $key, $value);
-            }
+        if(strpos($response->getContent(), 'ERROR') !== false) {
+            $this->getLogger()->critical("Saferpay: request failed: {content}!", array('content' => $response->getContent()));
+            throw new \Exception("Saferpay: request failed: {$response->getContent()}!");
         }
+
+        return $response->getContent();
     }
 
     /**
-     * @param SaferpayKeyValueInterface $validator
-     * @param SaferpayKeyValueInterface $data
-     * @param string $key
-     * @param scalar $value
-     */
-    protected function setValue(SaferpayKeyValueInterface $validator, SaferpayKeyValueInterface $data, $key, $value)
-    {
-        if(!$validator->has($key))
-        {
-            $this->getLogger()->warning("saferpay: Can't find validator for key {key}", array('key' => $key));
-            return;
-        }
-
-        if(!self::isValidValue($validator->get($key), $value))
-        {
-            $this->getLogger()->warning("saferpay: Can't validate value {value} for key {key} against validator {validator}", array(
-                'validator' => $validator->get($key),
-                'key' => $key,
-                'value' => $value,
-            ));
-            return;
-        }
-
-        $data->set($key, $value);
-    }
-
-    /**
-     * @param string $url
-     * @param SaferpayKeyValueInterface $data
-     * @return string
-     */
-    protected function request($url, SaferpayKeyValueInterface $data)
-    {
-        $response = $this->getHttpClient()->request('POST', $url, self::keyValueToString($data), array('Content-Type' => 'application/x-www-form-urlencoded'));
-
-        if($response->getStatusCode() != 200)
-        {
-            $this->getLogger()->critical("saferpay: request failed with statuscode {statuscode}", array('statuscode' => $response->getStatusCode()));
-            return '';
-        }
-
-        if(strpos($response->getContent(), 'ERROR') !== false)
-        {
-            $this->getLogger()->critical("saferpay: request failed {content}", array('content' => $response->getContent()));
-            return '';
-        }
-
-        return $response->getContent(true);
-    }
-
-    /**
+     * @param AbstractData $data
      * @param $xml
-     * @param SaferpayKeyValueInterface $data
+     * @throws \Exception
      */
-    protected function prepareFragment($xml, SaferpayKeyValueInterface $data)
+    protected function fillDataFromXML(AbstractData $data, $xml)
     {
         $document = new \DOMDocument();
         $fragment = $document->createDocumentFragment();
 
-        if(!$fragment->appendXML($xml))
-        {
-            $this->getLogger()->critical("saferpay: Invalid xml received from saferpay");
-            return;
+        if(!$fragment->appendXML($xml)) {
+            $this->getLogger()->critical("Saferpay: Invalid xml received from saferpay");
+            throw new \Exception("Saferpay: Invalid xml received from saferpay!");
         }
 
-        self::fragmentToKeyValue($fragment, $data);
-    }
-
-    /**
-     * @param string $condition
-     * @param scalar $value
-     * @return boolean
-     */
-    public static function isValidValue($condition, $value)
-    {
-        if(is_string($condition) &&
-            is_scalar($value) &&
-            preg_match(self::conditionToRegex($condition), $value) == 1)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * @param string $condition
-     * @return string
-     */
-    public static function conditionToRegex($condition)
-    {
-        $prepatedPattern = str_replace
-        (
-            array
-            (
-                ']',
-                '[',
-                '..',
-                'a',
-                'n',
-                's'
-            ),
-            array
-            (
-                '}',
-                ']{',
-                '1,',
-                'a-z\p{L}\ \t',
-                '\d',
-                '\+\-\_\:\;\/\\\<\>\(\)\.\=\?\@',
-            ),
-            $condition
-        );
-
-        return '/^([' . $prepatedPattern . ')$/ui' ;
-    }
-
-    /**
-     * @param \DOMDocumentFragment $fragment
-     * @param SaferpayKeyValueInterface $data
-     */
-    public static function fragmentToKeyValue(\DOMDocumentFragment $fragment, SaferpayKeyValueInterface $data)
-    {
         foreach($fragment->firstChild->attributes as $attribute)
         {
             /** @var \DOMAttr $attribute */
             $data->set($attribute->nodeName, $attribute->nodeValue);
         }
-    }
-
-    /**
-     * @param SaferpayKeyValueInterface $data
-     * @return string
-     */
-    public static function keyValueToString(SaferpayKeyValueInterface $data)
-    {
-        $content = '';
-
-        foreach($data as $key => $value)
-        {
-            $content .= $key . '=' . urlencode($value) . '&';
-        }
-
-        return substr($content, 0, -1);
-    }
-
-    /**
-     * @param string $url
-     * @param string $key
-     * @return string|null
-     */
-    public static function parameterFromUrl($url, $key)
-    {
-        parse_str(parse_url($url, PHP_URL_QUERY), $parameters);
-        return is_array($parameters) && array_key_exists($key, $parameters) ? $parameters[$key] : '';
     }
 }
