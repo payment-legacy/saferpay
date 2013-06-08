@@ -65,6 +65,5 @@ if(getParam('status') == 'success') {
     $payInitParameter->setBACKLINK(requestUrl() . '?status=back');
     $payInitParameter->setDELIVERY('no'); // hide address form
     header("Location: {$saferpay->createPayInit($payInitParameter)}", 302);
-    die();
 }
 ```
