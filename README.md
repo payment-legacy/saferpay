@@ -12,21 +12,6 @@ use Payment\Saferpay\Data\PayConfirmParameter;
 use Payment\Saferpay\Data\PayInitParameter;
 ```
 
-##### we define some helpers (plain php)
-
-```php
-function requestUrl()
-{
-    $protocol = strtolower(substr($_SERVER['SERVER_PROTOCOL'], 0, strpos($_SERVER['SERVER_PROTOCOL'], '/')));
-    return $protocol . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-}
-
-function getParam($key, $default = null)
-{
-    return array_key_exists($key, $_GET) ? $_GET[$key] : $default;
-}
-```
-
 ##### creating a saferpay instance
 
 ```php
@@ -65,5 +50,20 @@ if(getParam('status') == 'success') {
     $payInitParameter->setBACKLINK(requestUrl() . '?status=back');
     $payInitParameter->setDELIVERY('no'); // hide address form
     header("Location: {$saferpay->createPayInit($payInitParameter)}", 302);
+}
+```
+
+##### we define some helpers (plain php)
+
+```php
+function requestUrl()
+{
+    $protocol = strtolower(substr($_SERVER['SERVER_PROTOCOL'], 0, strpos($_SERVER['SERVER_PROTOCOL'], '/')));
+    return $protocol . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+}
+
+function getParam($key, $default = null)
+{
+    return array_key_exists($key, $_GET) ? $_GET[$key] : $default;
 }
 ```
