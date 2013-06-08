@@ -31,7 +31,6 @@ function getParam($key, $default = null)
 
 ```php
 $saferpay = new Saferpay;
-$saferpay->setHttpClient(new BuzzClient());
 ```
 
 ##### set httpclient (with buzz)
