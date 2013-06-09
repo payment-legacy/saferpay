@@ -14,13 +14,14 @@ $saferpay = new Saferpay;
 $saferpay->setHttpClient(new BuzzClient());
 
 $amount = 1200;
+$currency = 'CHF';
 
 if(getParam('status') == 'success') {
     $payConfirmParameter = new PayConfirmParameter();
     $payCompleteParameter = new PayCompleteParameter();
     $payCompleteResponse = new PayCompleteResponse();
     $saferpay->verifyPayConfirm($payConfirmParameter, getParam('DATA'), getParam('SIGNATURE'));
-    if($payConfirmParameter->getAMOUNT() == $amount) {
+    if($payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $$currency) {
         $saferpay->payCompleteV2($payConfirmParameter, $payCompleteParameter, $payCompleteResponse);
         echo 'payed!';
     } else {
@@ -30,7 +31,7 @@ if(getParam('status') == 'success') {
     $payInitParameter = new PayInitParameter();
     $payInitParameter->setACCOUNTID('99867-94913159');
     $payInitParameter->setAMOUNT($amount);
-    $payInitParameter->setCURRENCY('CHF');
+    $payInitParameter->setCURRENCY($currency);
     $payInitParameter->setDESCRIPTION(sprintf('Bestellnummer: %s', '000001'));
     $payInitParameter->setSUCCESSLINK(requestUrl() . '?status=success');
     $payInitParameter->setFAILLINK(requestUrl() . '?status=fail');
