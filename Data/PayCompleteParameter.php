@@ -5,73 +5,73 @@ namespace Payment\Saferpay\Data;
 class PayCompleteParameter extends AbstractData implements PayCompleteParameterInterface
 {
     /**
-     * @param string $ID
+     * @param string $id
      * @return $this
      */
-    public function setID($ID)
+    public function setId($id)
     {
-        $this->set('ID', $ID);
+        $this->set('ID', $id);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getID()
+    public function getId()
     {
         return $this->get('ID');
     }
 
     /**
-     * @param int $AMOUNT
+     * @param int $amount
      * @return $this
      */
-    public function setAMOUNT($AMOUNT)
+    public function setAmount($amount)
     {
-        $this->set('AMOUNT', $AMOUNT);
+        $this->set('AMOUNT', $amount);
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getAMOUNT()
+    public function getAmount()
     {
         return $this->get('AMOUNT');
     }
 
     /**
-     * @param string $ACCOUNTID
+     * @param string $accountid
      * @return $this
      */
-    public function setACCOUNTID($ACCOUNTID)
+    public function setAccountid($accountid)
     {
-        $this->set('ACCOUNTID', $ACCOUNTID);
+        $this->set('ACCOUNTID', $accountid);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getACCOUNTID()
+    public function getAccountid()
     {
         return $this->get('ACCOUNTID');
     }
 
     /**
-     * @param string $ACTION
+     * @param string $action
      * @return $this
      */
-    public function setACTION($ACTION)
+    public function setAction($action)
     {
-        $this->set('ACTION', $ACTION);
+        $this->set('ACTION', $action);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getACTION()
+    public function getAction()
     {
         return $this->get('ACTION');
     }

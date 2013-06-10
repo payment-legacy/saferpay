@@ -5,91 +5,91 @@ namespace Payment\Saferpay\Data;
 class PayCompleteResponse extends AbstractData implements PayCompleteResponseInterface
 {
     /**
-     * @param string $MSGTYPE
+     * @param string $msgtype
      * @return $this
      */
-    public function setMSGTYPE($MSGTYPE)
+    public function setMsgtype($msgtype)
     {
-        $this->set('MSGTYPE', $MSGTYPE);
+        $this->set('MSGTYPE', $msgtype);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getMSGTYPE()
+    public function getMsgtype()
     {
         return $this->get('MSGTYPE');
     }
 
     /**
-     * @param string $ID
+     * @param string $id
      * @return $this
      */
-    public function setID($ID)
+    public function setId($id)
     {
-        $this->set('ID', $ID);
+        $this->set('ID', $id);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getID()
+    public function getId()
     {
         return $this->get('ID');
     }
 
     /**
-     * @param int $RESULT
+     * @param int $result
      * @return $this
      */
-    public function setRESULT($RESULT)
+    public function setResult($result)
     {
-        $this->set('RESULT', $RESULT);
+        $this->set('RESULT', $result);
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getRESULT()
+    public function getResult()
     {
         return $this->get('RESULT');
     }
 
     /**
-     * @param string $MESSAGE
+     * @param string $message
      * @return $this
      */
-    public function setMESSAGE($MESSAGE)
+    public function setMessage($message)
     {
-        $this->set('MESSAGE', $MESSAGE);
+        $this->set('MESSAGE', $message);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getMESSAGE()
+    public function getMessage()
     {
         return $this->get('MESSAGE');
     }
 
     /**
-     * @param string $AUTHMESSAGE
+     * @param string $authmessage
      * @return $this
      */
-    public function setAUTHMESSAGE($AUTHMESSAGE)
+    public function setAuthmessage($authmessage)
     {
-        $this->set('AUTHMESSAGE', $AUTHMESSAGE);
+        $this->set('AUTHMESSAGE', $authmessage);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getAUTHMESSAGE()
+    public function getAuthmessage()
     {
         return $this->get('AUTHMESSAGE');
     }

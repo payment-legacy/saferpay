@@ -5,577 +5,577 @@ namespace Payment\Saferpay\Data;
 class PayInitParameter extends AbstractData implements PayInitParameterInterface
 {
     /**
-     * @param string $ACCOUNTID
+     * @param string $accountid
      * @return $this
      */
-    public function setACCOUNTID($ACCOUNTID)
+    public function setAccountid($accountid)
     {
-        $this->set('ACCOUNTID', $ACCOUNTID);
+        $this->set('ACCOUNTID', $accountid);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getACCOUNTID()
+    public function getAccountid()
     {
         return $this->get('ACCOUNTID');
     }
 
     /**
-     * @param int $AMOUNT
+     * @param int $amount
      * @return $this
      */
-    public function setAMOUNT($AMOUNT)
+    public function setAmount($amount)
     {
-        $this->set('AMOUNT', $AMOUNT);
+        $this->set('AMOUNT', $amount);
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getAMOUNT()
+    public function getAmount()
     {
         return $this->get('AMOUNT');
     }
 
     /**
-     * @param string $CURRENCY
+     * @param string $currency
      * @return $this
      */
-    public function setCURRENCY($CURRENCY)
+    public function setCurrency($currency)
     {
-        $this->set('CURRENCY', $CURRENCY);
+        $this->set('CURRENCY', $currency);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getCURRENCY()
+    public function getCurrency()
     {
         return $this->get('CURRENCY');
     }
 
     /**
-     * @param string $DESCRIPTION
+     * @param string $description
      * @return $this
      */
-    public function setDESCRIPTION($DESCRIPTION)
+    public function setDescription($description)
     {
-        $this->set('DESCRIPTION', $DESCRIPTION);
+        $this->set('DESCRIPTION', $description);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getDESCRIPTION()
+    public function getDescription()
     {
         return $this->get('DESCRIPTION');
     }
 
     /**
-     * @param string $ORDERID
+     * @param string $orderid
      * @return $this
      */
-    public function setORDERID($ORDERID)
+    public function setOrderid($orderid)
     {
-        $this->set('ORDERID', $ORDERID);
+        $this->set('ORDERID', $orderid);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getORDERID()
+    public function getOrderid()
     {
         return $this->get('ORDERID');
     }
 
     /**
-     * @param string $VTCONFIG
+     * @param string $vtconfig
      * @return $this
      */
-    public function setVTCONFIG($VTCONFIG)
+    public function setVtconfig($vtconfig)
     {
-        $this->set('VTCONFIG', $VTCONFIG);
+        $this->set('VTCONFIG', $vtconfig);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getVTCONFIG()
+    public function getVtconfig()
     {
         return $this->get('VTCONFIG');
     }
 
     /**
-     * @param string $SUCCESSLINK
+     * @param string $successlink
      * @return $this
      */
-    public function setSUCCESSLINK($SUCCESSLINK)
+    public function setSuccesslink($successlink)
     {
-        $this->set('SUCCESSLINK', $SUCCESSLINK);
+        $this->set('SUCCESSLINK', $successlink);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getSUCCESSLINK()
+    public function getSuccesslink()
     {
         return $this->get('SUCCESSLINK');
     }
 
     /**
-     * @param string $FAILLINK
+     * @param string $faillink
      * @return $this
      */
-    public function setFAILLINK($FAILLINK)
+    public function setFaillink($faillink)
     {
-        $this->set('FAILLINK', $FAILLINK);
+        $this->set('FAILLINK', $faillink);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getFAILLINK()
+    public function getFaillink()
     {
         return $this->get('FAILLINK');
     }
 
     /**
-     * @param string $BACKLINK
+     * @param string $backlink
      * @return $this
      */
-    public function setBACKLINK($BACKLINK)
+    public function setBacklink($backlink)
     {
-        $this->set('BACKLINK', $BACKLINK);
+        $this->set('BACKLINK', $backlink);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getBACKLINK()
+    public function getBacklink()
     {
         return $this->get('BACKLINK');
     }
 
     /**
-     * @param string $NOTIFYURL
+     * @param string $notifyurl
      * @return $this
      */
-    public function setNOTIFYURL($NOTIFYURL)
+    public function setNotifyurl($notifyurl)
     {
-        $this->set('NOTIFYURL', $NOTIFYURL);
+        $this->set('NOTIFYURL', $notifyurl);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getNOTIFYURL()
+    public function getNotifyurl()
     {
         return $this->get('NOTIFYURL');
     }
 
     /**
-     * @param int $AUTOCLOSE
+     * @param int $autoclose
      * @return $this
      */
-    public function setAUTOCLOSE($AUTOCLOSE)
+    public function setAutoclose($autoclose)
     {
-        $this->set('AUTOCLOSE', $AUTOCLOSE);
+        $this->set('AUTOCLOSE', $autoclose);
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getAUTOCLOSE()
+    public function getAutoclose()
     {
         return $this->get('AUTOCLOSE');
     }
 
     /**
-     * @param string $CCNAME
+     * @param string $ccname
      * @return $this
      */
-    public function setCCNAME($CCNAME)
+    public function setCcname($ccname)
     {
-        $this->set('CCNAME', $CCNAME);
+        $this->set('CCNAME', $ccname);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getCCNAME()
+    public function getCcname()
     {
         return $this->get('CCNAME');
     }
 
     /**
-     * @param string $NOTIFYADDRESS
+     * @param string $notifyaddress
      * @return $this
      */
-    public function setNOTIFYADDRESS($NOTIFYADDRESS)
+    public function setNotifyaddress($notifyaddress)
     {
-        $this->set('NOTIFYADDRESS', $NOTIFYADDRESS);
+        $this->set('NOTIFYADDRESS', $notifyaddress);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getNOTIFYADDRESS()
+    public function getNotifyaddress()
     {
         return $this->get('NOTIFYADDRESS');
     }
 
     /**
-     * @param string $USERNOTIFY
+     * @param string $usernotify
      * @return $this
      */
-    public function setUSERNOTIFY($USERNOTIFY)
+    public function setUsernotify($usernotify)
     {
-        $this->set('USERNOTIFY', $USERNOTIFY);
+        $this->set('USERNOTIFY', $usernotify);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getUSERNOTIFY()
+    public function getUsernotify()
     {
         return $this->get('USERNOTIFY');
     }
 
     /**
-     * @param string $LANGID
+     * @param string $langid
      * @return $this
      */
-    public function setLANGID($LANGID)
+    public function setLangid($langid)
     {
-        $this->set('LANGID', $LANGID);
+        $this->set('LANGID', $langid);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getLANGID()
+    public function getLangid()
     {
         return $this->get('LANGID');
     }
 
     /**
-     * @param string $SHOWLANGUAGES
+     * @param string $showlanguages
      * @return $this
      */
-    public function setSHOWLANGUAGES($SHOWLANGUAGES)
+    public function setShowlanguages($showlanguages)
     {
-        $this->set('SHOWLANGUAGES', $SHOWLANGUAGES);
+        $this->set('SHOWLANGUAGES', $showlanguages);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getSHOWLANGUAGES()
+    public function getShowlanguages()
     {
         return $this->get('SHOWLANGUAGES');
     }
 
     /**
-     * @param string $PAYMENTMETHODS
+     * @param string $paymentmethods
      * @return $this
      */
-    public function setPAYMENTMETHODS($PAYMENTMETHODS)
+    public function setPaymentmethods($paymentmethods)
     {
-        $this->set('PAYMENTMETHODS', $PAYMENTMETHODS);
+        $this->set('PAYMENTMETHODS', $paymentmethods);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getPAYMENTMETHODS()
+    public function getPaymentmethods()
     {
         return $this->get('PAYMENTMETHODS');
     }
 
     /**
-     * @param int $DURATION
+     * @param int $duration
      * @return $this
      */
-    public function setDURATION($DURATION)
+    public function setDuration($duration)
     {
-        $this->set('DURATION', $DURATION);
+        $this->set('DURATION', $duration);
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getDURATION()
+    public function getDuration()
     {
         return $this->get('DURATION');
     }
 
     /**
-     * @param string $CARDREFID
+     * @param string $cardrefid
      * @return $this
      */
-    public function setCARDREFID($CARDREFID)
+    public function setCardrefid($cardrefid)
     {
-        $this->set('CARDREFID', $CARDREFID);
+        $this->set('CARDREFID', $cardrefid);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getCARDREFID()
+    public function getCardrefid()
     {
         return $this->get('CARDREFID');
     }
 
     /**
-     * @param string $DELIVERY
+     * @param string $delivery
      * @return $this
      */
-    public function setDELIVERY($DELIVERY)
+    public function setDelivery($delivery)
     {
-        $this->set('DELIVERY', $DELIVERY);
+        $this->set('DELIVERY', $delivery);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getDELIVERY()
+    public function getDelivery()
     {
         return $this->get('DELIVERY');
     }
 
     /**
-     * @param string $APPEARANCE
+     * @param string $appearance
      * @return $this
      */
-    public function setAPPEARANCE($APPEARANCE)
+    public function setAppearance($appearance)
     {
-        $this->set('APPEARANCE', $APPEARANCE);
+        $this->set('APPEARANCE', $appearance);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getAPPEARANCE()
+    public function getAppearance()
     {
         return $this->get('APPEARANCE');
     }
 
     /**
-     * @param string $ADDRESS
+     * @param string $address
      * @return $this
      */
-    public function setADDRESS($ADDRESS)
+    public function setAddress($address)
     {
-        $this->set('ADDRESS', $ADDRESS);
+        $this->set('ADDRESS', $address);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getADDRESS()
+    public function getAddress()
     {
         return $this->get('ADDRESS');
     }
 
     /**
-     * @param string $COMPANY
+     * @param string $company
      * @return $this
      */
-    public function setCOMPANY($COMPANY)
+    public function setCompany($company)
     {
-        $this->set('COMPANY', $COMPANY);
+        $this->set('COMPANY', $company);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getCOMPANY()
+    public function getCompany()
     {
         return $this->get('COMPANY');
     }
 
     /**
-     * @param string $GENDER
+     * @param string $gender
      * @return $this
      */
-    public function setGENDER($GENDER)
+    public function setGender($gender)
     {
-        $this->set('GENDER', $GENDER);
+        $this->set('GENDER', $gender);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getGENDER()
+    public function getGender()
     {
         return $this->get('GENDER');
     }
 
     /**
-     * @param string $FIRSTNAME
+     * @param string $firstname
      * @return $this
      */
-    public function setFIRSTNAME($FIRSTNAME)
+    public function setFirstname($firstname)
     {
-        $this->set('FIRSTNAME', $FIRSTNAME);
+        $this->set('FIRSTNAME', $firstname);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getFIRSTNAME()
+    public function getFirstname()
     {
         return $this->get('FIRSTNAME');
     }
 
     /**
-     * @param string $LASTNAME
+     * @param string $lastname
      * @return $this
      */
-    public function setLASTNAME($LASTNAME)
+    public function setLastname($lastname)
     {
-        $this->set('LASTNAME', $LASTNAME);
+        $this->set('LASTNAME', $lastname);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getLASTNAME()
+    public function getLastname()
     {
         return $this->get('LASTNAME');
     }
 
     /**
-     * @param string $STREET
+     * @param string $street
      * @return $this
      */
-    public function setSTREET($STREET)
+    public function setStreet($street)
     {
-        $this->set('STREET', $STREET);
+        $this->set('STREET', $street);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getSTREET()
+    public function getStreet()
     {
         return $this->get('STREET');
     }
 
     /**
-     * @param string $ZIP
+     * @param string $zip
      * @return $this
      */
-    public function setZIP($ZIP)
+    public function setZip($zip)
     {
-        $this->set('ZIP', $ZIP);
+        $this->set('ZIP', $zip);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getZIP()
+    public function getZip()
     {
         return $this->get('ZIP');
     }
 
     /**
-     * @param string $CITY
+     * @param string $city
      * @return $this
      */
-    public function setCITY($CITY)
+    public function setCity($city)
     {
-        $this->set('CITY', $CITY);
+        $this->set('CITY', $city);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getCITY()
+    public function getCity()
     {
         return $this->get('CITY');
     }
 
     /**
-     * @param string $COUNTRY
+     * @param string $country
      * @return $this
      */
-    public function setCOUNTRY($COUNTRY)
+    public function setCountry($country)
     {
-        $this->set('COUNTRY', $COUNTRY);
+        $this->set('COUNTRY', $country);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getCOUNTRY()
+    public function getCountry()
     {
         return $this->get('COUNTRY');
     }
 
     /**
-     * @param string $EMAIL
+     * @param string $email
      * @return $this
      */
-    public function setEMAIL($EMAIL)
+    public function setEmail($email)
     {
-        $this->set('EMAIL', $EMAIL);
+        $this->set('EMAIL', $email);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getEMAIL()
+    public function getEmail()
     {
         return $this->get('EMAIL');
     }
 
     /**
-     * @param string $PHONE
+     * @param string $phone
      * @return $this
      */
-    public function setPHONE($PHONE)
+    public function setPhone($phone)
     {
-        $this->set('PHONE', $PHONE);
+        $this->set('PHONE', $phone);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getPHONE()
+    public function getPhone()
     {
         return $this->get('PHONE');
     }

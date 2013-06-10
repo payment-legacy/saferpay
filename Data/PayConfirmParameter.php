@@ -5,361 +5,361 @@ namespace Payment\Saferpay\Data;
 class PayConfirmParameter extends AbstractData implements PayConfirmParameterInterface
 {
     /**
-     * @param string $MSGTYPE
+     * @param string $msgtype
      * @return $this
      */
-    public function setMSGTYPE($MSGTYPE)
+    public function setMsgtype($msgtype)
     {
-        $this->set('MSGTYPE', $MSGTYPE);
+        $this->set('MSGTYPE', $msgtype);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getMSGTYPE()
+    public function getMsgtype()
     {
         return $this->get('MSGTYPE');
     }
 
     /**
-     * @param string $VTVERIFY
+     * @param string $vtverify
      * @return $this
      */
-    public function setVTVERIFY($VTVERIFY)
+    public function setVtverify($vtverify)
     {
-        $this->set('VTVERIFY', $VTVERIFY);
+        $this->set('VTVERIFY', $vtverify);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getVTVERIFY()
+    public function getVtverify()
     {
         return $this->get('VTVERIFY');
     }
 
     /**
-     * @param string $KEYID
+     * @param string $keyid
      * @return $this
      */
-    public function setKEYID($KEYID)
+    public function setKeyid($keyid)
     {
-        $this->set('KEYID', $KEYID);
+        $this->set('KEYID', $keyid);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getKEYID()
+    public function getKeyid()
     {
         return $this->get('KEYID');
     }
 
     /**
-     * @param string $ID
+     * @param string $id
      * @return $this
      */
-    public function setID($ID)
+    public function setId($id)
     {
-        $this->set('ID', $ID);
+        $this->set('ID', $id);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getID()
+    public function getId()
     {
         return $this->get('ID');
     }
 
     /**
-     * @param string $TOKEN
+     * @param string $token
      * @return $this
      */
-    public function setTOKEN($TOKEN)
+    public function setToken($token)
     {
-        $this->set('TOKEN', $TOKEN);
+        $this->set('TOKEN', $token);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getTOKEN()
+    public function getToken()
     {
         return $this->get('TOKEN');
     }
 
     /**
-     * @param string $ACCOUNTID
+     * @param string $accountid
      * @return $this
      */
-    public function setACCOUNTID($ACCOUNTID)
+    public function setAccountid($accountid)
     {
-        $this->set('ACCOUNTID', $ACCOUNTID);
+        $this->set('ACCOUNTID', $accountid);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getACCOUNTID()
+    public function getAccountid()
     {
         return $this->get('ACCOUNTID');
     }
 
     /**
-     * @param int $AMOUNT
+     * @param int $amount
      * @return $this
      */
-    public function setAMOUNT($AMOUNT)
+    public function setAmount($amount)
     {
-        $this->set('AMOUNT', $AMOUNT);
+        $this->set('AMOUNT', $amount);
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getAMOUNT()
+    public function getAmount()
     {
         return $this->get('AMOUNT');
     }
 
     /**
-     * @param string $CURRENCY
+     * @param string $currency
      * @return $this
      */
-    public function setCURRENCY($CURRENCY)
+    public function setCurrency($currency)
     {
-        $this->set('CURRENCY', $CURRENCY);
+        $this->set('CURRENCY', $currency);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getCURRENCY()
+    public function getCurrency()
     {
         return $this->get('CURRENCY');
     }
 
     /**
-     * @param string $CARDREFID
+     * @param string $cardrefid
      * @return $this
      */
-    public function setCARDREFID($CARDREFID)
+    public function setCardrefid($cardrefid)
     {
-        $this->set('CARDREFID', $CARDREFID);
+        $this->set('CARDREFID', $cardrefid);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getCARDREFID()
+    public function getCardrefid()
     {
         return $this->get('CARDREFID');
     }
 
     /**
-     * @param int $SCDRESULT
+     * @param int $scdresult
      * @return $this
      */
-    public function setSCDRESULT($SCDRESULT)
+    public function setScdresult($scdresult)
     {
-        $this->set('SCDRESULT', $SCDRESULT);
+        $this->set('SCDRESULT', $scdresult);
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getSCDRESULT()
+    public function getScdresult()
     {
         return $this->get('SCDRESULT');
     }
 
     /**
-     * @param int $PROVIDERID
+     * @param int $providerid
      * @return $this
      */
-    public function setPROVIDERID($PROVIDERID)
+    public function setProviderid($providerid)
     {
-        $this->set('PROVIDERID', $PROVIDERID);
+        $this->set('PROVIDERID', $providerid);
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getPROVIDERID()
+    public function getProviderid()
     {
         return $this->get('PROVIDERID');
     }
 
     /**
-     * @param string $PROVIDERNAME
+     * @param string $providername
      * @return $this
      */
-    public function setPROVIDERNAME($PROVIDERNAME)
+    public function setProvidername($providername)
     {
-        $this->set('PROVIDERNAME', $PROVIDERNAME);
+        $this->set('PROVIDERNAME', $providername);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getPROVIDERNAME()
+    public function getProvidername()
     {
         return $this->get('PROVIDERNAME');
     }
 
     /**
-     * @param string $ORDERID
+     * @param string $orderid
      * @return $this
      */
-    public function setORDERID($ORDERID)
+    public function setOrderid($orderid)
     {
-        $this->set('ORDERID', $ORDERID);
+        $this->set('ORDERID', $orderid);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getORDERID()
+    public function getOrderid()
     {
         return $this->get('ORDERID');
     }
 
     /**
-     * @param string $IP
+     * @param string $ip
      * @return $this
      */
-    public function setIP($IP)
+    public function setIp($ip)
     {
-        $this->set('IP', $IP);
+        $this->set('IP', $ip);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getIP()
+    public function getIp()
     {
         return $this->get('IP');
     }
 
     /**
-     * @param string $IPCOUNTRY
+     * @param string $ipcountry
      * @return $this
      */
-    public function setIPCOUNTRY($IPCOUNTRY)
+    public function setIpcountry($ipcountry)
     {
-        $this->set('IPCOUNTRY', $IPCOUNTRY);
+        $this->set('IPCOUNTRY', $ipcountry);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getIPCOUNTRY()
+    public function getIpcountry()
     {
         return $this->get('IPCOUNTRY');
     }
 
     /**
-     * @param string $CCCOUNTRY
+     * @param string $cccountry
      * @return $this
      */
-    public function setCCCOUNTRY($CCCOUNTRY)
+    public function setCccountry($cccountry)
     {
-        $this->set('CCCOUNTRY', $CCCOUNTRY);
+        $this->set('CCCOUNTRY', $cccountry);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getCCCOUNTRY()
+    public function getCccountry()
     {
         return $this->get('CCCOUNTRY');
     }
 
     /**
-     * @param string $MPI_LIABILITYSHIFT
+     * @param string $mpi_liabilityshift
      * @return $this
      */
-    public function setMPILIABILITYSHIFT($MPI_LIABILITYSHIFT)
+    public function setMpiliabilityshift($mpi_liabilityshift)
     {
-        $this->set('MPI_LIABILITYSHIFT', $MPI_LIABILITYSHIFT);
+        $this->set('MPI_LIABILITYSHIFT', $mpi_liabilityshift);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getMPILIABILITYSHIFT()
+    public function getMpiliabilityshift()
     {
         return $this->get('MPI_LIABILITYSHIFT');
     }
 
     /**
-     * @param int $ECI
+     * @param int $eci
      * @return $this
      */
-    public function setECI($ECI)
+    public function setEci($eci)
     {
-        $this->set('ECI', $ECI);
+        $this->set('ECI', $eci);
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getECI()
+    public function getEci()
     {
         return $this->get('ECI');
     }
 
     /**
-     * @param string $XID
+     * @param string $xid
      * @return $this
      */
-    public function setXID($XID)
+    public function setXid($xid)
     {
-        $this->set('XID', $XID);
+        $this->set('XID', $xid);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getXID()
+    public function getXid()
     {
         return $this->get('XID');
     }
 
     /**
-     * @param string $CAVV
+     * @param string $cavv
      * @return $this
      */
-    public function setCAVV($CAVV)
+    public function setCavv($cavv)
     {
-        $this->set('CAVV', $CAVV);
+        $this->set('CAVV', $cavv);
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getCAVV()
+    public function getCavv()
     {
         return $this->get('CAVV');
     }
