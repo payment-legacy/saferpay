@@ -5,7 +5,7 @@ namespace Payment\Saferpay;
 class SaferpayConditionConverter
 {
     /**
-     * @param string $condition
+     * @param  string $condition
      * @return string
      */
     public static function toRegex($condition)

@@ -11,6 +11,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setAccountid($accountid)
     {
         $this->set('ACCOUNTID', $accountid);
+
         return $this;
     }
 
@@ -29,6 +30,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setAmount($amount)
     {
         $this->set('AMOUNT', $amount);
+
         return $this;
     }
 
@@ -47,6 +49,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setCurrency($currency)
     {
         $this->set('CURRENCY', $currency);
+
         return $this;
     }
 
@@ -65,6 +68,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setDescription($description)
     {
         $this->set('DESCRIPTION', $description);
+
         return $this;
     }
 
@@ -83,6 +87,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setOrderid($orderid)
     {
         $this->set('ORDERID', $orderid);
+
         return $this;
     }
 
@@ -101,6 +106,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setVtconfig($vtconfig)
     {
         $this->set('VTCONFIG', $vtconfig);
+
         return $this;
     }
 
@@ -119,6 +125,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setSuccesslink($successlink)
     {
         $this->set('SUCCESSLINK', $successlink);
+
         return $this;
     }
 
@@ -137,6 +144,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setFaillink($faillink)
     {
         $this->set('FAILLINK', $faillink);
+
         return $this;
     }
 
@@ -155,6 +163,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setBacklink($backlink)
     {
         $this->set('BACKLINK', $backlink);
+
         return $this;
     }
 
@@ -173,6 +182,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setNotifyurl($notifyurl)
     {
         $this->set('NOTIFYURL', $notifyurl);
+
         return $this;
     }
 
@@ -191,6 +201,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setAutoclose($autoclose)
     {
         $this->set('AUTOCLOSE', $autoclose);
+
         return $this;
     }
 
@@ -209,6 +220,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setCcname($ccname)
     {
         $this->set('CCNAME', $ccname);
+
         return $this;
     }
 
@@ -227,6 +239,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setNotifyaddress($notifyaddress)
     {
         $this->set('NOTIFYADDRESS', $notifyaddress);
+
         return $this;
     }
 
@@ -245,6 +258,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setUsernotify($usernotify)
     {
         $this->set('USERNOTIFY', $usernotify);
+
         return $this;
     }
 
@@ -263,6 +277,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setLangid($langid)
     {
         $this->set('LANGID', $langid);
+
         return $this;
     }
 
@@ -281,6 +296,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setShowlanguages($showlanguages)
     {
         $this->set('SHOWLANGUAGES', $showlanguages);
+
         return $this;
     }
 
@@ -299,6 +315,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setPaymentmethods($paymentmethods)
     {
         $this->set('PAYMENTMETHODS', $paymentmethods);
+
         return $this;
     }
 
@@ -317,6 +334,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setDuration($duration)
     {
         $this->set('DURATION', $duration);
+
         return $this;
     }
 
@@ -335,6 +353,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setCardrefid($cardrefid)
     {
         $this->set('CARDREFID', $cardrefid);
+
         return $this;
     }
 
@@ -353,6 +372,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setDelivery($delivery)
     {
         $this->set('DELIVERY', $delivery);
+
         return $this;
     }
 
@@ -371,6 +391,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setAppearance($appearance)
     {
         $this->set('APPEARANCE', $appearance);
+
         return $this;
     }
 
@@ -389,6 +410,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setAddress($address)
     {
         $this->set('ADDRESS', $address);
+
         return $this;
     }
 
@@ -407,6 +429,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setCompany($company)
     {
         $this->set('COMPANY', $company);
+
         return $this;
     }
 
@@ -425,6 +448,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setGender($gender)
     {
         $this->set('GENDER', $gender);
+
         return $this;
     }
 
@@ -443,6 +467,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setFirstname($firstname)
     {
         $this->set('FIRSTNAME', $firstname);
+
         return $this;
     }
 
@@ -461,6 +486,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setLastname($lastname)
     {
         $this->set('LASTNAME', $lastname);
+
         return $this;
     }
 
@@ -479,6 +505,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setStreet($street)
     {
         $this->set('STREET', $street);
+
         return $this;
     }
 
@@ -497,6 +524,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setZip($zip)
     {
         $this->set('ZIP', $zip);
+
         return $this;
     }
 
@@ -515,6 +543,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setCity($city)
     {
         $this->set('CITY', $city);
+
         return $this;
     }
 
@@ -533,6 +562,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setCountry($country)
     {
         $this->set('COUNTRY', $country);
+
         return $this;
     }
 
@@ -551,6 +581,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setEmail($email)
     {
         $this->set('EMAIL', $email);
+
         return $this;
     }
 
@@ -569,6 +600,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterInterface
     public function setPhone($phone)
     {
         $this->set('PHONE', $phone);
+
         return $this;
     }
 

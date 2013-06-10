@@ -11,6 +11,7 @@ class PayCompleteParameter extends AbstractData implements PayCompleteParameterI
     public function setId($id)
     {
         $this->set('ID', $id);
+
         return $this;
     }
 
@@ -29,6 +30,7 @@ class PayCompleteParameter extends AbstractData implements PayCompleteParameterI
     public function setAmount($amount)
     {
         $this->set('AMOUNT', $amount);
+
         return $this;
     }
 
@@ -47,6 +49,7 @@ class PayCompleteParameter extends AbstractData implements PayCompleteParameterI
     public function setAccountid($accountid)
     {
         $this->set('ACCOUNTID', $accountid);
+
         return $this;
     }
 
@@ -65,6 +68,7 @@ class PayCompleteParameter extends AbstractData implements PayCompleteParameterI
     public function setAction($action)
     {
         $this->set('ACTION', $action);
+
         return $this;
     }
 

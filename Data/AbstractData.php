@@ -57,14 +57,15 @@ abstract class AbstractData
 
     /**
      * @param string $field
-     * @param mixed $value
+     * @param mixed  $value
      * @return $this
      */
     public function set($field, $value)
     {
-        if($this->validateValue($field, $value)) {
+        if ($this->validateValue($field, $value)) {
             $this->data[$field] = $value;
         }
+
         return $this;
     }
 
@@ -85,11 +86,11 @@ abstract class AbstractData
      */
     protected function validateValue($field, $value)
     {
-        if(!is_scalar($value)) {
+        if (!is_scalar($value)) {
             throw new \InvalidArgumentException('A value for field ' . $field . ' has to be a scalar!');
         }
 
-        if(!$this->checkCondition) {
+        if (!$this->checkCondition) {
             return true;
         }
 
@@ -100,6 +101,7 @@ abstract class AbstractData
         }
 
         $this->invalidData[$field] = $value;
+
         return false;
     }
 
@@ -108,9 +110,10 @@ abstract class AbstractData
      */
     protected function getReflectionClass()
     {
-        if(is_null($this->reflectionClass)) {
+        if (is_null($this->reflectionClass)) {
             $this->reflectionClass = new \ReflectionClass($this);
         }
+
         return $this->reflectionClass;
     }
 

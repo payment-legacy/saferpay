@@ -11,6 +11,7 @@ class PayCompleteResponse extends AbstractData implements PayCompleteResponseInt
     public function setMsgtype($msgtype)
     {
         $this->set('MSGTYPE', $msgtype);
+
         return $this;
     }
 
@@ -29,6 +30,7 @@ class PayCompleteResponse extends AbstractData implements PayCompleteResponseInt
     public function setId($id)
     {
         $this->set('ID', $id);
+
         return $this;
     }
 
@@ -47,6 +49,7 @@ class PayCompleteResponse extends AbstractData implements PayCompleteResponseInt
     public function setResult($result)
     {
         $this->set('RESULT', $result);
+
         return $this;
     }
 
@@ -65,6 +68,7 @@ class PayCompleteResponse extends AbstractData implements PayCompleteResponseInt
     public function setMessage($message)
     {
         $this->set('MESSAGE', $message);
+
         return $this;
     }
 
@@ -83,6 +87,7 @@ class PayCompleteResponse extends AbstractData implements PayCompleteResponseInt
     public function setAuthmessage($authmessage)
     {
         $this->set('AUTHMESSAGE', $authmessage);
+
         return $this;
     }
 

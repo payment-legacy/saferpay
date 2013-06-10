@@ -16,12 +16,12 @@ $saferpay->setHttpClient(new BuzzClient());
 $amount = 1200;
 $currency = 'CHF';
 
-if(getParam('status') == 'success') {
+if (getParam('status') == 'success') {
     $payConfirmParameter = new PayConfirmParameter();
     $payCompleteParameter = new PayCompleteParameter();
     $payCompleteResponse = new PayCompleteResponse();
     $saferpay->verifyPayConfirm($payConfirmParameter, getParam('DATA'), getParam('SIGNATURE'));
-    if($payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $currency) {
+    if ($payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $currency) {
         $saferpay->payCompleteV2($payConfirmParameter, $payCompleteParameter, $payCompleteResponse);
         echo 'payed!';
     } else {
@@ -43,6 +43,7 @@ if(getParam('status') == 'success') {
 function requestUrl()
 {
     $protocol = strtolower(substr($_SERVER['SERVER_PROTOCOL'], 0, strpos($_SERVER['SERVER_PROTOCOL'], '/')));
+
     return $protocol . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 }
 

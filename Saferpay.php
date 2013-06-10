@@ -30,6 +30,7 @@ class Saferpay
     public function setHttpClient(HttpClientInterface $httpClient)
     {
         $this->httpClient = $httpClient;
+
         return $this;
     }
 
@@ -39,9 +40,10 @@ class Saferpay
      */
     public function getHttpClient()
     {
-        if(is_null($this->httpClient)) {
+        if (is_null($this->httpClient)) {
             throw new \Exception('Please define a http client based on the HttpClientInterface!');
         }
+
         return $this->httpClient;
     }
 
@@ -52,6 +54,7 @@ class Saferpay
     public function setLogger(LoggerInterface $logger)
     {
         $this->logger = $logger;
+
         return $this;
     }
 
@@ -60,14 +63,15 @@ class Saferpay
      */
     public function getLogger()
     {
-        if(is_null($this->logger)) {
+        if (is_null($this->logger)) {
             $this->logger = new NullLogger();
         }
+
         return $this->logger;
     }
 
     /**
-     * @param PayInitParameter $payInitParameter
+     * @param  PayInitParameter $payInitParameter
      * @return string
      */
     public function createPayInit(PayInitParameter $payInitParameter)
@@ -84,6 +88,7 @@ class Saferpay
     public function verifyPayConfirm(PayConfirmParameter $payConfirmParameter, $xml, $signature)
     {
         $this->fillDataFromXML($payConfirmParameter, $xml);
+
         return $this->request($payConfirmParameter->getRequestUrl(), array(
             'DATA' => $xml,
             'SIGNATURE' => $signature
@@ -91,10 +96,10 @@ class Saferpay
     }
 
     /**
-     * @param PayConfirmParameter $payConfirmParameter
-     * @param PayCompleteParameter $payCompleteParameter
-     * @param PayCompleteResponse $payCompleteResponse
-     * @param string $action
+     * @param  PayConfirmParameter  $payConfirmParameter
+     * @param  PayCompleteParameter $payCompleteParameter
+     * @param  PayCompleteResponse  $payCompleteResponse
+     * @param  string               $action
      * @return string
      * @throws \Exception
      */
@@ -105,7 +110,7 @@ class Saferpay
         $action = 'Settlement'
     )
     {
-        if(is_null($payConfirmParameter->get('ID'))) {
+        if (is_null($payConfirmParameter->get('ID'))) {
             $this->getLogger()->critical('Saferpay: call confirm before complete!');
             throw new \Exception('Saferpay: call confirm before complete!');
         }
@@ -115,7 +120,7 @@ class Saferpay
         $payCompleteParameter->setACCOUNTID($payConfirmParameter->getACCOUNTID());
         $payCompleteParameter->setACTION($action);
 
-        if(substr($payCompleteParameter->getACCOUNTID(), 0, 6) == '99867-') {
+        if (substr($payCompleteParameter->getACCOUNTID(), 0, 6) == '99867-') {
             $response = $this->request($payCompleteParameter->getRequestUrl(), array_merge($payCompleteParameter->getData(), array('spPassword' => 'XAjc3Kna')));
         } else {
             $response = $this->request($payCompleteParameter->getRequestUrl(), $payCompleteParameter->getData());
@@ -128,7 +133,7 @@ class Saferpay
 
     /**
      * @param $url
-     * @param array $data
+     * @param  array      $data
      * @return mixed
      * @throws \Exception
      */
@@ -141,12 +146,12 @@ class Saferpay
             array('Content-Type' => 'application/x-www-form-urlencoded')
         );
 
-        if($response->getStatusCode() != 200) {
+        if ($response->getStatusCode() != 200) {
             $this->getLogger()->critical('Saferpay: request failed with statuscode: {statuscode}!', array('statuscode' => $response->getStatusCode()));
             throw new \Exception('Saferpay: request failed with statuscode: ' . $response->getStatusCode() . '!');
         }
 
-        if(strpos($response->getContent(), 'ERROR') !== false) {
+        if (strpos($response->getContent(), 'ERROR') !== false) {
             $this->getLogger()->critical('Saferpay: request failed: {content}!', array('content' => $response->getContent()));
             throw new \Exception('Saferpay: request failed: ' . $response->getContent() . '!');
         }
@@ -164,13 +169,12 @@ class Saferpay
         $document = new \DOMDocument();
         $fragment = $document->createDocumentFragment();
 
-        if(!$fragment->appendXML($xml)) {
+        if (!$fragment->appendXML($xml)) {
             $this->getLogger()->critical('Saferpay: Invalid xml received from saferpay');
             throw new \Exception('Saferpay: Invalid xml received from saferpay!');
         }
 
-        foreach($fragment->firstChild->attributes as $attribute)
-        {
+        foreach ($fragment->firstChild->attributes as $attribute) {
             /** @var \DOMAttr $attribute */
             $data->set($attribute->nodeName, $attribute->nodeValue);
         }

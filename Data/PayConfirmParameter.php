@@ -11,6 +11,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setMsgtype($msgtype)
     {
         $this->set('MSGTYPE', $msgtype);
+
         return $this;
     }
 
@@ -29,6 +30,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setVtverify($vtverify)
     {
         $this->set('VTVERIFY', $vtverify);
+
         return $this;
     }
 
@@ -47,6 +49,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setKeyid($keyid)
     {
         $this->set('KEYID', $keyid);
+
         return $this;
     }
 
@@ -65,6 +68,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setId($id)
     {
         $this->set('ID', $id);
+
         return $this;
     }
 
@@ -83,6 +87,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setToken($token)
     {
         $this->set('TOKEN', $token);
+
         return $this;
     }
 
@@ -101,6 +106,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setAccountid($accountid)
     {
         $this->set('ACCOUNTID', $accountid);
+
         return $this;
     }
 
@@ -119,6 +125,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setAmount($amount)
     {
         $this->set('AMOUNT', $amount);
+
         return $this;
     }
 
@@ -137,6 +144,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setCurrency($currency)
     {
         $this->set('CURRENCY', $currency);
+
         return $this;
     }
 
@@ -155,6 +163,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setCardrefid($cardrefid)
     {
         $this->set('CARDREFID', $cardrefid);
+
         return $this;
     }
 
@@ -173,6 +182,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setScdresult($scdresult)
     {
         $this->set('SCDRESULT', $scdresult);
+
         return $this;
     }
 
@@ -191,6 +201,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setProviderid($providerid)
     {
         $this->set('PROVIDERID', $providerid);
+
         return $this;
     }
 
@@ -209,6 +220,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setProvidername($providername)
     {
         $this->set('PROVIDERNAME', $providername);
+
         return $this;
     }
 
@@ -227,6 +239,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setOrderid($orderid)
     {
         $this->set('ORDERID', $orderid);
+
         return $this;
     }
 
@@ -245,6 +258,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setIp($ip)
     {
         $this->set('IP', $ip);
+
         return $this;
     }
 
@@ -263,6 +277,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setIpcountry($ipcountry)
     {
         $this->set('IPCOUNTRY', $ipcountry);
+
         return $this;
     }
 
@@ -281,6 +296,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setCccountry($cccountry)
     {
         $this->set('CCCOUNTRY', $cccountry);
+
         return $this;
     }
 
@@ -299,6 +315,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setMpiliabilityshift($mpi_liabilityshift)
     {
         $this->set('MPI_LIABILITYSHIFT', $mpi_liabilityshift);
+
         return $this;
     }
 
@@ -317,6 +334,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setEci($eci)
     {
         $this->set('ECI', $eci);
+
         return $this;
     }
 
@@ -335,6 +353,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setXid($xid)
     {
         $this->set('XID', $xid);
+
         return $this;
     }
 
@@ -353,6 +372,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     public function setCavv($cavv)
     {
         $this->set('CAVV', $cavv);
+
         return $this;
     }
 
