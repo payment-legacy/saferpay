@@ -86,7 +86,7 @@ abstract class AbstractData
     protected function validateValue($field, $value)
     {
         if(!is_scalar($value)) {
-            throw new \InvalidArgumentException("A value for field '{$field}' has to be a scalar!");
+            throw new \InvalidArgumentException('A value for field ' . $field . ' has to be a scalar!');
         }
 
         if(!$this->checkCondition) {

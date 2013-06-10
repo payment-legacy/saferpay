@@ -40,7 +40,7 @@ class Saferpay
     public function getHttpClient()
     {
         if(is_null($this->httpClient)) {
-            throw new \Exception("Please define a http client based on the HttpClientInterface!");
+            throw new \Exception('Please define a http client based on the HttpClientInterface!');
         }
         return $this->httpClient;
     }
@@ -106,8 +106,8 @@ class Saferpay
     )
     {
         if(is_null($payConfirmParameter->get('ID'))) {
-            $this->getLogger()->critical("Saferpay: call confirm before complete!");
-            throw new \Exception("Saferpay: call confirm before complete!");
+            $this->getLogger()->critical('Saferpay: call confirm before complete!');
+            throw new \Exception('Saferpay: call confirm before complete!');
         }
 
         $payCompleteParameter->setID($payConfirmParameter->getID());
@@ -115,7 +115,7 @@ class Saferpay
         $payCompleteParameter->setACCOUNTID($payConfirmParameter->getACCOUNTID());
         $payCompleteParameter->setACTION($action);
 
-        if(substr($payCompleteParameter->getACCOUNTID(), 0, 6) == "99867-") {
+        if(substr($payCompleteParameter->getACCOUNTID(), 0, 6) == '99867-') {
             $response = $this->request($payCompleteParameter->getRequestUrl(), array_merge($payCompleteParameter->getData(), array('spPassword' => 'XAjc3Kna')));
         } else {
             $response = $this->request($payCompleteParameter->getRequestUrl(), $payCompleteParameter->getData());
@@ -142,13 +142,13 @@ class Saferpay
         );
 
         if($response->getStatusCode() != 200) {
-            $this->getLogger()->critical("Saferpay: request failed with statuscode: {statuscode}!", array('statuscode' => $response->getStatusCode()));
-            throw new \Exception("Saferpay: request failed with statuscode: {$response->getStatusCode()}!");
+            $this->getLogger()->critical('Saferpay: request failed with statuscode: {statuscode}!', array('statuscode' => $response->getStatusCode()));
+            throw new \Exception('Saferpay: request failed with statuscode: ' . $response->getStatusCode() . '!');
         }
 
         if(strpos($response->getContent(), 'ERROR') !== false) {
-            $this->getLogger()->critical("Saferpay: request failed: {content}!", array('content' => $response->getContent()));
-            throw new \Exception("Saferpay: request failed: {$response->getContent()}!");
+            $this->getLogger()->critical('Saferpay: request failed: {content}!', array('content' => $response->getContent()));
+            throw new \Exception('Saferpay: request failed: ' . $response->getContent() . '!');
         }
 
         return $response->getContent();
@@ -165,8 +165,8 @@ class Saferpay
         $fragment = $document->createDocumentFragment();
 
         if(!$fragment->appendXML($xml)) {
-            $this->getLogger()->critical("Saferpay: Invalid xml received from saferpay");
-            throw new \Exception("Saferpay: Invalid xml received from saferpay!");
+            $this->getLogger()->critical('Saferpay: Invalid xml received from saferpay');
+            throw new \Exception('Saferpay: Invalid xml received from saferpay!');
         }
 
         foreach($fragment->firstChild->attributes as $attribute)
