@@ -29,14 +29,14 @@ if(getParam('status') == 'success') {
     }
 } else {
     $payInitParameter = new PayInitParameter();
-    $payInitParameter->setACCOUNTID('99867-94913159');
-    $payInitParameter->setAMOUNT($amount);
-    $payInitParameter->setCURRENCY($currency);
-    $payInitParameter->setDESCRIPTION(sprintf('Bestellnummer: %s', '000001'));
-    $payInitParameter->setSUCCESSLINK(requestUrl() . '?status=success');
-    $payInitParameter->setFAILLINK(requestUrl() . '?status=fail');
-    $payInitParameter->setBACKLINK(requestUrl() . '?status=back');
-    $payInitParameter->setDELIVERY('no'); // hide address form
+    $payInitParameter->setAccountid('99867-94913159');
+    $payInitParameter->setAmount($amount);
+    $payInitParameter->setCurrency($currency);
+    $payInitParameter->setDescription(sprintf('Bestellnummer: %s', '000001'));
+    $payInitParameter->setSuccesslink(requestUrl() . '?status=success');
+    $payInitParameter->setFaillink(requestUrl() . '?status=fail');
+    $payInitParameter->setBacklink(requestUrl() . '?status=back');
+    $payInitParameter->setDelivery('no'); // hide address form
     header("Location: {$saferpay->createPayInit($payInitParameter)}", 302);
 }
 
