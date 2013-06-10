@@ -35,7 +35,7 @@ if(getParam('status') == 'success') {
     $payCompleteParameter = new PayCompleteParameter();
     $payCompleteResponse = new PayCompleteResponse();
     $saferpay->verifyPayConfirm($payConfirmParameter, getParam('DATA'), getParam('SIGNATURE'));
-    if($payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $$currency) {
+    if($payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $currency) {
         $saferpay->payCompleteV2($payConfirmParameter, $payCompleteParameter, $payCompleteResponse);
         echo 'payed!';
     } else {
