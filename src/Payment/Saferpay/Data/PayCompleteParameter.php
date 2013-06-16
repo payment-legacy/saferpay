@@ -24,7 +24,7 @@ class PayCompleteParameter extends AbstractData implements PayCompleteParameterI
     }
 
     /**
-     * @param int $amount
+     * @param string $amount
      * @return $this
      */
     public function setAmount($amount)
@@ -35,7 +35,7 @@ class PayCompleteParameter extends AbstractData implements PayCompleteParameterI
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getAmount()
     {

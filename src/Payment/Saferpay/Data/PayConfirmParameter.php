@@ -119,7 +119,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     }
 
     /**
-     * @param int $amount
+     * @param string $amount
      * @return $this
      */
     public function setAmount($amount)
@@ -130,7 +130,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getAmount()
     {
@@ -176,7 +176,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     }
 
     /**
-     * @param int $scdresult
+     * @param string $scdresult
      * @return $this
      */
     public function setScdresult($scdresult)
@@ -187,7 +187,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getScdresult()
     {
@@ -195,7 +195,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     }
 
     /**
-     * @param int $providerid
+     * @param string $providerid
      * @return $this
      */
     public function setProviderid($providerid)
@@ -206,7 +206,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getProviderid()
     {
@@ -328,7 +328,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     }
 
     /**
-     * @param int $eci
+     * @param string $eci
      * @return $this
      */
     public function setEci($eci)
@@ -339,7 +339,7 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterInt
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getEci()
     {

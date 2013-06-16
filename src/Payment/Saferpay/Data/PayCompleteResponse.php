@@ -43,7 +43,7 @@ class PayCompleteResponse extends AbstractData implements PayCompleteResponseInt
     }
 
     /**
-     * @param int $result
+     * @param string $result
      * @return $this
      */
     public function setResult($result)
@@ -54,7 +54,7 @@ class PayCompleteResponse extends AbstractData implements PayCompleteResponseInt
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getResult()
     {
