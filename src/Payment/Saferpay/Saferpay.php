@@ -99,28 +99,28 @@ class Saferpay
      * @param  PayConfirmParameter  $payConfirmParameter
      * @param  PayCompleteParameter $payCompleteParameter
      * @param  PayCompleteResponse  $payCompleteResponse
-     * @param  string               $action
      * @return string
      * @throws \Exception
      */
     public function payCompleteV2(
         PayConfirmParameter $payConfirmParameter,
         PayCompleteParameter $payCompleteParameter,
-        PayCompleteResponse $payCompleteResponse,
-        $action = 'Settlement'
+        PayCompleteResponse $payCompleteResponse
     )
     {
-        if (is_null($payConfirmParameter->get('ID'))) {
+        if (is_null($payConfirmParameter->getId())) {
             $this->getLogger()->critical('Saferpay: call confirm before complete!');
             throw new \Exception('Saferpay: call confirm before complete!');
         }
 
-        $payCompleteParameter->setID($payConfirmParameter->getID());
-        $payCompleteParameter->setAMOUNT($payConfirmParameter->getAMOUNT());
-        $payCompleteParameter->setACCOUNTID($payConfirmParameter->getACCOUNTID());
-        $payCompleteParameter->setACTION($action);
+        $payCompleteParameter->setId($payConfirmParameter->getId());
+        $payCompleteParameter->setAmount($payConfirmParameter->getAmount());
+        $payCompleteParameter->setAccountid($payConfirmParameter->getAccountid());
+        if(is_null($payCompleteParameter->getAction())) {
+            $payCompleteParameter->setACTION('Settlement');
+        }
 
-        if (substr($payCompleteParameter->getACCOUNTID(), 0, 6) == '99867-') {
+        if (substr($payCompleteParameter->getAccountid(), 0, 6) == '99867-') {
             $response = $this->request($payCompleteParameter->getRequestUrl(), array_merge($payCompleteParameter->getData(), array('spPassword' => 'XAjc3Kna')));
         } else {
             $response = $this->request($payCompleteParameter->getRequestUrl(), $payCompleteParameter->getData());
