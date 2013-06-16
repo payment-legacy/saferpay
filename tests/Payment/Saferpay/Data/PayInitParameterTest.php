@@ -12,10 +12,10 @@ class PayInitParameterTest extends \PHPUnit_Framework_TestCase
         $description = 'Test';
         $orderid = 'Test with id 1';
         $vtconfig = 'config';
-        $successLink = 'http://test?status=success';
-        $failLink = 'http://test?status=fail';
-        $backLink = 'http://test?status=back';
-        $notifyUrl = 'http://test?status=notify';
+        $successLink = 'http://test.lo?status=success';
+        $failLink = 'http://test.lo?status=fail';
+        $backLink = 'http://test.lo?status=back';
+        $notifyUrl = 'http://test.lo?status=notify';
         $autoClose = 1;
         $ccname = 'yes';
         $notifyAddress = 'test@test@test';
