@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true" bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="An unofficial saferpay payment implementation">
+            <directory>./tests/Payment/Saferpay</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory>./src/Payment/Saferpay/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
