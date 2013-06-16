@@ -1,4 +1,4 @@
-### an unofficial saferpay payment implementation
+### Saferpay API, an unofficial implementation
 
 [![Build Status](https://secure.travis-ci.org/payment/saferpay.png?branch=dev)](https://travis-ci.org/payment/saferpay)
 
