@@ -1,5 +1,7 @@
 ### an unofficial saferpay payment implementation
 
+[![Build Status](https://secure.travis-ci.org/payment/saferpay.png?branch=dev)](https://travis-ci.org/payment/saferpay)
+
 #### a simple implementation
 
 ##### uses (with buzz client)
