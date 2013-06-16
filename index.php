@@ -18,21 +18,23 @@ $currency = 'CHF';
 
 if (getParam('status') == 'success') {
     $payConfirmParameter = new PayConfirmParameter();
-    $payCompleteParameter = new PayCompleteParameter();
-    $payCompleteResponse = new PayCompleteResponse();
     $saferpay->verifyPayConfirm($payConfirmParameter, getParam('DATA'), getParam('SIGNATURE'));
-    if ($payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $currency) {
-        $saferpay->payCompleteV2($payConfirmParameter, $payCompleteParameter, $payCompleteResponse);
-        echo 'payed!';
+    $success = $payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $currency ? true: false;
+    $payCompleteParameter = new PayCompleteParameter();
+    $payCompleteParameter->setAction($success ? 'Settlement': 'Cancel');
+    $payCompleteResponse = new PayCompleteResponse();
+    $saferpay->payCompleteV2($payConfirmParameter, $payCompleteParameter, $payCompleteResponse);
+    if($success) {
+        echo 'payment success!';
     } else {
-        $saferpay->payCompleteV2($payConfirmParameter, $payCompleteParameter, $payCompleteResponse, 'CANCEL');
+        echo 'payment failed!';
     }
 } else {
     $payInitParameter = new PayInitParameter();
     $payInitParameter->setAccountid('99867-94913159');
     $payInitParameter->setAmount($amount);
     $payInitParameter->setCurrency($currency);
-    $payInitParameter->setDescription(sprintf('Bestellnummer: %s', '000001'));
+    $payInitParameter->setDescription(sprintf('Ordernumber: %s', '000001'));
     $payInitParameter->setSuccesslink(requestUrl() . '?status=success');
     $payInitParameter->setFaillink(requestUrl() . '?status=fail');
     $payInitParameter->setBacklink(requestUrl() . '?status=back');
