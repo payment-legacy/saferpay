@@ -38,7 +38,7 @@ class Saferpay
      * @return HttpClientInterface
      * @throws \Exception
      */
-    public function getHttpClient()
+    protected function getHttpClient()
     {
         if (is_null($this->httpClient)) {
             throw new \Exception('Please define a http client based on the HttpClientInterface!');
@@ -61,7 +61,7 @@ class Saferpay
     /**
      * @return LoggerInterface
      */
-    public function getLogger()
+    protected function getLogger()
     {
         if (is_null($this->logger)) {
             $this->logger = new NullLogger();
