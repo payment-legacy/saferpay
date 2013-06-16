@@ -116,7 +116,7 @@ class Saferpay
         $payCompleteParameter->setId($payConfirmParameter->getId());
         $payCompleteParameter->setAmount($payConfirmParameter->getAmount());
         $payCompleteParameter->setAccountid($payConfirmParameter->getAccountid());
-        if(is_null($payCompleteParameter->getAction())) {
+        if (is_null($payCompleteParameter->getAction())) {
             $payCompleteParameter->setACTION('Settlement');
         }
 

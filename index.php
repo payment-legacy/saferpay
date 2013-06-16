@@ -24,7 +24,7 @@ if (getParam('status') == 'success') {
     $payCompleteParameter->setAction($success ? 'Settlement': 'Cancel');
     $payCompleteResponse = new PayCompleteResponse();
     $saferpay->payCompleteV2($payConfirmParameter, $payCompleteParameter, $payCompleteResponse);
-    if($success) {
+    if ($success) {
         echo 'payment success!';
     } else {
         echo 'payment failed!';
