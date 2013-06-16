@@ -16,8 +16,10 @@
         "payment/httpclient": "1.0.*",
         "payment/httpclient-implementation": "~1.1,>=1.0"
     },
-    "autoload": {
-        "psr-0": { "Payment\\Saferpay\\": "" }
+    "require-dev": {
+        "silex/silex": "1.*@dev"
     },
-    "target-dir": "Payment/Saferpay"
+    "autoload": {
+        "psr-0": { "Payment\\Saferpay\\": "src" }
+    }
 }

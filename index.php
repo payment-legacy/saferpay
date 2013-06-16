@@ -2,7 +2,7 @@
 
 namespace Payment\Saferpay;
 
-require '../../../../autoload.php';
+require 'vendor/autoload.php';
 
 use Payment\HttpClient\BuzzClient;
 use Payment\Saferpay\Data\PayCompleteParameter;
