@@ -19,12 +19,12 @@ abstract class AbstractData
     /**
      * @var array
      */
-    protected $data;
+    protected $data = array();
 
     /**
      * @var array
      */
-    protected $invalidData;
+    protected $invalidData = array();
 
     public function disableCheckCondition()
     {
