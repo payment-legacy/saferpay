@@ -19,7 +19,7 @@ $currency = 'CHF';
 if (getParam('status') == 'success') {
     $payConfirmParameter = $saferpay->verifyPayConfirm(getParam('DATA'), getParam('SIGNATURE'));
     if($payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $currency) {
-        $saferpay->payCompleteV2($payConfirmParameter, 'Settlement');
+        $payCompleteResponse = $saferpay->payCompleteV2($payConfirmParameter, 'Settlement');
         echo 'payment success!';
     } else {
         $payCompleteResponse = $saferpay->payCompleteV2($payConfirmParameter, 'Cancel');
