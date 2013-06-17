@@ -3,7 +3,6 @@
 namespace Payment\Saferpay;
 
 use Payment\HttpClient\BuzzClient;
-use Payment\Saferpay\Data\PayCompleteParameter;
 use Payment\Saferpay\Data\PayCompleteResponse;
 use Payment\Saferpay\Data\PayConfirmParameter;
 use Payment\Saferpay\Data\PayInitParameter;

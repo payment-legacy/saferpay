@@ -97,8 +97,8 @@ class Saferpay
     }
 
     /**
-     * @param PayConfirmParameter $payConfirmParameter
-     * @param string $action
+     * @param  PayConfirmParameter $payConfirmParameter
+     * @param  string              $action
      * @return PayCompleteResponse
      * @throws \Exception
      */
