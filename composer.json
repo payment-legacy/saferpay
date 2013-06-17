@@ -14,10 +14,13 @@
         "php": ">=5.3.3",
         "psr/log": "1.0.*",
         "payment/httpclient": "1.0.*",
-        "payment/httpclient-implementation": "1.0.*"
+        "payment/httpclient-implementation": "~1.1,>=1.0"
+    },
+    "require-dev": {
+        "payment/httpclient-buzz": "~1.1",
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
-        "psr-0": { "Payment\\Saferpay\\": "" }
-    },
-    "target-dir": "Payment/Saferpay"
+        "psr-0": { "Payment\\Saferpay\\": "src" }
+    }
 }

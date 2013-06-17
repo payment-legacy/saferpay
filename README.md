@@ -1,4 +1,6 @@
-### an unofficial saferpay payment implementation
+### Saferpay API, an unofficial implementation
+
+[![Build Status](https://api.travis-ci.org/payment/saferpay.png?branch=dev)](https://travis-ci.org/payment/saferpay)
 
 #### a simple implementation
 
@@ -6,13 +8,51 @@
 
 ```php
 use Payment\HttpClient\BuzzClient;
-use Payment\Saferpay\Saferpay;
+use Payment\Saferpay\Data\PayCompleteParameter;
+use Payment\Saferpay\Data\PayCompleteResponse;
+use Payment\Saferpay\Data\PayConfirmParameter;
+use Payment\Saferpay\Data\PayInitParameter;
 ```
 
-##### we need a session
+##### creating a saferpay instance
 
 ```php
-session_start();
+$saferpay = new Saferpay;
+```
+
+##### set httpclient (with buzz)
+
+```php
+$saferpay->setHttpClient(new BuzzClient());
+```
+
+##### the logic
+
+```php
+$amount = 1200;
+$currency = 'CHF';
+
+if(getParam('status') == 'success') {
+    $payConfirmParameter = $saferpay->verifyPayConfirm(getParam('DATA'), getParam('SIGNATURE'));
+    if($payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $currency) {
+        $saferpay->payCompleteV2($payConfirmParameter, 'Settlement');
+        echo 'payment success!';
+    } else {
+        $payCompleteResponse = $saferpay->payCompleteV2($payConfirmParameter, 'Cancel');
+        echo 'payment failed!';
+    }
+} else {
+    $payInitParameter = new PayInitParameter();
+    $payInitParameter->setAccountid('99867-94913159');
+    $payInitParameter->setAmount($amount);
+    $payInitParameter->setCurrency($currency);
+    $payInitParameter->setDescription(sprintf('Bestellnummer: %s', '000001'));
+    $payInitParameter->setSuccesslink(requestUrl() . '?status=success');
+    $payInitParameter->setFaillink(requestUrl() . '?status=fail');
+    $payInitParameter->setBacklink(requestUrl() . '?status=back');
+    $payInitParameter->setDelivery('no'); // hide address form
+    header('Location: ' . $saferpay->createPayInit($payInitParameter) , 302);
+}
 ```
 
 ##### we define some helpers (plain php)
@@ -27,101 +67,5 @@ function requestUrl()
 function getParam($key, $default = null)
 {
     return array_key_exists($key, $_GET) ? $_GET[$key] : $default;
-}
-
-function setSession($key, $value)
-{
-    $_SESSION[$key] = $value;
-}
-
-function getSession($key, $default = null)
-{
-    return array_key_exists($key, $_SESSION) ? $_SESSION[$key] : $default;
-}
-```
-
-##### creating a saferpay instance
-
-```php
-$saferpay = new Saferpay();
-```
-
-##### configure the saferpay object based on the config.json
-
-```php
-// get all config data from json
-$config = $saferpay->getSaferpayConfig();
-
-// update config
-$saferpay->getConfig()->setInitUrl($config['urls']['init']);
-$saferpay->getConfig()->setConfirmUrl($config['urls']['confirm']);
-$saferpay->getConfig()->setCompleteUrl($config['urls']['complete']);
-
-// set validation config
-$saferpay->getConfig()->getInitValidationsConfig()->all($config['validators']['init']);
-$saferpay->getConfig()->getConfirmValidationsConfig()->all($config['validators']['confirm']);
-$saferpay->getConfig()->getCompleteValidationsConfig()->all($config['validators']['complete']);
-
-// set default config
-$saferpay->getConfig()->getInitDefaultsConfig()->all($config['defaults']['init']);
-$saferpay->getConfig()->getConfirmDefaultsConfig()->all($config['defaults']['confirm']);
-$saferpay->getConfig()->getCompleteDefaultsConfig()->all($config['defaults']['complete']);
-```
-
-##### set httpclient (with buzz)
-
-```php
-$saferpay->setHttpClient(new BuzzClient());
-```
-
-##### assign data (from session)
-
-```php
-$saferpay->setData(getSession('saferpay.data', null));
-```
-
-##### the logic
-
-```php
-if(getParam('status') == 'success')
-{
-    if($saferpay->confirmPayment(getParam('DATA'), getParam('SIGNATURE')) != '')
-    {
-        $lastresponse = $saferpay->completePayment();
-
-        if($lastresponse != '')
-        {
-        	setSession('saferpay.data', null);
-            echo 'payed!';
-        }
-    }
-}
-else
-{
-    $url = $saferpay->initPayment($saferpay->getKeyValuePrototype()->all(array(
-        'AMOUNT' => 10250,
-        'DESCRIPTION' => sprintf('Bestellnummer: %s', '000001'),
-        'ORDERID' => '000001',
-        'SUCCESSLINK' => requestUrl() . '?status=success',
-        'FAILLINK' => requestUrl() . '?status=fail',
-        'BACKLINK' => requestUrl(),
-        'GENDER' => 'm',
-        'FIRSTNAME' => 'Hans',
-        'LASTNAME' => 'Muster',
-        'STREET' => 'Musterstrasse 300',
-        'ZIP' => '0000',
-        'CITY' => 'Musterort',
-        'COUNTRY' => 'CH',
-        'EMAIL' => 'test@test.ch'
-    )));
-
-    // assign the data to the session
-    setSession('saferpay.data', $saferpay->getData());
-
-    if($url != '')
-    {
-        // redirect to saferpay
-        header("Location: {$url}", 302);
-    }
 }
 ```
