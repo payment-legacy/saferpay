@@ -80,45 +80,40 @@ class Saferpay
     }
 
     /**
-     * @param PayConfirmParameter $payConfirmParameter
      * @param $xml
      * @param $signature
-     * @return string
+     * @return PayConfirmParameter
      */
-    public function verifyPayConfirm(PayConfirmParameter $payConfirmParameter, $xml, $signature)
+    public function verifyPayConfirm($xml, $signature)
     {
+        $payConfirmParameter = new PayConfirmParameter();
         $this->fillDataFromXML($payConfirmParameter, $xml);
-
-        return $this->request($payConfirmParameter->getRequestUrl(), array(
+        $this->request($payConfirmParameter->getRequestUrl(), array(
             'DATA' => $xml,
             'SIGNATURE' => $signature
         ));
+
+        return $payConfirmParameter;
     }
 
     /**
-     * @param  PayConfirmParameter  $payConfirmParameter
-     * @param  PayCompleteParameter $payCompleteParameter
-     * @param  PayCompleteResponse  $payCompleteResponse
-     * @return string
+     * @param PayConfirmParameter $payConfirmParameter
+     * @param string $action
+     * @return PayCompleteResponse
      * @throws \Exception
      */
-    public function payCompleteV2(
-        PayConfirmParameter $payConfirmParameter,
-        PayCompleteParameter $payCompleteParameter,
-        PayCompleteResponse $payCompleteResponse
-    )
+    public function payCompleteV2(PayConfirmParameter $payConfirmParameter, $action = 'Settlement')
     {
         if (is_null($payConfirmParameter->getId())) {
             $this->getLogger()->critical('Saferpay: call confirm before complete!');
             throw new \Exception('Saferpay: call confirm before complete!');
         }
 
+        $payCompleteParameter = new PayCompleteParameter();
         $payCompleteParameter->setId($payConfirmParameter->getId());
         $payCompleteParameter->setAmount($payConfirmParameter->getAmount());
         $payCompleteParameter->setAccountid($payConfirmParameter->getAccountid());
-        if (is_null($payCompleteParameter->getAction())) {
-            $payCompleteParameter->setACTION('Settlement');
-        }
+        $payCompleteParameter->setAction($action);
 
         if (substr($payCompleteParameter->getAccountid(), 0, 6) == '99867-') {
             $response = $this->request($payCompleteParameter->getRequestUrl(), array_merge($payCompleteParameter->getData(), array('spPassword' => 'XAjc3Kna')));
@@ -126,9 +121,10 @@ class Saferpay
             $response = $this->request($payCompleteParameter->getRequestUrl(), $payCompleteParameter->getData());
         }
 
+        $payCompleteResponse = new PayCompleteResponse();
         $this->fillDataFromXML($payCompleteResponse, substr($response, 3));
 
-        return $response;
+        return $payCompleteResponse;
     }
 
     /**
