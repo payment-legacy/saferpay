@@ -78,9 +78,4 @@ interface PayCompleteParameterInterface
      * @return mixed
      */
     public function getAction();
-
-    /**
-     * @return mixed
-     */
-    public function disableCheckCondition();
 }
