@@ -144,4 +144,229 @@ interface PayConfirmParameterInterface
 
     // * Only available for existing Saferpay Risk Management
     // ** 3-D Secure parameter, a participate to the 3-D Secure method is prerequisite
+    
+    /**
+     * @param $msgtype
+     * @return mixed
+     */
+    public function setMsgtype($msgtype);
+
+    /**
+     * @return mixed
+     */
+    public function getMsgtype();
+
+    /**
+     * @param $vtverify
+     * @return mixed
+     */
+    public function setVtverify($vtverify);
+
+    /**
+     * @return mixed
+     */
+    public function getVtverify();
+
+    /**
+     * @param $keyid
+     * @return mixed
+     */
+    public function setKeyid($keyid);
+
+    /**
+     * @return mixed
+     */
+    public function getKeyid();
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function setId($id);
+
+    /**
+     * @return mixed
+     */
+    public function getId();
+
+    /**
+     * @param $token
+     * @return mixed
+     */
+    public function setToken($token);
+
+    /**
+     * @return mixed
+     */
+    public function getToken();
+
+    /**
+     * @param $accountid
+     * @return mixed
+     */
+    public function setAccountid($accountid);
+
+    /**
+     * @return mixed
+     */
+    public function getAccountid();
+
+    /**
+     * @param $amount
+     * @return mixed
+     */
+    public function setAmount($amount);
+
+    /**
+     * @return mixed
+     */
+    public function getAmount();
+
+    /**
+     * @param $currency
+     * @return mixed
+     */
+    public function setCurrency($currency);
+
+    /**
+     * @return mixed
+     */
+    public function getCurrency();
+
+    /**
+     * @param $cardrefid
+     * @return mixed
+     */
+    public function setCardrefid($cardrefid);
+
+    /**
+     * @return mixed
+     */
+    public function getCardrefid();
+
+    /**
+     * @param $scdresult
+     * @return mixed
+     */
+    public function setScdresult($scdresult);
+
+    /**
+     * @return mixed
+     */
+    public function getScdresult();
+
+    /**
+     * @param $providerid
+     * @return mixed
+     */
+    public function setProviderid($providerid);
+
+    /**
+     * @return mixed
+     */
+    public function getProviderid();
+
+    /**
+     * @param $providername
+     * @return mixed
+     */
+    public function setProvidername($providername);
+
+    /**
+     * @return mixed
+     */
+    public function getProvidername();
+
+    /**
+     * @param $orderid
+     * @return mixed
+     */
+    public function setOrderid($orderid);
+
+    /**
+     * @return mixed
+     */
+    public function getOrderid();
+
+    /**
+     * @param $ip
+     * @return mixed
+     */
+    public function setIp($ip);
+
+    /**
+     * @return mixed
+     */
+    public function getIp();
+
+    /**
+     * @param $ipcountry
+     * @return mixed
+     */
+    public function setIpcountry($ipcountry);
+
+    /**
+     * @return mixed
+     */
+    public function getIpcountry();
+
+    /**
+     * @param $cccountry
+     * @return mixed
+     */
+    public function setCccountry($cccountry);
+
+    /**
+     * @return mixed
+     */
+    public function getCccountry();
+
+    /**
+     * @param $mpi_liabilityshift
+     * @return mixed
+     */
+    public function setMpiliabilityshift($mpi_liabilityshift);
+
+    /**
+     * @return mixed
+     */
+    public function getMpiliabilityshift();
+
+    /**
+     * @param $eci
+     * @return mixed
+     */
+    public function setEci($eci);
+
+    /**
+     * @return mixed
+     */
+    public function getEci();
+
+    /**
+     * @param $xid
+     * @return mixed
+     */
+    public function setXid($xid);
+
+    /**
+     * @return mixed
+     */
+    public function getXid();
+
+    /**
+     * @param $cavv
+     * @return mixed
+     */
+    public function setCavv($cavv);
+
+    /**
+     * @return mixed
+     */
+    public function getCavv();
+
+    /**
+     * @return mixed
+     */
+    public function disableCheckCondition();
 }
