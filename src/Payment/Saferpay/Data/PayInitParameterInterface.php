@@ -217,7 +217,7 @@ interface PayInitParameterInterface
     const PHONE = 'ns[..20]';
     
     /**
-     * @param $accountid
+     * @param string $accountid
      * @return string
      */
     public function setAccountid($accountid);
@@ -228,7 +228,7 @@ interface PayInitParameterInterface
     public function getAccountid();
 
     /**
-     * @param $amount
+     * @param string $amount
      * @return string
      */
     public function setAmount($amount);
@@ -239,7 +239,7 @@ interface PayInitParameterInterface
     public function getAmount();
 
     /**
-     * @param $currency
+     * @param string $currency
      * @return string
      */
     public function setCurrency($currency);
@@ -250,7 +250,7 @@ interface PayInitParameterInterface
     public function getCurrency();
 
     /**
-     * @param $description
+     * @param string $description
      * @return string
      */
     public function setDescription($description);
@@ -261,7 +261,7 @@ interface PayInitParameterInterface
     public function getDescription();
 
     /**
-     * @param $orderid
+     * @param string $orderid
      * @return string
      */
     public function setOrderid($orderid);
@@ -272,7 +272,7 @@ interface PayInitParameterInterface
     public function getOrderid();
 
     /**
-     * @param $vtconfig
+     * @param string $vtconfig
      * @return string
      */
     public function setVtconfig($vtconfig);
@@ -283,7 +283,7 @@ interface PayInitParameterInterface
     public function getVtconfig();
 
     /**
-     * @param $successlink
+     * @param string $successlink
      * @return string
      */
     public function setSuccesslink($successlink);
@@ -294,7 +294,7 @@ interface PayInitParameterInterface
     public function getSuccesslink();
 
     /**
-     * @param $faillink
+     * @param string $faillink
      * @return string
      */
     public function setFaillink($faillink);
@@ -305,7 +305,7 @@ interface PayInitParameterInterface
     public function getFaillink();
 
     /**
-     * @param $backlink
+     * @param string $backlink
      * @return string
      */
     public function setBacklink($backlink);
@@ -316,7 +316,7 @@ interface PayInitParameterInterface
     public function getBacklink();
 
     /**
-     * @param $notifyurl
+     * @param string $notifyurl
      * @return string
      */
     public function setNotifyurl($notifyurl);
@@ -327,7 +327,7 @@ interface PayInitParameterInterface
     public function getNotifyurl();
 
     /**
-     * @param $autoclose
+     * @param string $autoclose
      * @return string
      */
     public function setAutoclose($autoclose);
@@ -338,7 +338,7 @@ interface PayInitParameterInterface
     public function getAutoclose();
 
     /**
-     * @param $ccname
+     * @param string $ccname
      * @return string
      */
     public function setCcname($ccname);
@@ -349,7 +349,7 @@ interface PayInitParameterInterface
     public function getCcname();
 
     /**
-     * @param $notifyaddress
+     * @param string $notifyaddress
      * @return string
      */
     public function setNotifyaddress($notifyaddress);
@@ -360,7 +360,7 @@ interface PayInitParameterInterface
     public function getNotifyaddress();
 
     /**
-     * @param $usernotify
+     * @param string $usernotify
      * @return string
      */
     public function setUsernotify($usernotify);
@@ -371,7 +371,7 @@ interface PayInitParameterInterface
     public function getUsernotify();
 
     /**
-     * @param $langid
+     * @param string $langid
      * @return string
      */
     public function setLangid($langid);
@@ -382,7 +382,7 @@ interface PayInitParameterInterface
     public function getLangid();
 
     /**
-     * @param $showlanguages
+     * @param string $showlanguages
      * @return string
      */
     public function setShowlanguages($showlanguages);
@@ -393,7 +393,7 @@ interface PayInitParameterInterface
     public function getShowlanguages();
 
     /**
-     * @param $paymentmethods
+     * @param string $paymentmethods
      * @return string
      */
     public function setPaymentmethods($paymentmethods);
@@ -404,7 +404,7 @@ interface PayInitParameterInterface
     public function getPaymentmethods();
 
     /**
-     * @param $duration
+     * @param string $duration
      * @return string
      */
     public function setDuration($duration);
@@ -415,7 +415,7 @@ interface PayInitParameterInterface
     public function getDuration();
 
     /**
-     * @param $cardrefid
+     * @param string $cardrefid
      * @return string
      */
     public function setCardrefid($cardrefid);
@@ -426,7 +426,7 @@ interface PayInitParameterInterface
     public function getCardrefid();
 
     /**
-     * @param $delivery
+     * @param string $delivery
      * @return string
      */
     public function setDelivery($delivery);
@@ -437,7 +437,7 @@ interface PayInitParameterInterface
     public function getDelivery();
 
     /**
-     * @param $appearance
+     * @param string $appearance
      * @return string
      */
     public function setAppearance($appearance);
@@ -448,7 +448,7 @@ interface PayInitParameterInterface
     public function getAppearance();
 
     /**
-     * @param $address
+     * @param string $address
      * @return string
      */
     public function setAddress($address);
@@ -459,7 +459,7 @@ interface PayInitParameterInterface
     public function getAddress();
 
     /**
-     * @param $company
+     * @param string $company
      * @return string
      */
     public function setCompany($company);
@@ -470,7 +470,7 @@ interface PayInitParameterInterface
     public function getCompany();
 
     /**
-     * @param $gender
+     * @param string $gender
      * @return string
      */
     public function setGender($gender);
@@ -481,7 +481,7 @@ interface PayInitParameterInterface
     public function getGender();
 
     /**
-     * @param $firstname
+     * @param string $firstname
      * @return string
      */
     public function setFirstname($firstname);
@@ -492,7 +492,7 @@ interface PayInitParameterInterface
     public function getFirstname();
 
     /**
-     * @param $lastname
+     * @param string $lastname
      * @return string
      */
     public function setLastname($lastname);
@@ -503,7 +503,7 @@ interface PayInitParameterInterface
     public function getLastname();
 
     /**
-     * @param $street
+     * @param string $street
      * @return string
      */
     public function setStreet($street);
@@ -514,7 +514,7 @@ interface PayInitParameterInterface
     public function getStreet();
 
     /**
-     * @param $zip
+     * @param string $zip
      * @return string
      */
     public function setZip($zip);
@@ -525,7 +525,7 @@ interface PayInitParameterInterface
     public function getZip();
 
     /**
-     * @param $city
+     * @param string $city
      * @return string
      */
     public function setCity($city);
@@ -536,7 +536,7 @@ interface PayInitParameterInterface
     public function getCity();
 
     /**
-     * @param $country
+     * @param string $country
      * @return string
      */
     public function setCountry($country);
@@ -547,7 +547,7 @@ interface PayInitParameterInterface
     public function getCountry();
 
     /**
-     * @param $email
+     * @param string $email
      * @return string
      */
     public function setEmail($email);
@@ -558,7 +558,7 @@ interface PayInitParameterInterface
     public function getEmail();
 
     /**
-     * @param $phone
+     * @param string $phone
      * @return string
      */
     public function setPhone($phone);
