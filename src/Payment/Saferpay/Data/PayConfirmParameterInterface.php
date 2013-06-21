@@ -144,7 +144,7 @@ interface PayConfirmParameterInterface
 
     // * Only available for existing Saferpay Risk Management
     // ** 3-D Secure parameter, a participate to the 3-D Secure method is prerequisite
-    
+
     /**
      * @param string $msgtype
      * @return $this

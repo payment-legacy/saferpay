@@ -215,7 +215,7 @@ interface PayInitParameterInterface
      * optional
      */
     const PHONE = 'ns[..20]';
-    
+
     /**
      * @param string $accountid
      * @return $this

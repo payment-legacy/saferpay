@@ -29,7 +29,7 @@ interface PayCompleteResponseInterface
      * Can contain a response tho the accounting request as a text
      */
     const AUTHMESSAGE = 'ans[..30]';
-    
+
     /**
      * @param string $msgtype
      * @return $this

@@ -34,7 +34,7 @@ interface PayCompleteParameterInterface
     const ACTION_SETTLEMENT = 'Settlement';
     const ACTION_CLOSEBATCH = 'CloseBatch';
     const ACTION_CANCEL = 'Cancel';
-    
+
     /**
      * @param string $id
      * @return $this
