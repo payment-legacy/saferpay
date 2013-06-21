@@ -215,4 +215,356 @@ interface PayInitParameterInterface
      * optional
      */
     const PHONE = 'ns[..20]';
+    
+    /**
+     * @param $accountid
+     * @return string
+     */
+    public function setAccountid($accountid);
+
+    /**
+     * @return string
+     */
+    public function getAccountid();
+
+    /**
+     * @param $amount
+     * @return string
+     */
+    public function setAmount($amount);
+
+    /**
+     * @return string
+     */
+    public function getAmount();
+
+    /**
+     * @param $currency
+     * @return string
+     */
+    public function setCurrency($currency);
+
+    /**
+     * @return string
+     */
+    public function getCurrency();
+
+    /**
+     * @param $description
+     * @return string
+     */
+    public function setDescription($description);
+
+    /**
+     * @return string
+     */
+    public function getDescription();
+
+    /**
+     * @param $orderid
+     * @return string
+     */
+    public function setOrderid($orderid);
+
+    /**
+     * @return string
+     */
+    public function getOrderid();
+
+    /**
+     * @param $vtconfig
+     * @return string
+     */
+    public function setVtconfig($vtconfig);
+
+    /**
+     * @return string
+     */
+    public function getVtconfig();
+
+    /**
+     * @param $successlink
+     * @return string
+     */
+    public function setSuccesslink($successlink);
+
+    /**
+     * @return string
+     */
+    public function getSuccesslink();
+
+    /**
+     * @param $faillink
+     * @return string
+     */
+    public function setFaillink($faillink);
+
+    /**
+     * @return string
+     */
+    public function getFaillink();
+
+    /**
+     * @param $backlink
+     * @return string
+     */
+    public function setBacklink($backlink);
+
+    /**
+     * @return string
+     */
+    public function getBacklink();
+
+    /**
+     * @param $notifyurl
+     * @return string
+     */
+    public function setNotifyurl($notifyurl);
+
+    /**
+     * @return string
+     */
+    public function getNotifyurl();
+
+    /**
+     * @param $autoclose
+     * @return string
+     */
+    public function setAutoclose($autoclose);
+
+    /**
+     * @return string
+     */
+    public function getAutoclose();
+
+    /**
+     * @param $ccname
+     * @return string
+     */
+    public function setCcname($ccname);
+
+    /**
+     * @return string
+     */
+    public function getCcname();
+
+    /**
+     * @param $notifyaddress
+     * @return string
+     */
+    public function setNotifyaddress($notifyaddress);
+
+    /**
+     * @return string
+     */
+    public function getNotifyaddress();
+
+    /**
+     * @param $usernotify
+     * @return string
+     */
+    public function setUsernotify($usernotify);
+
+    /**
+     * @return string
+     */
+    public function getUsernotify();
+
+    /**
+     * @param $langid
+     * @return string
+     */
+    public function setLangid($langid);
+
+    /**
+     * @return string
+     */
+    public function getLangid();
+
+    /**
+     * @param $showlanguages
+     * @return string
+     */
+    public function setShowlanguages($showlanguages);
+
+    /**
+     * @return string
+     */
+    public function getShowlanguages();
+
+    /**
+     * @param $paymentmethods
+     * @return string
+     */
+    public function setPaymentmethods($paymentmethods);
+
+    /**
+     * @return string
+     */
+    public function getPaymentmethods();
+
+    /**
+     * @param $duration
+     * @return string
+     */
+    public function setDuration($duration);
+
+    /**
+     * @return string
+     */
+    public function getDuration();
+
+    /**
+     * @param $cardrefid
+     * @return string
+     */
+    public function setCardrefid($cardrefid);
+
+    /**
+     * @return string
+     */
+    public function getCardrefid();
+
+    /**
+     * @param $delivery
+     * @return string
+     */
+    public function setDelivery($delivery);
+
+    /**
+     * @return string
+     */
+    public function getDelivery();
+
+    /**
+     * @param $appearance
+     * @return string
+     */
+    public function setAppearance($appearance);
+
+    /**
+     * @return string
+     */
+    public function getAppearance();
+
+    /**
+     * @param $address
+     * @return string
+     */
+    public function setAddress($address);
+
+    /**
+     * @return string
+     */
+    public function getAddress();
+
+    /**
+     * @param $company
+     * @return string
+     */
+    public function setCompany($company);
+
+    /**
+     * @return string
+     */
+    public function getCompany();
+
+    /**
+     * @param $gender
+     * @return string
+     */
+    public function setGender($gender);
+
+    /**
+     * @return string
+     */
+    public function getGender();
+
+    /**
+     * @param $firstname
+     * @return string
+     */
+    public function setFirstname($firstname);
+
+    /**
+     * @return string
+     */
+    public function getFirstname();
+
+    /**
+     * @param $lastname
+     * @return string
+     */
+    public function setLastname($lastname);
+
+    /**
+     * @return string
+     */
+    public function getLastname();
+
+    /**
+     * @param $street
+     * @return string
+     */
+    public function setStreet($street);
+
+    /**
+     * @return string
+     */
+    public function getStreet();
+
+    /**
+     * @param $zip
+     * @return string
+     */
+    public function setZip($zip);
+
+    /**
+     * @return string
+     */
+    public function getZip();
+
+    /**
+     * @param $city
+     * @return string
+     */
+    public function setCity($city);
+
+    /**
+     * @return string
+     */
+    public function getCity();
+
+    /**
+     * @param $country
+     * @return string
+     */
+    public function setCountry($country);
+
+    /**
+     * @return string
+     */
+    public function getCountry();
+
+    /**
+     * @param $email
+     * @return string
+     */
+    public function setEmail($email);
+
+    /**
+     * @return string
+     */
+    public function getEmail();
+
+    /**
+     * @param $phone
+     * @return string
+     */
+    public function setPhone($phone);
+
+    /**
+     * @return string
+     */
+    public function getPhone();
 }
