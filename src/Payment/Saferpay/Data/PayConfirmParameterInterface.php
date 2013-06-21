@@ -364,9 +364,4 @@ interface PayConfirmParameterInterface
      * @return mixed
      */
     public function getCavv();
-
-    /**
-     * @return mixed
-     */
-    public function disableCheckCondition();
 }
