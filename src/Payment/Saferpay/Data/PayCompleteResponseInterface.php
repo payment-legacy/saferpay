@@ -31,57 +31,57 @@ interface PayCompleteResponseInterface
     const AUTHMESSAGE = 'ans[..30]';
     
     /**
-     * @param $msgtype
-     * @return mixed
+     * @param string $msgtype
+     * @return $this
      */
     public function setMsgtype($msgtype);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getMsgtype();
 
     /**
-     * @param $id
-     * @return mixed
+     * @param string $id
+     * @return $this
      */
     public function setId($id);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getId();
 
     /**
-     * @param $result
-     * @return mixed
+     * @param string $result
+     * @return $this
      */
     public function setResult($result);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getResult();
 
     /**
-     * @param $message
-     * @return mixed
+     * @param string $message
+     * @return $this
      */
     public function setMessage($message);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getMessage();
 
     /**
-     * @param $authmessage
-     * @return mixed
+     * @param string $authmessage
+     * @return $this
      */
     public function setAuthmessage($authmessage);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAuthmessage();
 }

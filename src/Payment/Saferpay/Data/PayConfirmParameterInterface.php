@@ -146,222 +146,222 @@ interface PayConfirmParameterInterface
     // ** 3-D Secure parameter, a participate to the 3-D Secure method is prerequisite
     
     /**
-     * @param $msgtype
-     * @return mixed
+     * @param string $msgtype
+     * @return $this
      */
     public function setMsgtype($msgtype);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getMsgtype();
 
     /**
-     * @param $vtverify
-     * @return mixed
+     * @param string $vtverify
+     * @return $this
      */
     public function setVtverify($vtverify);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getVtverify();
 
     /**
-     * @param $keyid
-     * @return mixed
+     * @param string $keyid
+     * @return $this
      */
     public function setKeyid($keyid);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getKeyid();
 
     /**
-     * @param $id
-     * @return mixed
+     * @param string $id
+     * @return $this
      */
     public function setId($id);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getId();
 
     /**
-     * @param $token
-     * @return mixed
+     * @param string $token
+     * @return $this
      */
     public function setToken($token);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getToken();
 
     /**
-     * @param $accountid
-     * @return mixed
+     * @param string $accountid
+     * @return $this
      */
     public function setAccountid($accountid);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAccountid();
 
     /**
-     * @param $amount
-     * @return mixed
+     * @param string $amount
+     * @return $this
      */
     public function setAmount($amount);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAmount();
 
     /**
-     * @param $currency
-     * @return mixed
+     * @param string $currency
+     * @return $this
      */
     public function setCurrency($currency);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCurrency();
 
     /**
-     * @param $cardrefid
-     * @return mixed
+     * @param string $cardrefid
+     * @return $this
      */
     public function setCardrefid($cardrefid);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCardrefid();
 
     /**
-     * @param $scdresult
-     * @return mixed
+     * @param string $scdresult
+     * @return $this
      */
     public function setScdresult($scdresult);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getScdresult();
 
     /**
-     * @param $providerid
-     * @return mixed
+     * @param string $providerid
+     * @return $this
      */
     public function setProviderid($providerid);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getProviderid();
 
     /**
-     * @param $providername
-     * @return mixed
+     * @param string $providername
+     * @return $this
      */
     public function setProvidername($providername);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getProvidername();
 
     /**
-     * @param $orderid
-     * @return mixed
+     * @param string $orderid
+     * @return $this
      */
     public function setOrderid($orderid);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOrderid();
 
     /**
-     * @param $ip
-     * @return mixed
+     * @param string $ip
+     * @return $this
      */
     public function setIp($ip);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getIp();
 
     /**
-     * @param $ipcountry
-     * @return mixed
+     * @param string $ipcountry
+     * @return $this
      */
     public function setIpcountry($ipcountry);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getIpcountry();
 
     /**
-     * @param $cccountry
-     * @return mixed
+     * @param string $cccountry
+     * @return $this
      */
     public function setCccountry($cccountry);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCccountry();
 
     /**
-     * @param $mpi_liabilityshift
-     * @return mixed
+     * @param string $mpi_liabilityshift
+     * @return $this
      */
     public function setMpiliabilityshift($mpi_liabilityshift);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getMpiliabilityshift();
 
     /**
-     * @param $eci
-     * @return mixed
+     * @param string $eci
+     * @return $this
      */
     public function setEci($eci);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getEci();
 
     /**
-     * @param $xid
-     * @return mixed
+     * @param string $xid
+     * @return $this
      */
     public function setXid($xid);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getXid();
 
     /**
-     * @param $cavv
-     * @return mixed
+     * @param string $cavv
+     * @return $this
      */
     public function setCavv($cavv);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCavv();
 }

@@ -36,46 +36,46 @@ interface PayCompleteParameterInterface
     const ACTION_CANCEL = 'Cancel';
     
     /**
-     * @param $id
-     * @return mixed
+     * @param string $id
+     * @return $this
      */
     public function setId($id);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getId();
 
     /**
-     * @param $amount
-     * @return mixed
+     * @param string $amount
+     * @return $this
      */
     public function setAmount($amount);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAmount();
 
     /**
-     * @param $accountid
-     * @return mixed
+     * @param string $accountid
+     * @return $this
      */
     public function setAccountid($accountid);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAccountid();
 
     /**
-     * @param $action
-     * @return mixed
+     * @param string $action
+     * @return $this
      */
     public function setAction($action);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAction();
 }

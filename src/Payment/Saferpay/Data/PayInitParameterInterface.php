@@ -228,13 +228,13 @@ interface PayInitParameterInterface
     public function getAccountid();
 
     /**
-     * @param string $amount
+     * @param int $amount
      * @return $this
      */
     public function setAmount($amount);
 
     /**
-     * @return string
+     * @return int
      */
     public function getAmount();
 
@@ -327,13 +327,13 @@ interface PayInitParameterInterface
     public function getNotifyurl();
 
     /**
-     * @param string $autoclose
+     * @param int $autoclose
      * @return $this
      */
     public function setAutoclose($autoclose);
 
     /**
-     * @return string
+     * @return int
      */
     public function getAutoclose();
 
@@ -404,13 +404,13 @@ interface PayInitParameterInterface
     public function getPaymentmethods();
 
     /**
-     * @param string $duration
+     * @param int $duration
      * @return $this
      */
     public function setDuration($duration);
 
     /**
-     * @return string
+     * @return int
      */
     public function getDuration();
 
