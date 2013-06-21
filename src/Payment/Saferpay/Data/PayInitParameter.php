@@ -2,7 +2,7 @@
 
 namespace Payment\Saferpay\Data;
 
-class PayInitParameter extends AbstractData implements PayInitParameterInterface
+class PayInitParameter extends AbstractData implements PayInitParameterWithDataInterface
 {
     /**
      * @param string $accountid

@@ -2,7 +2,7 @@
 
 namespace Payment\Saferpay\Data;
 
-class PayCompleteResponse extends AbstractData implements PayCompleteResponseInterface
+class PayCompleteResponse extends AbstractData implements PayCompleteResponseWithDataInterface
 {
     /**
      * @param string $msgtype

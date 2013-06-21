@@ -116,5 +116,4 @@ abstract class AbstractData
 
         return $this->reflectionClass;
     }
-
 }

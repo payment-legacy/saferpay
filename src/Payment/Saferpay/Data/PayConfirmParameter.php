@@ -2,7 +2,7 @@
 
 namespace Payment\Saferpay\Data;
 
-class PayConfirmParameter extends AbstractData implements PayConfirmParameterInterface
+class PayConfirmParameter extends AbstractData implements PayConfirmParameterWithDataInterface
 {
     /**
      * @param string $msgtype

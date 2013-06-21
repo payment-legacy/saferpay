@@ -7,7 +7,7 @@ use Payment\Saferpay\Data\AbstractData;
 use Payment\Saferpay\Data\PayCompleteParameter;
 use Payment\Saferpay\Data\PayCompleteResponse;
 use Payment\Saferpay\Data\PayConfirmParameter;
-use Payment\Saferpay\Data\PayInitParameter;
+use Payment\Saferpay\Data\PayInitParameterWithDataInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
@@ -71,10 +71,10 @@ class Saferpay
     }
 
     /**
-     * @param  PayInitParameter $payInitParameter
+     * @param  PayInitParameterWithDataInterface $payInitParameter
      * @return string
      */
-    public function createPayInit(PayInitParameter $payInitParameter)
+    public function createPayInit(PayInitParameterWithDataInterface $payInitParameter)
     {
         return $this->request($payInitParameter->getRequestUrl(), $payInitParameter->getData());
     }
