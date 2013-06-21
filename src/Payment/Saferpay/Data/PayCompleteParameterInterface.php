@@ -34,4 +34,53 @@ interface PayCompleteParameterInterface
     const ACTION_SETTLEMENT = 'Settlement';
     const ACTION_CLOSEBATCH = 'CloseBatch';
     const ACTION_CANCEL = 'Cancel';
+    
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function setId($id);
+
+    /**
+     * @return mixed
+     */
+    public function getId();
+
+    /**
+     * @param $amount
+     * @return mixed
+     */
+    public function setAmount($amount);
+
+    /**
+     * @return mixed
+     */
+    public function getAmount();
+
+    /**
+     * @param $accountid
+     * @return mixed
+     */
+    public function setAccountid($accountid);
+
+    /**
+     * @return mixed
+     */
+    public function getAccountid();
+
+    /**
+     * @param $action
+     * @return mixed
+     */
+    public function setAction($action);
+
+    /**
+     * @return mixed
+     */
+    public function getAction();
+
+    /**
+     * @return mixed
+     */
+    public function disableCheckCondition();
 }
