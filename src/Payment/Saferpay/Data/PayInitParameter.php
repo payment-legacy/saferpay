@@ -334,7 +334,7 @@ class PayInitParameter extends AbstractData implements PayInitParameterWithDataI
             return explode(",", $methods);
         }
         
-        return methods;
+        return $methods;
     }
 
     /**
