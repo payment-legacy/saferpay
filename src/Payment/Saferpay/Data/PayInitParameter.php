@@ -309,32 +309,22 @@ class PayInitParameter extends AbstractData implements PayInitParameterWithDataI
     }
 
     /**
-     * @param string $paymentmethods
+     * @param array $paymentmethods
      * @return $this
      */
     public function setPaymentmethods($paymentmethods)
     {
-        if(is_array($paymentmethods)){
-            $paymentmethods = implode(",", $paymentmethods);
-        }
-        
-        $this->set('PAYMENTMETHODS', $paymentmethods);
-        
+        $this->set('PAYMENTMETHODS', implode(',', $paymentmethods));
+
         return $this;
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getPaymentmethods($asArray = false)
+    public function getPaymentmethods()
     {
-        $methods = $this->get('PAYMENTMETHODS');
-        
-        if(true === $asArray){
-            return explode(",", $methods);
-        }
-        
-        return $methods;
+        return explode(',', (string) $this->get('PAYMENTMETHODS'));
     }
 
     /**

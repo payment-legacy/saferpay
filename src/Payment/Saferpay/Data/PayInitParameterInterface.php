@@ -173,7 +173,7 @@ interface PayInitParameterInterface
      * Values: "f", "m", "c" (company)
      */
     const GENDER = 'a[1]';
-    
+
     const GENDER_FEMALE = 'f';
     const GENDER_MALE = 'm';
     const GENDER_COMPANY = 'c';

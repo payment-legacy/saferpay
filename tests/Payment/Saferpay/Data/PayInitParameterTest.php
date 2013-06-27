@@ -22,7 +22,10 @@ class PayInitParameterTest extends \PHPUnit_Framework_TestCase
         $userNotifiy = 'user@test.test';
         $langId = 'CH';
         $showLanguages = 'yes';
-        $paymentMethods = '1,2';
+        $paymentMethods = array(
+            PayInitParameterInterface::PAYMENTMETHOD_MASTERCARD,
+            PayInitParameterInterface::PAYMENTMETHOD_VISA
+        );
         $duration = 20130701000000;
         $cardRefId = 'new';
         $delivery = 'no';
