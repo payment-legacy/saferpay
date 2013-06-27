@@ -397,13 +397,13 @@ interface PayInitParameterInterface
     public function getShowlanguages();
 
     /**
-     * @param string $paymentmethods
+     * @param array $paymentmethods
      * @return $this
      */
-    public function setPaymentmethods($paymentmethods);
+    public function setPaymentmethods(array $paymentmethods);
 
     /**
-     * @return string
+     * @return array
      */
     public function getPaymentmethods();
 
