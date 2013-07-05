@@ -12,6 +12,11 @@ interface PayInitParameterInterface
      */
     const ACCOUNTID = 'ns[..15]';
 
+    const ACCOUNTID_SAFERPAYTEST = '99867-94913159';
+    const SAFERPAYTESTACCOUNT_SPPASSWORD = 'XAjc3Kna';
+
+    const TESTACCOUNT_PREFIX = '99867-';
+
     /**
      * Payment amount in the smallest currency unit.
      * For example, "1230" corresponding amount in euro 12,30.
