@@ -26,7 +26,7 @@ if (getParam('status') == 'success') {
     }
 } else {
     $payInitParameter = new PayInitParameter();
-    $payInitParameter->setAccountid('99867-94913159');
+    $payInitParameter->setAccountid($payInitParameter::SAFERPAYTESTACCOUNT_ACCOUNTID);
     $payInitParameter->setAmount($amount);
     $payInitParameter->setCurrency($currency);
     $payInitParameter->setDescription(sprintf('Ordernumber: %s', '000001'));
