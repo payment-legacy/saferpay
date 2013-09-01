@@ -137,16 +137,6 @@ class Saferpay
     }
 
     /**
-     * @param string $accountId
-     * @return bool
-     */
-    protected function isTestAccountId($accountId)
-    {
-        $prefix = PayInitParameterInterface::TESTACCOUNT_PREFIX;
-        return substr($accountId, 0, strlen($prefix)) === $prefix;
-    }
-
-    /**
      * @param $url
      * @param  array      $data
      * @return mixed
@@ -193,5 +183,15 @@ class Saferpay
             /** @var \DOMAttr $attribute */
             $data->set($attribute->nodeName, $attribute->nodeValue);
         }
+    }
+
+    /**
+     * @param string $accountId
+     * @return bool
+     */
+    protected function isTestAccountId($accountId)
+    {
+        $prefix = PayInitParameterInterface::TESTACCOUNT_PREFIX;
+        return substr($accountId, 0, strlen($prefix)) === $prefix;
     }
 }
