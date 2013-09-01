@@ -12,7 +12,7 @@ interface PayInitParameterInterface
      */
     const ACCOUNTID = 'ns[..15]';
 
-    const ACCOUNTID_SAFERPAYTEST = '99867-94913159';
+    const SAFERPAYTESTACCOUNT_ACCOUNTID = '99867-94913159';
     const SAFERPAYTESTACCOUNT_SPPASSWORD = 'XAjc3Kna';
 
     const TESTACCOUNT_PREFIX = '99867-';
