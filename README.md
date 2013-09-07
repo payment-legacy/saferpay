@@ -10,9 +10,6 @@
 
 ```php
 use Payment\HttpClient\BuzzClient;
-use Payment\Saferpay\Data\PayCompleteParameter;
-use Payment\Saferpay\Data\PayCompleteResponse;
-use Payment\Saferpay\Data\PayConfirmParameter;
 use Payment\Saferpay\Data\PayInitParameter;
 ```
 
@@ -34,21 +31,21 @@ $saferpay->setHttpClient(new BuzzClient());
 $amount = 1200;
 $currency = 'CHF';
 
-if(getParam('status') == 'success') {
+if (getParam('status') == 'success') {
     $payConfirmParameter = $saferpay->verifyPayConfirm(getParam('DATA'), getParam('SIGNATURE'));
-    if($payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $currency) {
-        $payCompleteResponse = $saferpay->payCompleteV2($payConfirmParameter, 'Settlement');
+    if ($payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $currency) {
+        $saferpay->payCompleteV2($payConfirmParameter, 'Settlement');
         echo 'payment success!';
     } else {
-        $payCompleteResponse = $saferpay->payCompleteV2($payConfirmParameter, 'Cancel');
+        $saferpay->payCompleteV2($payConfirmParameter, 'Cancel');
         echo 'payment failed!';
     }
 } else {
     $payInitParameter = new PayInitParameter();
-    $payInitParameter->setAccountid('99867-94913159');
+    $payInitParameter->setAccountid(PayInitParameter::SAFERPAYTESTACCOUNT_ACCOUNTID);
     $payInitParameter->setAmount($amount);
     $payInitParameter->setCurrency($currency);
-    $payInitParameter->setDescription(sprintf('Bestellnummer: %s', '000001'));
+    $payInitParameter->setDescription(sprintf('Ordernumber: %s', '000001'));
     $payInitParameter->setSuccesslink(requestUrl() . '?status=success');
     $payInitParameter->setFaillink(requestUrl() . '?status=fail');
     $payInitParameter->setBacklink(requestUrl() . '?status=back');
