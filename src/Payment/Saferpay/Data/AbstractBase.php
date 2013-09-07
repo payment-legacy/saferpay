@@ -29,17 +29,17 @@ abstract class AbstractBase extends AbstractGetSet
     }
 
     /**
-     * @param string $name
-     * @param array $arguments
+     * @param  string          $name
+     * @param  array           $arguments
      * @return mixed
      * @throws \ErrorException
      */
     public function __call($name, $arguments)
     {
-        foreach($this->subObjectBags as $subObjectBag) {
-            if($subObjectBag->getReflection()->hasMethod($name)) {
+        foreach ($this->subObjectBags as $subObjectBag) {
+            if ($subObjectBag->getReflection()->hasMethod($name)) {
                 $methodReflection = $subObjectBag->getReflection()->getMethod($name);
-                if($methodReflection->isPublic()) {
+                if ($methodReflection->isPublic()) {
                     return $methodReflection->invokeArgs($subObjectBag->getObject(), $arguments);
                 } else {
                     throw new \ErrorException("Method {$name} is not public on {$subObjectBag->getReflection()->getName()}");

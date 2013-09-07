@@ -349,7 +349,7 @@ class PayConfirmParameter extends AbstractBase implements PayConfirmParameterInt
     }
 
     /**
-     * @param string $mpi_mpi_xid
+     * @param  string $mpi_mpi_xid
      * @return mixed
      * @deprecated
      */

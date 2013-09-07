@@ -14,8 +14,8 @@ abstract class AbstractGetSet
     protected function registerValidationKeys()
     {
         $reflectionClass = new \ReflectionClass($this);
-        foreach($reflectionClass->getConstants() as $constName => $constValue) {
-            if(SaferpayConditionConverter::isCondition($constValue)) {
+        foreach ($reflectionClass->getConstants() as $constName => $constValue) {
+            if (SaferpayConditionConverter::isCondition($constValue)) {
                 $this->keyValueBag->addValidationKey($constName, $constValue);
             }
         }

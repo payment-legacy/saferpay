@@ -41,7 +41,7 @@ class KeyValueBag implements \ArrayAccess, \Iterator
     }
 
     /**
-     * @param mixed $offset
+     * @param  mixed $offset
      * @return bool
      */
     public function offsetExists($offset)
@@ -50,7 +50,7 @@ class KeyValueBag implements \ArrayAccess, \Iterator
     }
 
     /**
-     * @param mixed $offset
+     * @param  mixed      $offset
      * @return mixed|null
      */
     public function offsetGet($offset)
@@ -59,21 +59,22 @@ class KeyValueBag implements \ArrayAccess, \Iterator
     }
 
     /**
-     * @param mixed $offset
-     * @param mixed $value
+     * @param  mixed                     $offset
+     * @param  mixed                     $value
      * @throws \InvalidArgumentException
      */
     public function offsetSet($offset, $value)
     {
-        if(!is_scalar($value)) {
+        if (!is_scalar($value)) {
             throw new \InvalidArgumentException("Only scalar values (integer, float, string or boolean) are allowed!");
         }
 
-        if(array_key_exists($offset, $this->validKeys)) {
+        if (array_key_exists($offset, $this->validKeys)) {
             $condition = $this->validKeys[$offset];
-            if(preg_match(SaferpayConditionConverter::toRegex($condition), $value) === 1) {
+            if (preg_match(SaferpayConditionConverter::toRegex($condition), $value) === 1) {
                 $this->data[$offset] = $value;
                 $this->keys = array_keys($this->data);
+
                 return;
             }
         }
@@ -86,7 +87,7 @@ class KeyValueBag implements \ArrayAccess, \Iterator
      */
     public function offsetUnset($offset)
     {
-        if(in_array($offset, $this->keys)) {
+        if (in_array($offset, $this->keys)) {
             unset($this->keys[array_search($offset, $this->keys)]);
             $this->keys = array_keys($this->data);
         }
@@ -97,7 +98,7 @@ class KeyValueBag implements \ArrayAccess, \Iterator
      */
     public function current()
     {
-        if(array_key_exists($this->pointer, $this->keys)) {
+        if (array_key_exists($this->pointer, $this->keys)) {
             return $this->data[$this->keys[$this->pointer]];
         }
 
@@ -114,7 +115,7 @@ class KeyValueBag implements \ArrayAccess, \Iterator
      */
     public function key()
     {
-        if(array_key_exists($this->pointer, $this->keys)) {
+        if (array_key_exists($this->pointer, $this->keys)) {
             return $this->keys[$this->pointer];
         }
 

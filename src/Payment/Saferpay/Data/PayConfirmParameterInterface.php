@@ -333,7 +333,7 @@ interface PayConfirmParameterInterface
     public function getMpiliabilityshift();
 
     /**
-     * @param string $mpi_tx_cavv
+     * @param  string $mpi_tx_cavv
      * @return mixed
      * @deprecated
      */
@@ -346,7 +346,7 @@ interface PayConfirmParameterInterface
     public function getMpiTxCavv();
 
     /**
-     * @param string $mpi_xid
+     * @param  string $mpi_xid
      * @return mixed
      * @deprecated
      */
