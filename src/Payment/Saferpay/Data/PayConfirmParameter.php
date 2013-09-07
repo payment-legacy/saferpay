@@ -2,7 +2,7 @@
 
 namespace Payment\Saferpay\Data;
 
-class PayConfirmParameter extends AbstractData implements PayConfirmParameterWithDataInterface
+class PayConfirmParameter extends AbstractBase implements PayConfirmParameterInterface
 {
     /**
      * @param string $msgtype
@@ -328,6 +328,48 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterWit
     }
 
     /**
+     * @param $mpi_tx_cavv
+     * @return $this|string
+     * @deprecated
+     */
+    public function setMpiTxCavv($mpi_tx_cavv)
+    {
+        $this->set('MPI_TX_CAVV', $mpi_tx_cavv);
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     * @deprecated
+     */
+    public function getMpiTxCavv()
+    {
+        return $this->get('MPI_TX_CAVV');
+    }
+
+    /**
+     * @param string $mpi_mpi_xid
+     * @return mixed
+     * @deprecated
+     */
+    public function setMpiXid($mpi_xid)
+    {
+        $this->set('MPI_XID', $mpi_xid);
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     * @deprecated
+     */
+    public function getMpiXid()
+    {
+        return $this->get('MPI_XID');
+    }
+
+    /**
      * @param string $eci
      * @return $this
      */
@@ -382,5 +424,13 @@ class PayConfirmParameter extends AbstractData implements PayConfirmParameterWit
     public function getCavv()
     {
         return $this->get('CAVV');
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequestUrl()
+    {
+        return PayConfirmParameterInterface::REQUEST_URL;
     }
 }

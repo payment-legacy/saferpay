@@ -84,4 +84,14 @@ interface PayCompleteResponseInterface
      * @return string
      */
     public function getAuthmessage();
+
+    /**
+     * @return array
+     */
+    public function getData();
+
+    /**
+     * @return array
+     */
+    public function getInvalidData();
 }

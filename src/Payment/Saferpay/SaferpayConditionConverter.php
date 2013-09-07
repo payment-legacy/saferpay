@@ -32,4 +32,22 @@ class SaferpayConditionConverter
 
         return '/^([' . $preparedPattern . ')$/ui' ;
     }
+
+    /**
+     * @param $condition
+     * @return bool
+     */
+    public static function isCondition($condition)
+    {
+        if(strpos($condition, 'n[') === 0 ||
+           strpos($condition, 'ns[') === 0 ||
+           strpos($condition, 'a[') === 0 ||
+           strpos($condition, 'an[') === 0 ||
+           strpos($condition, 'ans[') === 0
+        ) {
+            return true;
+        }
+
+        return false;
+    }
 }

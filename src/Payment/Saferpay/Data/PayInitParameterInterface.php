@@ -576,4 +576,19 @@ interface PayInitParameterInterface
      * @return string
      */
     public function getPhone();
+
+    /**
+     * @return string
+     */
+    public function getRequestUrl();
+
+    /**
+     * @return array
+     */
+    public function getData();
+
+    /**
+     * @return array
+     */
+    public function getInvalidData();
 }

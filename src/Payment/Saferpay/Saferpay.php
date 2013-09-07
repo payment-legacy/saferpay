@@ -3,13 +3,14 @@
 namespace Payment\Saferpay;
 
 use Payment\HttpClient\HttpClientInterface;
-use Payment\Saferpay\Data\AbstractData;
+use Payment\Saferpay\Data\AbstractBase;
 use Payment\Saferpay\Data\PayCompleteParameter;
 use Payment\Saferpay\Data\PayCompleteParameterInterface;
 use Payment\Saferpay\Data\PayCompleteResponse;
+use Payment\Saferpay\Data\PayCompleteResponseInterface;
 use Payment\Saferpay\Data\PayConfirmParameter;
+use Payment\Saferpay\Data\PayConfirmParameterInterface;
 use Payment\Saferpay\Data\PayInitParameterInterface;
-use Payment\Saferpay\Data\PayInitParameterWithDataInterface;
 use Payment\Saferpay\Exception\NoPasswordGivenException;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
@@ -74,10 +75,10 @@ class Saferpay
     }
 
     /**
-     * @param  PayInitParameterWithDataInterface $payInitParameter
-     * @return string
+     * @param PayInitParameterInterface $payInitParameter
+     * @return mixed
      */
-    public function createPayInit(PayInitParameterWithDataInterface $payInitParameter)
+    public function createPayInit(PayInitParameterInterface $payInitParameter)
     {
         return $this->request($payInitParameter->getRequestUrl(), $payInitParameter->getData());
     }
@@ -85,11 +86,15 @@ class Saferpay
     /**
      * @param $xml
      * @param $signature
-     * @return PayConfirmParameter
+     * @param PayConfirmParameterInterface $payConfirmParameter
+     * @return PayConfirmParameterInterface
      */
-    public function verifyPayConfirm($xml, $signature)
+    public function verifyPayConfirm($xml, $signature, PayConfirmParameterInterface $payConfirmParameter = null)
     {
-        $payConfirmParameter = new PayConfirmParameter();
+        if(is_null($payConfirmParameter)) {
+            $payConfirmParameter = new PayConfirmParameter();
+        }
+
         $this->fillDataFromXML($payConfirmParameter, $xml);
         $this->request($payConfirmParameter->getRequestUrl(), array(
             'DATA' => $xml,
@@ -102,19 +107,29 @@ class Saferpay
     /**
      * @param PayConfirmParameter $payConfirmParameter
      * @param string $action
-     * @param string $spPassword
-     * @return PayCompleteResponse
-     * @throws NoPasswordGivenException
+     * @param null $spPassword
+     * @param PayCompleteParameterInterface $payCompleteParameter
+     * @param PayCompleteResponseInterface $payCompleteResponse
+     * @return PayCompleteResponse|PayCompleteResponseInterface
+     * @throws Exception\NoPasswordGivenException
      * @throws \Exception
      */
-    public function payCompleteV2(PayConfirmParameter $payConfirmParameter, $action = PayCompleteParameterInterface::ACTION_SETTLEMENT, $spPassword = null)
-    {
+    public function payCompleteV2(
+        PayConfirmParameter $payConfirmParameter,
+        $action = PayCompleteParameterInterface::ACTION_SETTLEMENT,
+        $spPassword = null,
+        PayCompleteParameterInterface $payCompleteParameter = null,
+        PayCompleteResponseInterface $payCompleteResponse = null
+    ) {
         if (is_null($payConfirmParameter->getId())) {
             $this->getLogger()->critical('Saferpay: call confirm before complete!');
             throw new \Exception('Saferpay: call confirm before complete!');
         }
 
-        $payCompleteParameter = new PayCompleteParameter();
+        if(is_null($payCompleteParameter)) {
+            $payCompleteParameter = new PayCompleteParameter();
+        }
+
         $payCompleteParameter->setId($payConfirmParameter->getId());
         $payCompleteParameter->setAmount($payConfirmParameter->getAmount());
         $payCompleteParameter->setAccountid($payConfirmParameter->getAccountid());
@@ -130,7 +145,10 @@ class Saferpay
 
         $response = $this->request($payCompleteParameter->getRequestUrl(), $payCompleteParameterData);
 
-        $payCompleteResponse = new PayCompleteResponse();
+        if(is_null($payCompleteResponse)) {
+            $payCompleteResponse = new PayCompleteResponse();
+        }
+
         $this->fillDataFromXML($payCompleteResponse, substr($response, 3));
 
         return $payCompleteResponse;
@@ -165,11 +183,11 @@ class Saferpay
     }
 
     /**
-     * @param AbstractData $data
+     * @param AbstractBase $data
      * @param $xml
      * @throws \Exception
      */
-    protected function fillDataFromXML(AbstractData $data, $xml)
+    protected function fillDataFromXML(AbstractBase $data, $xml)
     {
         $document = new \DOMDocument();
         $fragment = $document->createDocumentFragment();
@@ -181,7 +199,13 @@ class Saferpay
 
         foreach ($fragment->firstChild->attributes as $attribute) {
             /** @var \DOMAttr $attribute */
-            $data->set($attribute->nodeName, $attribute->nodeValue);
+
+            $method = 'set';
+            $offsetParts = explode('_', $attribute->nodeName);
+            foreach($offsetParts as $offsetPart) {
+                $method .= ucfirst(strtolower($offsetPart));
+            }
+            $data->$method($attribute->nodeValue);
         }
     }
 

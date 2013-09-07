@@ -2,7 +2,7 @@
 
 namespace Payment\Saferpay\Data;
 
-class PayCompleteParameter extends AbstractData implements PayCompleteParameterWithDataInterface
+class PayCompleteParameter extends AbstractBase implements PayCompleteParameterInterface
 {
     /**
      * @param string $id
@@ -78,5 +78,13 @@ class PayCompleteParameter extends AbstractData implements PayCompleteParameterW
     public function getAction()
     {
         return $this->get('ACTION');
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequestUrl()
+    {
+        return PayCompleteParameterInterface::REQUEST_URL;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Payment\Saferpay\Data;
 
-class PayInitParameter extends AbstractData implements PayInitParameterWithDataInterface
+class PayInitParameter extends AbstractBase implements PayInitParameterInterface
 {
     /**
      * @param string $accountid
@@ -610,5 +610,13 @@ class PayInitParameter extends AbstractData implements PayInitParameterWithDataI
     public function getPhone()
     {
         return $this->get('PHONE');
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequestUrl()
+    {
+        return PayInitParameterInterface::REQUEST_URL;
     }
 }

@@ -5,8 +5,6 @@ namespace Payment\Saferpay;
 require '../../../vendor/autoload.php';
 
 use Payment\HttpClient\BuzzClient;
-use Payment\Saferpay\Data\PayCompleteResponse;
-use Payment\Saferpay\Data\PayConfirmParameter;
 use Payment\Saferpay\Data\PayInitParameter;
 
 $saferpay = new Saferpay;
@@ -18,10 +16,10 @@ $currency = 'CHF';
 if (getParam('status') == 'success') {
     $payConfirmParameter = $saferpay->verifyPayConfirm(getParam('DATA'), getParam('SIGNATURE'));
     if ($payConfirmParameter->getAMOUNT() == $amount && $payConfirmParameter->getCURRENCY() == $currency) {
-        $payCompleteResponse = $saferpay->payCompleteV2($payConfirmParameter, 'Settlement');
+        $saferpay->payCompleteV2($payConfirmParameter, 'Settlement');
         echo 'payment success!';
     } else {
-        $payCompleteResponse = $saferpay->payCompleteV2($payConfirmParameter, 'Cancel');
+        $saferpay->payCompleteV2($payConfirmParameter, 'Cancel');
         echo 'payment failed!';
     }
 } else {

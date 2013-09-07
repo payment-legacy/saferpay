@@ -78,4 +78,19 @@ interface PayCompleteParameterInterface
      * @return string
      */
     public function getAction();
+
+    /**
+     * @return string
+     */
+    public function getRequestUrl();
+
+    /**
+     * @return array
+     */
+    public function getData();
+
+    /**
+     * @return array
+     */
+    public function getInvalidData();
 }
