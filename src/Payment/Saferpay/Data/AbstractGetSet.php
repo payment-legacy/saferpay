@@ -11,6 +11,14 @@ abstract class AbstractGetSet
      */
     protected $keyValueBag;
 
+    /**
+     * @param KeyValueBag $valueBag
+     */
+    public function setValueBag(KeyValueBag $valueBag)
+    {
+        $this->keyValueBag = $valueBag;
+    }
+
     protected function registerValidationKeys()
     {
         $reflectionClass = new \ReflectionClass($this);
