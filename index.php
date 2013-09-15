@@ -44,5 +44,5 @@ function requestUrl()
 
 function getParam($key, $default = null)
 {
-    return array_key_exists($key, $_GET) ? $_GET[$key] : $default;
+    return array_key_exists($key, $_REQUEST) ? $_REQUEST[$key] : $default;
 }
