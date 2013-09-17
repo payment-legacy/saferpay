@@ -2,7 +2,9 @@
 
 namespace Payment\Saferpay\Data;
 
-class PayInitParameter extends AbstractBase implements PayInitParameterInterface
+use Payment\Saferpay\Data\Collection\AbstractCollectionItem;
+
+class PayInitParameter extends AbstractCollectionItem implements PayInitParameterInterface
 {
     /**
      * @param string $accountid
@@ -618,5 +620,51 @@ class PayInitParameter extends AbstractBase implements PayInitParameterInterface
     public function getRequestUrl()
     {
         return PayInitParameterInterface::REQUEST_URL;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFieldNames()
+    {
+        return array(
+            'ACCOUNTID',
+            'AMOUNT',
+            'CURRENCY',
+            'DESCRIPTION',
+            'ORDERID',
+            'VTCONFIG',
+            'SUCCESSLINK',
+            'FAILLINK',
+            'BACKLINK',
+            'NOTIFYURL',
+            'AUTOCLOSE',
+            'CCNAME',
+            'NOTIFYADDRESS',
+            'USERNOTIFY',
+            'LANGID',
+            'SHOWLANGUAGES',
+            'PAYMENTMETHODS',
+            'DURATION',
+            'CARDREFID',
+            'DELIVERY',
+            'APPEARANCE',
+            'ADDRESS',
+            'COMPANY',
+            'GENDER',
+            'FIRSTNAME',
+            'LASTNAME',
+            'STREET',
+            'ZIP',
+            'CITY',
+            'COUNTRY',
+            'EMAIL',
+            'PHONE',
+        );
+    }
+
+    public function getName()
+    {
+        return 'payinitparameter';
     }
 }

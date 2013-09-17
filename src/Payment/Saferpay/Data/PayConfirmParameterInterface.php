@@ -333,32 +333,6 @@ interface PayConfirmParameterInterface
     public function getMpiliabilityshift();
 
     /**
-     * @param  string $mpi_tx_cavv
-     * @return mixed
-     * @deprecated
-     */
-    public function setMpiTxCavv($mpi_tx_cavv);
-
-    /**
-     * @return string
-     * @deprecated
-     */
-    public function getMpiTxCavv();
-
-    /**
-     * @param  string $mpi_xid
-     * @return mixed
-     * @deprecated
-     */
-    public function setMpiXid($mpi_xid);
-
-    /**
-     * @return string
-     * @deprecated
-     */
-    public function getMpiXid();
-
-    /**
      * @param string $eci
      * @return $this
      */
@@ -390,19 +364,4 @@ interface PayConfirmParameterInterface
      * @return string
      */
     public function getCavv();
-
-    /**
-     * @return string
-     */
-    public function getRequestUrl();
-
-    /**
-     * @return array
-     */
-    public function getData();
-
-    /**
-     * @return array
-     */
-    public function getInvalidData();
 }

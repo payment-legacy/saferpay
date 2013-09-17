@@ -2,7 +2,9 @@
 
 namespace Payment\Saferpay\Data;
 
-class PayCompleteParameter extends AbstractBase implements PayCompleteParameterInterface
+use Payment\Saferpay\Data\Collection\AbstractCollectionItem;
+
+class PayCompleteParameter extends AbstractCollectionItem implements PayCompleteParameterInterface
 {
     /**
      * @param string $id
@@ -86,5 +88,23 @@ class PayCompleteParameter extends AbstractBase implements PayCompleteParameterI
     public function getRequestUrl()
     {
         return PayCompleteParameterInterface::REQUEST_URL;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFieldNames()
+    {
+        return array(
+            'ID',
+            'AMOUNT',
+            'ACCOUNTID',
+            'ACTION',
+        );
+    }
+
+    public function getName()
+    {
+        return 'paycompleteparameter';
     }
 }

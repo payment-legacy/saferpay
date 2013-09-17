@@ -2,10 +2,9 @@
 
 namespace Payment\Saferpay\Data\Billpay;
 
-use Payment\Saferpay\Data\AbstractGetSet;
-use Payment\Saferpay\Data\SubBaseInterface;
+use Payment\Saferpay\Data\Collection\AbstractCollectionItem;
 
-class BillpayPayConfirmParameter extends AbstractGetSet implements BillpayPayConfirmParameterInterface, SubBaseInterface
+class BillpayPayConfirmParameter extends AbstractCollectionItem implements BillpayPayConfirmParameterInterface
 {
     /**
      * @param string $pobAccountholder
@@ -518,5 +517,46 @@ class BillpayPayConfirmParameter extends AbstractGetSet implements BillpayPayCon
     public function getDeliveryPhone()
     {
         return $this->get('DELIVERY_PHONE');
+    }
+
+    /**
+     * @return array
+     */
+    public function getFieldNames()
+    {
+        return array(
+            'POB_ACCOUNTHOLDER',
+            'POB_ACCOUNTNUMBER',
+            'POB_BANKCODE',
+            'POB_BANKNAME',
+            'POB_PAYERNOTE',
+            'COMPANY',
+            'LEGALFORM',
+            'GENDER',
+            'FIRSTNAME',
+            'LASTNAME',
+            'STREET',
+            'ADDRESSADDITION',
+            'ZIP',
+            'CITY',
+            'COUNTRY',
+            'EMAIL',
+            'PHONE',
+            'DATEOFBIRTH',
+            'DELIVERY_GENDER',
+            'DELIVERY_FIRSTNAME',
+            'DELIVERY_LASTNAME',
+            'DELIVERY_STREET',
+            'DELIVERY_ADDRESSADDITION',
+            'DELIVERY_ZIP',
+            'DELIVERY_CITY',
+            'DELIVERY_COUNTRY',
+            'DELIVERY_PHONE',
+        );
+    }
+
+    public function getName()
+    {
+        return 'payconfirmparameter_billpay';
     }
 }

@@ -2,10 +2,9 @@
 
 namespace Payment\Saferpay\Data\Billpay;
 
-use Payment\Saferpay\Data\AbstractGetSet;
-use Payment\Saferpay\Data\SubBaseInterface;
+use Payment\Saferpay\Data\Collection\AbstractCollectionItem;
 
-class BillpayPayCompleteParameter extends AbstractGetSet implements BillpayPayCompleteParameterInterface, SubBaseInterface
+class BillpayPayCompleteParameter extends AbstractCollectionItem implements BillpayPayCompleteParameterInterface
 {
     /**
      * @param string $popDeplay
@@ -24,5 +23,20 @@ class BillpayPayCompleteParameter extends AbstractGetSet implements BillpayPayCo
     public function getPobDelay()
     {
         return $this->get('POB_DELAY');
+    }
+
+    /**
+     * @return array
+     */
+    public function getFieldNames()
+    {
+        return array(
+            'POB_DELAY',
+        );
+    }
+
+    public function getName()
+    {
+        return 'paycompleteparameter_billpay';
     }
 }

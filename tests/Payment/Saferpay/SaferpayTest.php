@@ -39,6 +39,7 @@ class SaferpayTest extends \PHPUnit_Framework_TestCase
         $signature = '2492d0266d080524553ce3c8b040473f30c7e3236984f5bd1ab194067d1e6522c758f8d7ab08fb1fa96d2466ec37bcf367b9c2b7be450dcd7384efa7ce580fa9';
 
         $payConfirmParameter = $saferpay->verifyPayConfirm($data, $signature);
+        /** @var PayConfirmParameter $payConfirmParameter */
 
         $this->assertEquals('PayConfirm', $payConfirmParameter->getMsgtype());
         $this->assertEquals('(unused)', $payConfirmParameter->getToken());
@@ -67,27 +68,13 @@ class SaferpayTest extends \PHPUnit_Framework_TestCase
         $saferpay = new Saferpay();
         $saferpay->setHttpClient(new BuzzClient());
 
-        $payConfirmParameter = $this->getMock('Payment\Saferpay\Data\PayConfirmParameter');
-
-        $payConfirmParameter
-            ->expects($this->any())
-            ->method('getId')
-            ->will($this->returnValue('WxWrIlA48W06rAjKKOp5bzS80E5A'))
-        ;
-
-        $payConfirmParameter
-            ->expects($this->once())
-            ->method('getAmount')
-            ->will($this->returnValue('1200'))
-        ;
-
-        $payConfirmParameter
-            ->expects($this->once())
-            ->method('getAccountid')
-            ->will($this->returnValue('99867-94913159'))
-        ;
+        $payConfirmParameter = new PayConfirmParameter();
+        $payConfirmParameter->setId('WxWrIlA48W06rAjKKOp5bzS80E5A');
+        $payConfirmParameter->setAmount('1200');
+        $payConfirmParameter->setAccountid('99867-94913159');
 
         $payCompleteResponse  = $saferpay->payCompleteV2($payConfirmParameter, 'Settlement');
+        /** @var PayCompleteResponse $payCompleteResponse */
 
         $this->assertEquals(0, $payCompleteResponse->getResult());
     }

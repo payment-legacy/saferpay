@@ -2,7 +2,9 @@
 
 namespace Payment\Saferpay\Data;
 
-class PayConfirmParameter extends AbstractBase implements PayConfirmParameterInterface
+use Payment\Saferpay\Data\Collection\AbstractCollectionItem;
+
+class PayConfirmParameter extends AbstractCollectionItem implements PayConfirmParameterInterface
 {
     /**
      * @param string $msgtype
@@ -328,48 +330,6 @@ class PayConfirmParameter extends AbstractBase implements PayConfirmParameterInt
     }
 
     /**
-     * @param $mpi_tx_cavv
-     * @return $this|string
-     * @deprecated
-     */
-    public function setMpiTxCavv($mpi_tx_cavv)
-    {
-        $this->set('MPI_TX_CAVV', $mpi_tx_cavv);
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     * @deprecated
-     */
-    public function getMpiTxCavv()
-    {
-        return $this->get('MPI_TX_CAVV');
-    }
-
-    /**
-     * @param  string $mpi_mpi_xid
-     * @return mixed
-     * @deprecated
-     */
-    public function setMpiXid($mpi_xid)
-    {
-        $this->set('MPI_XID', $mpi_xid);
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     * @deprecated
-     */
-    public function getMpiXid()
-    {
-        return $this->get('MPI_XID');
-    }
-
-    /**
      * @param string $eci
      * @return $this
      */
@@ -432,5 +392,39 @@ class PayConfirmParameter extends AbstractBase implements PayConfirmParameterInt
     public function getRequestUrl()
     {
         return PayConfirmParameterInterface::REQUEST_URL;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFieldNames()
+    {
+        return array(
+            'MSGTYPE',
+            'VTVERIFY',
+            'KEYID',
+            'ID',
+            'TOKEN',
+            'ACCOUNTID',
+            'AMOUNT',
+            'CURRENCY',
+            'CARDREFID',
+            'SCDRESULT',
+            'PROVIDERID',
+            'PROVIDERNAME',
+            'ORDERID',
+            'IP',
+            'IPCOUNTRY',
+            'CCCOUNTRY',
+            'MPI_LIABILITYSHIFT',
+            'ECI',
+            'XID',
+            'CAVV',
+        );
+    }
+
+    public function getName()
+    {
+        return 'payconfirmparameter';
     }
 }

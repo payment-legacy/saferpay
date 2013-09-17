@@ -2,10 +2,9 @@
 
 namespace Payment\Saferpay\Data\Billpay;
 
-use Payment\Saferpay\Data\AbstractGetSet;
-use Payment\Saferpay\Data\SubBaseInterface;
+use Payment\Saferpay\Data\Collection\AbstractCollectionItem;
 
-class BillpayPayCompleteResponse extends AbstractGetSet implements BillpayPayCompleteResponseInterface, SubBaseInterface
+class BillpayPayCompleteResponse extends AbstractCollectionItem implements BillpayPayCompleteResponseInterface
 {
     /**
      * @param string $pobDuedate
@@ -24,5 +23,20 @@ class BillpayPayCompleteResponse extends AbstractGetSet implements BillpayPayCom
     public function getPobDuedate()
     {
         return $this->get('POB_DUEDATE');
+    }
+
+    /**
+     * @return array
+     */
+    public function getFieldNames()
+    {
+        return array(
+            'POB_DUEDATE',
+        );
+    }
+
+    public function getName()
+    {
+        return 'paycompleteresponse_billpay';
     }
 }

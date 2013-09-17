@@ -2,10 +2,9 @@
 
 namespace Payment\Saferpay\Data\Billpay;
 
-use Payment\Saferpay\Data\AbstractGetSet;
-use Payment\Saferpay\Data\SubBaseInterface;
+use Payment\Saferpay\Data\Collection\AbstractCollectionItem;
 
-class BillpayPayInitParameter extends AbstractGetSet implements BillpayPayInitParameterInterface, SubBaseInterface
+class BillpayPayInitParameter extends AbstractCollectionItem implements BillpayPayInitParameterInterface
 {
     /**
      * @param string $legalform
@@ -233,5 +232,31 @@ class BillpayPayInitParameter extends AbstractGetSet implements BillpayPayInitPa
     public function getDeliveryPhone()
     {
         return $this->get('DELIVERY_PHONE');
+    }
+
+    /**
+     * @return array
+     */
+    public function getFieldNames()
+    {
+        return array(
+            'LEGALFORM',
+            'ADDRESSADDITION',
+            'DATEOFBIRTH',
+            'DELIVERY_GENDER',
+            'DELIVERY_FIRSTNAME',
+            'DELIVERY_LASTNAME',
+            'DELIVERY_STREET',
+            'DELIVERY_ADDRESSADDITION',
+            'DELIVERY_ZIP',
+            'DELIVERY_CITY',
+            'DELIVERY_COUNTRY',
+            'DELIVERY_PHONE',
+        );
+    }
+
+    public function getName()
+    {
+        return 'payinitparameter_billpay';
     }
 }

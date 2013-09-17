@@ -2,7 +2,9 @@
 
 namespace Payment\Saferpay\Data;
 
-class PayCompleteResponse extends AbstractBase implements PayCompleteResponseInterface
+use Payment\Saferpay\Data\Collection\AbstractCollectionItem;
+
+class PayCompleteResponse extends AbstractCollectionItem implements PayCompleteResponseInterface
 {
     /**
      * @param string $msgtype
@@ -97,5 +99,24 @@ class PayCompleteResponse extends AbstractBase implements PayCompleteResponseInt
     public function getAuthmessage()
     {
         return $this->get('AUTHMESSAGE');
+    }
+
+    /**
+     * @return array
+     */
+    public function getFieldNames()
+    {
+        return array(
+            'MSGTYPE',
+            'ID',
+            'RESULT',
+            'MESSAGE',
+            'AUTHMESSAGE',
+        );
+    }
+
+    public function getName()
+    {
+        return 'paycompleteresponse';
     }
 }
