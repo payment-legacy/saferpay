@@ -22,11 +22,17 @@ class Collection implements CollectionItemInterface
      */
     protected $fieldsOfCollectionItems;
 
+    /**
+     * @var array
+     */
+    protected $invalidData;
+
     public function __construct($name = 'collection')
     {
         $this->name = $name;
         $this->collectionItems = array();
         $this->fieldsOfCollectionItems = array();
+        $this->invalidData = array();
     }
 
     /**
@@ -58,9 +64,9 @@ class Collection implements CollectionItemInterface
             $collectionItem->set($fieldName, $fieldValue);
 
             return $this;
+        } else {
+            $this->invalidData[$fieldName] = $fieldValue;
         }
-
-        throw new \InvalidArgumentException("Unknown fieldname '{$fieldName}'");
     }
 
     /**
@@ -97,7 +103,7 @@ class Collection implements CollectionItemInterface
      */
     public function getInvalidData()
     {
-        $invalidData = array();
+        $invalidData = $this->invalidData;
         foreach ($this->collectionItems as $collectionItem) {
             $invalidData = array_replace_recursive($invalidData, $collectionItem->getInvalidData());
         }
