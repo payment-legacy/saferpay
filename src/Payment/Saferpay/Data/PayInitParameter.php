@@ -330,6 +330,25 @@ class PayInitParameter extends AbstractCollectionItem implements PayInitParamete
     }
 
     /**
+     * @param array $providerset
+     * @return $this
+     */
+    public function setProviderset(array $providerset)
+    {
+        $this->set('PROVIDERSET', implode(',', $providerset));
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getProviderset()
+    {
+        return explode(',', (string) $this->get('PROVIDERSET'));
+    }
+
+    /**
      * @param int $duration
      * @return $this
      */
@@ -645,6 +664,7 @@ class PayInitParameter extends AbstractCollectionItem implements PayInitParamete
             'LANGID',
             'SHOWLANGUAGES',
             'PAYMENTMETHODS',
+            'PROVIDERSET',
             'DURATION',
             'CARDREFID',
             'DELIVERY',

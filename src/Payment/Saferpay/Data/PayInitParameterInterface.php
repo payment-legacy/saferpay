@@ -136,6 +136,13 @@ interface PayInitParameterInterface
 
     /**
      * optional
+     * Specifies those provider set displayed in the PP payment.
+     * By default all activated providers are displayed
+     */
+    const PROVIDERSET = 'ns[..40]';
+
+    /**
+     * optional
      * Limits the validity of the payment link
      * Format: YYYYMMDDhhmmss
      */
@@ -411,6 +418,17 @@ interface PayInitParameterInterface
      * @return array
      */
     public function getPaymentmethods();
+
+    /**
+     * @param array $providerset
+     * @return $this
+     */
+    public function setProviderset(array $providerset);
+
+    /**
+     * @return array
+     */
+    public function getProviderset();
 
     /**
      * @param int $duration
