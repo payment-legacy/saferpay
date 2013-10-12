@@ -4,8 +4,8 @@ namespace Payment\Saferpay\Data\Billpay;
 
 interface BillpayPayInitParameterInterface
 {
-    const PAYMENTMETHOD_BILLPAY_LSV = 13;
-    const PAYMENTMETHOD_BILLPAY_INVOICE = 14;
+    const PAYMENTMETHOD_BILLPAY_LSV = 1218;
+    const PAYMENTMETHOD_BILLPAY_INVOICE = 1219;
 
     /**
      * optional, if gender is not "c"
