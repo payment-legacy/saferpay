@@ -10,6 +10,11 @@ class Collection implements CollectionItemInterface
     /**
      * @var string
      */
+    protected $requestUrl;
+
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
@@ -27,8 +32,9 @@ class Collection implements CollectionItemInterface
      */
     protected $invalidData;
 
-    public function __construct($name = 'collection')
+    public function __construct($requestUrl, $name = 'collection')
     {
+        $this->requestUrl = $requestUrl;
         $this->name = $name;
         $this->collectionItems = array();
         $this->fieldsOfCollectionItems = array();
@@ -116,14 +122,7 @@ class Collection implements CollectionItemInterface
      */
     public function getRequestUrl()
     {
-        $url = '';
-        foreach ($this->collectionItems as $collectionItem) {
-            if ($collectionItem->getRequestUrl() != '') {
-                $url = $collectionItem->getRequestUrl();
-            }
-        }
-
-        return $url;
+        return $this->requestUrl;
     }
 
     /**
