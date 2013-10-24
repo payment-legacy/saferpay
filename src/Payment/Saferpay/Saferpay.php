@@ -144,12 +144,19 @@ class Saferpay
      */
     protected function request($url, array $data)
     {
+        $data = http_build_query($data);
+
+        $this->getLogger()->debug($url);
+        $this->getLogger()->debug($data);
+
         $response = $this->getHttpClient()->request(
             'POST',
             $url,
-            http_build_query($data),
+            $data,
             array('Content-Type' => 'application/x-www-form-urlencoded')
         );
+
+        $this->getLogger()->debug($response->getContent());
 
         if ($response->getStatusCode() != 200) {
             $this->getLogger()->critical('Saferpay: request failed with statuscode: {statuscode}!', array('statuscode' => $response->getStatusCode()));
