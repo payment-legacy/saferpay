@@ -21,13 +21,13 @@ interface BillpayPayCompleteResponseInterface
      * optional, only on buy with invoice
      * BillPay account number for the claim.
      */
-    const POB_ACCOUNTNUMBER = 'n[..10]';
+    const POB_ACCOUNTNUMBER = 'ans[..50]';
 
     /**
      * optional, only on buy with invoice
      * BillPay bank code for the claim.
      */
-    const POB_BANKCODE = 'n[8]';
+    const POB_BANKCODE = 'ans[..50]';
 
     /**
      * optional, only on buy with invoice
