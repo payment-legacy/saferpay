@@ -68,11 +68,11 @@ class Collection implements CollectionItemInterface
         if (array_key_exists($fieldName, $this->fieldsOfCollectionItems)) {
             $collectionItem = $this->collectionItems[$this->fieldsOfCollectionItems[$fieldName]];
             $collectionItem->set($fieldName, $fieldValue);
-
-            return $this;
         } else {
             $this->invalidData[$fieldName] = $fieldValue;
         }
+
+        return $this;
     }
 
     /**
