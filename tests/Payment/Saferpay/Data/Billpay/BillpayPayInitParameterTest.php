@@ -3,52 +3,53 @@
 namespace Payment\Saferpay\Data\Billpay;
 
 use Payment\Saferpay\Data\Collection\Collection;
+use Payment\Saferpay\Data\PayInitParameterInterface;
 
 class BillpayPayInitParameterTest extends \PHPUnit_Framework_TestCase
 {
-    protected $legalForm = BillpayPayInitParameterInterface::LEGALFORM_GMBH;
-    protected $addressAddtition = 'Address addition';
-    protected $dateOfBirth = '20000101';
-    protected $deliveryGender = 'm';
-    protected $deliveryFirstname = 'Firstname';
-    protected $deliveryLastname = 'Lastname';
-    protected $deliveryStreet = 'Street 0';
-    protected $deliveryAddressAddtition = 'Delivery address addition';
-    protected $deliveryZip = '0000';
-    protected $deliveryCity = 'City';
-    protected $deliveryCountry = 'CH';
-    protected $deliveryPhone = '+00000000000';
+    const LEGALFORM = BillpayPayInitParameterInterface::LEGALFORM_GMBH;
+    const ADDRESSADDITION = 'Address addition';
+    const DATEOFBIRTH = '20000101';
+    const DELIVERY_GENDER = PayInitParameterInterface::GENDER_MALE;
+    const DELIVERY_FIRSTNAME = 'Firstname';
+    const DELIVERY_LASTNAME = 'Lastname';
+    const DELIVERY_STREET = 'Street 0';
+    const DELIVERY_ADDRESSADDITION = 'Delivery address addition';
+    const DELIVERY_ZIP = '0000';
+    const DELIVERY_CITY = 'City';
+    const DELIVERY_COUNTRY = 'CH';
+    const DELIVERY_PHONE = '+00000000000';
 
     public function testSetterGetterWithValidData()
     {
         $billpayPayInitParameter = new BillpayPayInitParameter;
         $billpayPayInitParameter
-            ->setLegalform($this->legalForm)
-            ->setAddressAddition($this->addressAddtition)
-            ->setDateofBirth($this->dateOfBirth)
-            ->setDeliveryGender($this->deliveryGender)
-            ->setDeliveryFirstname($this->deliveryFirstname)
-            ->setDeliveryLastname($this->deliveryLastname)
-            ->setDeliveryStreet($this->deliveryStreet)
-            ->setDeliveryAddressAddition($this->deliveryAddressAddtition)
-            ->setDeliveryZip($this->deliveryZip)
-            ->setDeliveryCity($this->deliveryCity)
-            ->setDeliveryCountry($this->deliveryCountry)
-            ->setDeliveryPhone($this->deliveryPhone)
+            ->setLegalform(self::LEGALFORM)
+            ->setAddressAddition(self::ADDRESSADDITION)
+            ->setDateofBirth(self::DATEOFBIRTH)
+            ->setDeliveryGender(self::DELIVERY_GENDER)
+            ->setDeliveryFirstname(self::DELIVERY_FIRSTNAME)
+            ->setDeliveryLastname(self::DELIVERY_LASTNAME)
+            ->setDeliveryStreet(self::DELIVERY_STREET)
+            ->setDeliveryAddressAddition(self::DELIVERY_ADDRESSADDITION)
+            ->setDeliveryZip(self::DELIVERY_ZIP)
+            ->setDeliveryCity(self::DELIVERY_CITY)
+            ->setDeliveryCountry(self::DELIVERY_COUNTRY)
+            ->setDeliveryPhone(self::DELIVERY_PHONE)
         ;
 
-        $this->assertEquals($this->legalForm, $billpayPayInitParameter->getLegalform());
-        $this->assertEquals($this->addressAddtition, $billpayPayInitParameter->getAddressAddition());
-        $this->assertEquals($this->dateOfBirth, $billpayPayInitParameter->getDateofBirth());
-        $this->assertEquals($this->deliveryGender, $billpayPayInitParameter->getDeliveryGender());
-        $this->assertEquals($this->deliveryFirstname, $billpayPayInitParameter->getDeliveryFirstname());
-        $this->assertEquals($this->deliveryLastname, $billpayPayInitParameter->getDeliveryLastname());
-        $this->assertEquals($this->deliveryStreet, $billpayPayInitParameter->getDeliveryStreet());
-        $this->assertEquals($this->deliveryAddressAddtition, $billpayPayInitParameter->getDeliveryAddressAddition());
-        $this->assertEquals($this->deliveryZip, $billpayPayInitParameter->getDeliveryZip());
-        $this->assertEquals($this->deliveryCity, $billpayPayInitParameter->getDeliveryCity());
-        $this->assertEquals($this->deliveryCountry, $billpayPayInitParameter->getDeliveryCountry());
-        $this->assertEquals($this->deliveryPhone, $billpayPayInitParameter->getDeliveryPhone());
+        $this->assertEquals(self::LEGALFORM, $billpayPayInitParameter->getLegalform());
+        $this->assertEquals(self::ADDRESSADDITION, $billpayPayInitParameter->getAddressAddition());
+        $this->assertEquals(self::DATEOFBIRTH, $billpayPayInitParameter->getDateofBirth());
+        $this->assertEquals(self::DELIVERY_GENDER, $billpayPayInitParameter->getDeliveryGender());
+        $this->assertEquals(self::DELIVERY_FIRSTNAME, $billpayPayInitParameter->getDeliveryFirstname());
+        $this->assertEquals(self::DELIVERY_LASTNAME, $billpayPayInitParameter->getDeliveryLastname());
+        $this->assertEquals(self::DELIVERY_STREET, $billpayPayInitParameter->getDeliveryStreet());
+        $this->assertEquals(self::DELIVERY_ADDRESSADDITION, $billpayPayInitParameter->getDeliveryAddressAddition());
+        $this->assertEquals(self::DELIVERY_ZIP, $billpayPayInitParameter->getDeliveryZip());
+        $this->assertEquals(self::DELIVERY_CITY, $billpayPayInitParameter->getDeliveryCity());
+        $this->assertEquals(self::DELIVERY_COUNTRY, $billpayPayInitParameter->getDeliveryCountry());
+        $this->assertEquals(self::DELIVERY_PHONE, $billpayPayInitParameter->getDeliveryPhone());
 
         $this->assertCount(0, $billpayPayInitParameter->getInvalidData());
     }
@@ -57,32 +58,32 @@ class BillpayPayInitParameterTest extends \PHPUnit_Framework_TestCase
     {
         $billpayPayInitParameter = new BillpayPayInitParameter;
         $billpayPayInitParameter
-            ->set('LEGALFORM', $this->legalForm)
-            ->set('ADDRESSADDITION', $this->addressAddtition)
-            ->set('DATEOFBIRTH', $this->dateOfBirth)
-            ->set('DELIVERY_GENDER', $this->deliveryGender)
-            ->set('DELIVERY_FIRSTNAME', $this->deliveryFirstname)
-            ->set('DELIVERY_LASTNAME', $this->deliveryLastname)
-            ->set('DELIVERY_STREET', $this->deliveryStreet)
-            ->set('DELIVERY_ADDRESSADDITION', $this->deliveryAddressAddtition)
-            ->set('DELIVERY_ZIP', $this->deliveryZip)
-            ->set('DELIVERY_CITY', $this->deliveryCity)
-            ->set('DELIVERY_COUNTRY', $this->deliveryCountry)
-            ->set('DELIVERY_PHONE', $this->deliveryPhone)
+            ->set('LEGALFORM', self::LEGALFORM)
+            ->set('ADDRESSADDITION', self::ADDRESSADDITION)
+            ->set('DATEOFBIRTH', self::DATEOFBIRTH)
+            ->set('DELIVERY_GENDER', self::DELIVERY_GENDER)
+            ->set('DELIVERY_FIRSTNAME', self::DELIVERY_FIRSTNAME)
+            ->set('DELIVERY_LASTNAME', self::DELIVERY_LASTNAME)
+            ->set('DELIVERY_STREET', self::DELIVERY_STREET)
+            ->set('DELIVERY_ADDRESSADDITION', self::DELIVERY_ADDRESSADDITION)
+            ->set('DELIVERY_ZIP', self::DELIVERY_ZIP)
+            ->set('DELIVERY_CITY', self::DELIVERY_CITY)
+            ->set('DELIVERY_COUNTRY', self::DELIVERY_COUNTRY)
+            ->set('DELIVERY_PHONE', self::DELIVERY_PHONE)
         ;
 
-        $this->assertEquals($this->legalForm, $billpayPayInitParameter->get('LEGALFORM'));
-        $this->assertEquals($this->addressAddtition, $billpayPayInitParameter->get('ADDRESSADDITION'));
-        $this->assertEquals($this->dateOfBirth, $billpayPayInitParameter->get('DATEOFBIRTH'));
-        $this->assertEquals($this->deliveryGender, $billpayPayInitParameter->get('DELIVERY_GENDER'));
-        $this->assertEquals($this->deliveryFirstname, $billpayPayInitParameter->get('DELIVERY_FIRSTNAME'));
-        $this->assertEquals($this->deliveryLastname, $billpayPayInitParameter->get('DELIVERY_LASTNAME'));
-        $this->assertEquals($this->deliveryStreet, $billpayPayInitParameter->get('DELIVERY_STREET'));
-        $this->assertEquals($this->deliveryAddressAddtition, $billpayPayInitParameter->get('DELIVERY_ADDRESSADDITION'));
-        $this->assertEquals($this->deliveryZip, $billpayPayInitParameter->get('DELIVERY_ZIP'));
-        $this->assertEquals($this->deliveryCity, $billpayPayInitParameter->get('DELIVERY_CITY'));
-        $this->assertEquals($this->deliveryCountry, $billpayPayInitParameter->get('DELIVERY_COUNTRY'));
-        $this->assertEquals($this->deliveryPhone, $billpayPayInitParameter->get('DELIVERY_PHONE'));
+        $this->assertEquals(self::LEGALFORM, $billpayPayInitParameter->get('LEGALFORM'));
+        $this->assertEquals(self::ADDRESSADDITION, $billpayPayInitParameter->get('ADDRESSADDITION'));
+        $this->assertEquals(self::DATEOFBIRTH, $billpayPayInitParameter->get('DATEOFBIRTH'));
+        $this->assertEquals(self::DELIVERY_GENDER, $billpayPayInitParameter->get('DELIVERY_GENDER'));
+        $this->assertEquals(self::DELIVERY_FIRSTNAME, $billpayPayInitParameter->get('DELIVERY_FIRSTNAME'));
+        $this->assertEquals(self::DELIVERY_LASTNAME, $billpayPayInitParameter->get('DELIVERY_LASTNAME'));
+        $this->assertEquals(self::DELIVERY_STREET, $billpayPayInitParameter->get('DELIVERY_STREET'));
+        $this->assertEquals(self::DELIVERY_ADDRESSADDITION, $billpayPayInitParameter->get('DELIVERY_ADDRESSADDITION'));
+        $this->assertEquals(self::DELIVERY_ZIP, $billpayPayInitParameter->get('DELIVERY_ZIP'));
+        $this->assertEquals(self::DELIVERY_CITY, $billpayPayInitParameter->get('DELIVERY_CITY'));
+        $this->assertEquals(self::DELIVERY_COUNTRY, $billpayPayInitParameter->get('DELIVERY_COUNTRY'));
+        $this->assertEquals(self::DELIVERY_PHONE, $billpayPayInitParameter->get('DELIVERY_PHONE'));
 
         $this->assertCount(0, $billpayPayInitParameter->getInvalidData());
     }
@@ -95,34 +96,33 @@ class BillpayPayInitParameterTest extends \PHPUnit_Framework_TestCase
         $payInitParameterCollection->addCollectionItem($billpayPayInitParameter);
 
         $payInitParameterCollection
-            ->set('GENDER', 'm')
-            ->set('LEGALFORM', $this->legalForm)
-            ->set('ADDRESSADDITION', $this->addressAddtition)
-            ->set('DATEOFBIRTH', $this->dateOfBirth)
-            ->set('DELIVERY_GENDER', $this->deliveryGender)
-            ->set('DELIVERY_FIRSTNAME', $this->deliveryFirstname)
-            ->set('DELIVERY_LASTNAME', $this->deliveryLastname)
-            ->set('DELIVERY_STREET', $this->deliveryStreet)
-            ->set('DELIVERY_ADDRESSADDITION', $this->deliveryAddressAddtition)
-            ->set('DELIVERY_ZIP', $this->deliveryZip)
-            ->set('DELIVERY_CITY', $this->deliveryCity)
-            ->set('DELIVERY_COUNTRY', $this->deliveryCountry)
-            ->set('DELIVERY_PHONE', $this->deliveryPhone)
+            ->set('LEGALFORM', self::LEGALFORM)
+            ->set('ADDRESSADDITION', self::ADDRESSADDITION)
+            ->set('DATEOFBIRTH', self::DATEOFBIRTH)
+            ->set('DELIVERY_GENDER', self::DELIVERY_GENDER)
+            ->set('DELIVERY_FIRSTNAME', self::DELIVERY_FIRSTNAME)
+            ->set('DELIVERY_LASTNAME', self::DELIVERY_LASTNAME)
+            ->set('DELIVERY_STREET', self::DELIVERY_STREET)
+            ->set('DELIVERY_ADDRESSADDITION', self::DELIVERY_ADDRESSADDITION)
+            ->set('DELIVERY_ZIP', self::DELIVERY_ZIP)
+            ->set('DELIVERY_CITY', self::DELIVERY_CITY)
+            ->set('DELIVERY_COUNTRY', self::DELIVERY_COUNTRY)
+            ->set('DELIVERY_PHONE', self::DELIVERY_PHONE)
         ;
 
-        $this->assertEquals($this->legalForm, $payInitParameterCollection->get('LEGALFORM'));
-        $this->assertEquals($this->addressAddtition, $payInitParameterCollection->get('ADDRESSADDITION'));
-        $this->assertEquals($this->dateOfBirth, $payInitParameterCollection->get('DATEOFBIRTH'));
-        $this->assertEquals($this->deliveryGender, $payInitParameterCollection->get('DELIVERY_GENDER'));
-        $this->assertEquals($this->deliveryFirstname, $payInitParameterCollection->get('DELIVERY_FIRSTNAME'));
-        $this->assertEquals($this->deliveryLastname, $payInitParameterCollection->get('DELIVERY_LASTNAME'));
-        $this->assertEquals($this->deliveryStreet, $payInitParameterCollection->get('DELIVERY_STREET'));
-        $this->assertEquals($this->deliveryAddressAddtition, $payInitParameterCollection->get('DELIVERY_ADDRESSADDITION'));
-        $this->assertEquals($this->deliveryZip, $payInitParameterCollection->get('DELIVERY_ZIP'));
-        $this->assertEquals($this->deliveryCity, $payInitParameterCollection->get('DELIVERY_CITY'));
-        $this->assertEquals($this->deliveryCountry, $payInitParameterCollection->get('DELIVERY_COUNTRY'));
-        $this->assertEquals($this->deliveryPhone, $payInitParameterCollection->get('DELIVERY_PHONE'));
+        $this->assertEquals(self::LEGALFORM, $payInitParameterCollection->get('LEGALFORM'));
+        $this->assertEquals(self::ADDRESSADDITION, $payInitParameterCollection->get('ADDRESSADDITION'));
+        $this->assertEquals(self::DATEOFBIRTH, $payInitParameterCollection->get('DATEOFBIRTH'));
+        $this->assertEquals(self::DELIVERY_GENDER, $payInitParameterCollection->get('DELIVERY_GENDER'));
+        $this->assertEquals(self::DELIVERY_FIRSTNAME, $payInitParameterCollection->get('DELIVERY_FIRSTNAME'));
+        $this->assertEquals(self::DELIVERY_LASTNAME, $payInitParameterCollection->get('DELIVERY_LASTNAME'));
+        $this->assertEquals(self::DELIVERY_STREET, $payInitParameterCollection->get('DELIVERY_STREET'));
+        $this->assertEquals(self::DELIVERY_ADDRESSADDITION, $payInitParameterCollection->get('DELIVERY_ADDRESSADDITION'));
+        $this->assertEquals(self::DELIVERY_ZIP, $payInitParameterCollection->get('DELIVERY_ZIP'));
+        $this->assertEquals(self::DELIVERY_CITY, $payInitParameterCollection->get('DELIVERY_CITY'));
+        $this->assertEquals(self::DELIVERY_COUNTRY, $payInitParameterCollection->get('DELIVERY_COUNTRY'));
+        $this->assertEquals(self::DELIVERY_PHONE, $payInitParameterCollection->get('DELIVERY_PHONE'));
 
-        $this->assertCount(1, $payInitParameterCollection->getInvalidData());
+        $this->assertCount(0, $payInitParameterCollection->getInvalidData());
     }
 }
