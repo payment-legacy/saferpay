@@ -39,7 +39,7 @@ class PayInitParameterTest extends \PHPUnit_Framework_TestCase
     const COUNTRY = 'CH';
     const EMAIL = 'test@test.test';
     const PHONE = '+00000000000';
-    
+
     public function testSetterGetterWithValidData()
     {
         $payInitParameter = new PayInitParameter();
