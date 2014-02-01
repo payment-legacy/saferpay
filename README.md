@@ -13,21 +13,6 @@ use Payment\HttpClient\BuzzClient;
 use Payment\Saferpay\Data\PayInitParameter;
 ```
 
-##### uses billpay
-
-```{.php}
-use Payment\HttpClient\BuzzClient;
-use Payment\Saferpay\Data\PayInitParameter;
-use Payment\Saferpay\Data\PayConfirmParameter;
-use Payment\Saferpay\Data\PayCompleteParameter;
-use Payment\Saferpay\Data\PayCompleteResponse;
-use Payment\Saferpay\Data\Billpay\BillpayPayInitParameter;
-use Payment\Saferpay\Data\Billpay\BillpayPayConfirmParameter;
-use Payment\Saferpay\Data\Billpay\BillpayPayCompleteParameter;
-use Payment\Saferpay\Data\Billpay\BillpayPayCompleteResponse;
-use Payment\Saferpay\Data\Collection\Collection;
-```
-
 ##### creating a saferpay instance
 
 ```{.php}
@@ -40,7 +25,7 @@ $saferpay = new Saferpay;
 $saferpay->setHttpClient(new BuzzClient());
 ```
 
-##### default
+##### implementation
 
 ```{.php}
 $amount = 1200;
@@ -69,7 +54,36 @@ if (getParam('status') == 'success') {
 }
 ```
 
-##### billpay (works only with providerset, use it standalone)
+#### a billpay implemention (works only with providerset, use it standalone)
+
+##### uses billpay (with buzz client)
+
+```{.php}
+use Payment\HttpClient\BuzzClient;
+use Payment\Saferpay\Data\PayInitParameter;
+use Payment\Saferpay\Data\PayConfirmParameter;
+use Payment\Saferpay\Data\PayCompleteParameter;
+use Payment\Saferpay\Data\PayCompleteResponse;
+use Payment\Saferpay\Data\Billpay\BillpayPayInitParameter;
+use Payment\Saferpay\Data\Billpay\BillpayPayConfirmParameter;
+use Payment\Saferpay\Data\Billpay\BillpayPayCompleteParameter;
+use Payment\Saferpay\Data\Billpay\BillpayPayCompleteResponse;
+use Payment\Saferpay\Data\Collection\Collection;
+```
+
+##### creating a saferpay instance
+
+```{.php}
+$saferpay = new Saferpay;
+```
+
+##### set httpclient (with buzz)
+
+```{.php}
+$saferpay->setHttpClient(new BuzzClient());
+```
+
+##### implementation
 
 ```{.php}
 $amount = 1200;
