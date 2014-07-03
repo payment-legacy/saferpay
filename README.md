@@ -8,17 +8,17 @@
 
 ##### with buzz
 
-```{.json}`
+```{.json}
 "payment/saferpay": "~3.0"
 "payment/httpclient-buzz": "~1.2"
-``
+```
 
 ##### with guzzle
 
-```{.json}`
+```{.json}
 "payment/saferpay": "~3.0"
 "payment/httpclient-buzz": "~1.0"
-``
+```
 
 #### a simple implementation
 
