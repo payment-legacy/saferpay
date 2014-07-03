@@ -4,6 +4,22 @@
 [![Total Downloads](https://poser.pugx.org/payment/saferpay/downloads.png)](https://packagist.org/packages/payment/saferpay)
 [![Latest Stable Version](https://poser.pugx.org/payment/saferpay/v/stable.png)](https://packagist.org/packages/payment/saferpay)
 
+#### installation
+
+##### with buzz
+
+```{.json}
+"payment/saferpay": "~2.2"
+"payment/httpclient-buzz": "~1.2"
+```
+
+##### with guzzle
+
+```{.json}
+"payment/saferpay": "~2.2"
+"payment/httpclient-buzz": "~1.0"
+```
+
 #### a simple implementation
 
 ##### uses (with buzz client)
