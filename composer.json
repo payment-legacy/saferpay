@@ -17,7 +17,6 @@
 		"digital-link/httpclient-buzz": "~1.1"
     },
     "require-dev": {
-        "payment/httpclient-buzz": "~1.1",
         "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
