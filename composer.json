@@ -1,5 +1,5 @@
 {
-    "name": "payment/saferpay",
+    "name": "digital-link/saferpay",
     "type": "library",
     "description": "Saferpay payment service library",
     "keywords": ["saferpay", "payment", "e-commerce"],
@@ -13,8 +13,8 @@
     "require": {
         "php": ">=5.3.3",
         "psr/log": "1.0.*",
-        "payment/httpclient": "1.0.*",
-        "payment/httpclient-implementation": "~1.0"
+		"digital-link/httpclient": "1.0.*",
+		"digital-link/httpclient-buzz": "~1.1"
     },
     "require-dev": {
         "payment/httpclient-buzz": "~1.1",
