@@ -32,6 +32,8 @@ use Payment\Saferpay\Data\PayInitParameter;
 ##### creating a saferpay instance
 
 ```{.php}
+use Payment\Saferpay\Saferpay;
+
 $saferpay = new Saferpay;
 ```
 
