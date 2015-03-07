@@ -35,8 +35,8 @@ class SaferpayTest extends \PHPUnit_Framework_TestCase
         $saferpay = new Saferpay();
         $saferpay->setHttpClient(new BuzzClient());
 
-        $data = urldecode('%3CIDP+MSGTYPE%3d%22PayConfirm%22+TOKEN%3d%22(unused)%22+VTVERIFY%3d%22(obsolete)%22+KEYID%3d%221-0%22+ID%3d%22WxWrIlA48W06rAjKKOp5bzS80E5A%22+ACCOUNTID%3d%2299867-94913159%22+PROVIDERID%3d%2290%22+PROVIDERNAME%3d%22Saferpay+Test+Card%22+AMOUNT%3d%221200%22+CURRENCY%3d%22CHF%22+IP%3d%2283.77.94.198%22+IPCOUNTRY%3d%22CH%22+CCCOUNTRY%3d%22US%22+MPI_LIABILITYSHIFT%3d%22yes%22+MPI_TX_CAVV%3d%22AAABBIIFmAAAAAAAAAAAAAAAAAA%3d%22+MPI_XID%3d%22SUVZYQJeMxslBAYPGW4AUhcbHAs%3d%22+ECI%3d%221%22+CAVV%3d%22AAABBIIFmAAAAAAAAAAAAAAAAAA%3d%22+XID%3d%22SUVZYQJeMxslBAYPGW4AUhcbHAs%3d%22+%2f%3E');
-        $signature = '2492d0266d080524553ce3c8b040473f30c7e3236984f5bd1ab194067d1e6522c758f8d7ab08fb1fa96d2466ec37bcf367b9c2b7be450dcd7384efa7ce580fa9';
+        $data = urldecode('%3cIDP+MSGTYPE%3d%22PayConfirm%22+TOKEN%3d%22(unused)%22+VTVERIFY%3d%22(obsolete)%22+KEYID%3d%221-0%22+ID%3d%22Ojp5Ibbz769YtAC7S92IAtGx6GYA%22+ACCOUNTID%3d%2299867-94913159%22+PROVIDERID%3d%2290%22+PROVIDERNAME%3d%22Saferpay+Test+Card%22+PAYMENTMETHOD%3d%226%22+AMOUNT%3d%221200%22+CURRENCY%3d%22CHF%22+IP%3d%22178.195.0.209%22+IPCOUNTRY%3d%22CH%22+CCCOUNTRY%3d%22US%22+MPI_LIABILITYSHIFT%3d%22yes%22+MPI_TX_CAVV%3d%22AAABBIIFmAAAAAAAAAAAAAAAAAA%3d%22+MPI_XID%3d%22aloKGARzMjllBBtRQV4Fbw8XcQI%3d%22+ECI%3d%221%22+CAVV%3d%22AAABBIIFmAAAAAAAAAAAAAAAAAA%3d%22+XID%3d%22aloKGARzMjllBBtRQV4Fbw8XcQI%3d%22+%2f%3e');
+        $signature = '59e6773b39d0d800a9a33348eee8ef7fed72384c0aecca8a9040ec2322e74f612dae45efc7cd3d6329d3551db3ab91abbee8cd517fd50fa52b5e69cd0d860478';
 
         $payConfirmParameter = $saferpay->verifyPayConfirm($data, $signature);
         /** @var PayConfirmParameter $payConfirmParameter */
@@ -45,19 +45,19 @@ class SaferpayTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('(unused)', $payConfirmParameter->getToken());
         $this->assertEquals('(obsolete)', $payConfirmParameter->getVtverify());
         $this->assertEquals('1-0', $payConfirmParameter->getKeyid());
-        $this->assertEquals('WxWrIlA48W06rAjKKOp5bzS80E5A', $payConfirmParameter->getId());
+        $this->assertEquals('Ojp5Ibbz769YtAC7S92IAtGx6GYA', $payConfirmParameter->getId());
         $this->assertEquals('99867-94913159', $payConfirmParameter->getAccountid());
         $this->assertEquals('90', $payConfirmParameter->getProviderid());
         $this->assertEquals('Saferpay Test Card', $payConfirmParameter->getProvidername());
         $this->assertEquals('1200', $payConfirmParameter->getAmount());
         $this->assertEquals('CHF', $payConfirmParameter->getCurrency());
-        $this->assertEquals('83.77.94.198', $payConfirmParameter->getIp());
+        $this->assertEquals('178.195.0.209', $payConfirmParameter->getIp());
         $this->assertEquals('CH', $payConfirmParameter->getIpcountry());
         $this->assertEquals('US', $payConfirmParameter->getCccountry());
         $this->assertEquals('yes', $payConfirmParameter->getMpiliabilityshift());
         $this->assertEquals('1', $payConfirmParameter->getEci());
         $this->assertEquals('AAABBIIFmAAAAAAAAAAAAAAAAAA=', $payConfirmParameter->getCavv());
-        $this->assertEquals('SUVZYQJeMxslBAYPGW4AUhcbHAs=', $payConfirmParameter->getXid());
+        $this->assertEquals('aloKGARzMjllBBtRQV4Fbw8XcQI=', $payConfirmParameter->getXid());
 
         $this->arrayHasKey('MPI_TX_CAVV', $payConfirmParameter->getInvalidData());
         $this->arrayHasKey('MPI_XID', $payConfirmParameter->getInvalidData());
@@ -69,7 +69,7 @@ class SaferpayTest extends \PHPUnit_Framework_TestCase
         $saferpay->setHttpClient(new BuzzClient());
 
         $payConfirmParameter = new PayConfirmParameter();
-        $payConfirmParameter->setId('WxWrIlA48W06rAjKKOp5bzS80E5A');
+        $payConfirmParameter->setId('Ojp5Ibbz769YtAC7S92IAtGx6GYA');
         $payConfirmParameter->setAmount('1200');
         $payConfirmParameter->setAccountid('99867-94913159');
 
