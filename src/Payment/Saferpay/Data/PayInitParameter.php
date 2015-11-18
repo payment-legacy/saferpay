@@ -45,6 +45,25 @@ class PayInitParameter extends AbstractCollectionItem implements PayInitParamete
     }
 
     /**
+     * @param string $cssurl
+     * @return $this
+     */
+    public function setCssurl($cssurl)
+    {
+        $this->set('CSSURL', $cssurl);
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCssurl()
+    {
+        return $this->get('CSSURL');
+    }
+
+    /**
      * @param string $currency
      * @return $this
      */
@@ -649,6 +668,7 @@ class PayInitParameter extends AbstractCollectionItem implements PayInitParamete
         return array(
             'ACCOUNTID',
             'AMOUNT',
+            'CSSURL',
             'CURRENCY',
             'DESCRIPTION',
             'ORDERID',

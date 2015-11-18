@@ -24,6 +24,11 @@ interface PayInitParameterInterface
     const AMOUNT = 'n[..8]';
 
     /**
+     * URL to custom url file
+     */
+    const CSSURL = 'ans[..50]';
+
+    /**
      * Three-digit ISO 4217 currency code.
      * For example, "CHF" or "EUR"
      */
@@ -352,6 +357,17 @@ interface PayInitParameterInterface
      * @return int
      */
     public function getAutoclose();
+
+    /**
+     * @param string $cssurl
+     * @return $this
+     */
+    public function setCssurl($cssurl);
+
+    /**
+     * @return string
+     */
+    public function getCssurl();
 
     /**
      * @param string $ccname
