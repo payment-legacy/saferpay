@@ -8,6 +8,7 @@ class PayInitParameterTest extends \PHPUnit_Framework_TestCase
 {
     const ACCOUNTID = '99867-94913159';
     const AMOUNT = 1200;
+    const CSSURL = 'http://test.lo/test.css';
     const CURRENCY = 'CHF';
     const DESCRIPTION = 'Test';
     const ORDERID = 'Test with id 1';
@@ -46,6 +47,7 @@ class PayInitParameterTest extends \PHPUnit_Framework_TestCase
         $payInitParameter
             ->setAccountid(self::ACCOUNTID)
             ->setAmount(self::AMOUNT)
+            ->setCssurl(self::CSSURL)
             ->setCurrency(self::CURRENCY)
             ->setDescription(self::DESCRIPTION)
             ->setOrderid(self::ORDERID)
@@ -81,6 +83,7 @@ class PayInitParameterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(self::ACCOUNTID, $payInitParameter->getAccountid());
         $this->assertEquals(self::AMOUNT, $payInitParameter->getAmount());
+        $this->assertEquals(self::CSSURL, $payInitParameter->getCssurl());
         $this->assertEquals(self::CURRENCY, $payInitParameter->getCurrency());
         $this->assertEquals(self::DESCRIPTION, $payInitParameter->getDescription());
         $this->assertEquals(self::ORDERID, $payInitParameter->getOrderid());
