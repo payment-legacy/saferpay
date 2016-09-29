@@ -17,7 +17,7 @@
 
 ```{.json}
 "payment/saferpay": "~3.0"
-"payment/httpclient-buzz": "~1.0"
+"payment/httpclient-guzzle": "~1.1"
 ```
 
 #### a simple implementation
