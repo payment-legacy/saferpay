@@ -20,6 +20,7 @@
         "payment/httpclient-buzz": "~1.1",
         "phpunit/phpunit": "3.7.*"
     },
+    "abandoned": true,
     "autoload": {
         "psr-0": { "Payment\\Saferpay\\": "src" }
     }
